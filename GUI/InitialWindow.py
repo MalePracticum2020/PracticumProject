@@ -1,9 +1,10 @@
+from tkinter import filedialog
+
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtWidgets import QApplication, QMainWindow
-import sys
 import tkinter as tk
 from tkinter import *
-from TagPopup import TagPopup
+from GUI.Dialogs.TagPopup import TagPopup
 
 '''This file contains the Welcoming Window of the Visualization System.'''
 #TODO: have the dialog to chose a folder working 
@@ -38,6 +39,8 @@ class InitialWindow(QMainWindow):
 	#Instead of openPopup, this will be replaced with the main window. 
 	def openPopup(self):        
 		self.TagPopup.show()
+
+	
 
 	#File manager open		
 	def openFileManager(self):
