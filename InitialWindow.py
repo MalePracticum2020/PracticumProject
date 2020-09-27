@@ -4,7 +4,7 @@ import sys
 import tkinter as tk
 from tkinter import *
 from TagPopup import TagPopup
-from mainwindow import MainWindow
+from MainWindow import MainWindow
 
 
 '''This file contains the Welcoming Window of the Visualization System.'''
