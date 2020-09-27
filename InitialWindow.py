@@ -4,6 +4,8 @@ import sys
 import tkinter as tk
 from tkinter import *
 from TagPopup import TagPopup
+from mainwindow import MainWindow
+
 
 '''This file contains the Welcoming Window of the Visualization System.'''
 #TODO: have the dialog to chose a folder working 
@@ -30,14 +32,18 @@ class InitialWindow(QMainWindow):
 		self.openButton = QtWidgets.QPushButton(self)
 		self.openButton.setGeometry(QtCore.QRect(310, 270, 141, 32))
 		self.openButton.setText("Open")
-		self.openButton.clicked.connect(self.openPopup)
-
+		self.openButton.clicked.connect(self.openMainWindowUi)
+		# self.openButton.clicked.connect(self.openPopup)
 		self.TagPopup = TagPopup()
-
+		self.MainWindowUi = MainWindow()
 
 	#Instead of openPopup, this will be replaced with the main window. 
 	def openPopup(self):        
 		self.TagPopup.show()
+
+	#Instead of openPopup, this will be replaced with the main window. 
+	def openMainWindowUi(self):        
+		self.MainWindowUi.show()
 
 	#File manager open		
 	def openFileManager(self):
