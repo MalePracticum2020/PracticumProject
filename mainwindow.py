@@ -9,7 +9,7 @@
 
 
 from PyQt5 import QtWidgets, QtCore, QtGui
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QHeaderView
 import sys
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -238,9 +238,12 @@ class Ui_MainWindow(object):
         self.throughput_scrollareawidget.setObjectName("throughput_scrollareawidget")
         self.gridLayout = QtWidgets.QGridLayout(self.throughput_scrollareawidget)
         self.gridLayout.setObjectName("gridLayout")
-        self.throughput_tablewidget = QtWidgets.QTableView(self.throughput_scrollareawidget)
+        ###white box example replacement
+        self.throughput_tablewidget =self.createTable()
+        # self.throughput_tablewidget = QtWidgets.QTableView(self.throughput_scrollareawidget)
         self.throughput_tablewidget.setObjectName("throughput_tablewidget")
         self.gridLayout.addWidget(self.throughput_tablewidget, 0, 0, 1, 1)
+        ###white box example replacement
         self.throughput_scrollarea.setWidget(self.throughput_scrollareawidget)
         self.verticalLayout_2.addWidget(self.throughput_scrollarea)
         self.verticalLayout_6.addWidget(self.throughput_frame)
@@ -364,6 +367,42 @@ class Ui_MainWindow(object):
         self.auditd_label.setText(_translate("MainWindow", "Auditd"))
         self.mouseclicks_label.setText(_translate("MainWindow", "Mouse Clicks"))
         self.keypresses_label.setText(_translate("MainWindow", "Keypresses"))
+    
+    #Create table  Sample
+    def createTable(self): 
+        self.tableWidget = QTableWidget() 
+  
+        #Row count 
+        self.tableWidget.setRowCount(10)  
+  
+        #Column count 
+        self.tableWidget.setColumnCount(2)   
+  
+        self.tableWidget.setItem(0,0, QTableWidgetItem("Name")) 
+        self.tableWidget.setItem(0,1, QTableWidgetItem("City")) 
+        self.tableWidget.setItem(1,0, QTableWidgetItem("Aloysius")) 
+        self.tableWidget.setItem(1,1, QTableWidgetItem("Indore")) 
+        self.tableWidget.setItem(2,0, QTableWidgetItem("Alan")) 
+        self.tableWidget.setItem(2,1, QTableWidgetItem("Bhopal")) 
+        self.tableWidget.setItem(3,0, QTableWidgetItem("Arnavi")) 
+        self.tableWidget.setItem(3,1, QTableWidgetItem("Mandsaur")) 
+        self.tableWidget.setItem(4,0, QTableWidgetItem("Aloysius")) 
+        self.tableWidget.setItem(4,1, QTableWidgetItem("Indore")) 
+        self.tableWidget.setItem(5,0, QTableWidgetItem("Alan")) 
+        self.tableWidget.setItem(5,1, QTableWidgetItem("Bhopal")) 
+        self.tableWidget.setItem(6,0, QTableWidgetItem("Arnavi")) 
+        self.tableWidget.setItem(6,1, QTableWidgetItem("Mandsaur")) 
+        self.tableWidget.setItem(7,0, QTableWidgetItem("Aloysius")) 
+        self.tableWidget.setItem(7,1, QTableWidgetItem("Indore")) 
+        self.tableWidget.setItem(8,0, QTableWidgetItem("Alan")) 
+        self.tableWidget.setItem(8,1, QTableWidgetItem("Bhopal")) 
+        self.tableWidget.setItem(9,0, QTableWidgetItem("Arnavi")) 
+        self.tableWidget.setItem(9,1, QTableWidgetItem("Mandsaur")) 
+   
+        #Table will fit the screen horizontally 
+        self.tableWidget.horizontalHeader().setStretchLastSection(True) 
+        self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch) 
+        return self.tableWidget
 
 class MainWindow(QMainWindow,Ui_MainWindow):
     def __init__(self):
