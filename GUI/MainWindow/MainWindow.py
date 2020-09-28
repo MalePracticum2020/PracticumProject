@@ -11,8 +11,15 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QHeaderView
 import sys
+from .DataLines.MouseClicks import MouseClicks
+from .DataLines.Auditd import Auditd
+from .DataLines.Keypresses import Keypresses
+from .DataLines.TimedScreenshots import TimedScreenshots
+
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
+        self.dataLinesSetUp()
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 850)
         palette = QtGui.QPalette()
@@ -238,12 +245,14 @@ class Ui_MainWindow(object):
         self.throughput_scrollareawidget.setObjectName("throughput_scrollareawidget")
         self.gridLayout = QtWidgets.QGridLayout(self.throughput_scrollareawidget)
         self.gridLayout.setObjectName("gridLayout")
-        ###white box example replacement
-        self.throughput_tablewidget =self.createTable()
+        ###
+        self.throughput_tablewidget = self.TimedScreenshots.getTable() #self.createTable()
         # self.throughput_tablewidget = QtWidgets.QTableView(self.throughput_scrollareawidget)
         self.throughput_tablewidget.setObjectName("throughput_tablewidget")
+        # self.throughput_tablewidget.setColumnCount(0)
+        # self.throughput_tablewidget.setRowCount(0)
+        ###
         self.gridLayout.addWidget(self.throughput_tablewidget, 0, 0, 1, 1)
-        ###white box example replacement
         self.throughput_scrollarea.setWidget(self.throughput_scrollareawidget)
         self.verticalLayout_2.addWidget(self.throughput_scrollarea)
         self.verticalLayout_6.addWidget(self.throughput_frame)
@@ -273,10 +282,13 @@ class Ui_MainWindow(object):
         self.auditd_scrollareawidget.setObjectName("auditd_scrollareawidget")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.auditd_scrollareawidget)
         self.gridLayout_2.setObjectName("gridLayout_2")
-        self.auditd_tablewidget = QtWidgets.QTableWidget(self.auditd_scrollareawidget)
+        #####
+        self.auditd_tablewidget = self.Auditd.getTable()
+        # self.auditd_tablewidget = QtWidgets.QTableWidget(self.auditd_scrollareawidget)
         self.auditd_tablewidget.setObjectName("auditd_tablewidget")
-        self.auditd_tablewidget.setColumnCount(0)
-        self.auditd_tablewidget.setRowCount(0)
+        # self.auditd_tablewidget.setColumnCount(0)
+        # self.auditd_tablewidget.setRowCount(0)
+        #####
         self.gridLayout_2.addWidget(self.auditd_tablewidget, 0, 0, 1, 1)
         self.auditd_scrollarea.setWidget(self.auditd_scrollareawidget)
         self.verticalLayout_3.addWidget(self.auditd_scrollarea)
@@ -307,10 +319,13 @@ class Ui_MainWindow(object):
         self.mouseclicks_scrollareawidget.setObjectName("mouseclicks_scrollareawidget")
         self.gridLayout_4 = QtWidgets.QGridLayout(self.mouseclicks_scrollareawidget)
         self.gridLayout_4.setObjectName("gridLayout_4")
-        self.mouseclicks_tablewidget = QtWidgets.QTableWidget(self.mouseclicks_scrollareawidget)
+        #####
+        self.mouseclicks_tablewidget = self.MouseClicks.getTable()
+        # self.mouseclicks_tablewidget = QtWidgets.QTableWidget(self.mouseclicks_scrollareawidget)
         self.mouseclicks_tablewidget.setObjectName("mouseclicks_tablewidget")
-        self.mouseclicks_tablewidget.setColumnCount(0)
-        self.mouseclicks_tablewidget.setRowCount(0)
+        # self.mouseclicks_tablewidget.setColumnCount(0)
+        # self.mouseclicks_tablewidget.setRowCount(0)
+        #####
         self.gridLayout_4.addWidget(self.mouseclicks_tablewidget, 0, 0, 1, 1)
         self.mouseclicks_scrollarea.setWidget(self.mouseclicks_scrollareawidget)
         self.verticalLayout_4.addWidget(self.mouseclicks_scrollarea)
@@ -341,10 +356,13 @@ class Ui_MainWindow(object):
         self.keypresses_scrollareawidget.setObjectName("keypresses_scrollareawidget")
         self.gridLayout_5 = QtWidgets.QGridLayout(self.keypresses_scrollareawidget)
         self.gridLayout_5.setObjectName("gridLayout_5")
-        self.keypresses_tablewidget = QtWidgets.QTableWidget(self.keypresses_scrollareawidget)
+        #####
+        self.keypresses_tablewidget = self.Keypresses.getTable()
+        # self.keypresses_tablewidget = QtWidgets.QTableWidget(self.keypresses_scrollareawidget)
         self.keypresses_tablewidget.setObjectName("keypresses_tablewidget")
-        self.keypresses_tablewidget.setColumnCount(0)
-        self.keypresses_tablewidget.setRowCount(0)
+        # self.keypresses_tablewidget.setColumnCount(0)
+        # self.keypresses_tablewidget.setRowCount(0)
+        #####
         self.gridLayout_5.addWidget(self.keypresses_tablewidget, 0, 0, 1, 1)
         self.keypresses_scrollarea.setWidget(self.keypresses_scrollareawidget)
         self.verticalLayout_5.addWidget(self.keypresses_scrollarea)
@@ -367,42 +385,12 @@ class Ui_MainWindow(object):
         self.auditd_label.setText(_translate("MainWindow", "Auditd"))
         self.mouseclicks_label.setText(_translate("MainWindow", "Mouse Clicks"))
         self.keypresses_label.setText(_translate("MainWindow", "Keypresses"))
-    
-    #Create table  Sample
-    def createTable(self): 
-        self.tableWidget = QTableWidget() 
-  
-        #Row count 
-        self.tableWidget.setRowCount(10)  
-  
-        #Column count 
-        self.tableWidget.setColumnCount(2)   
-  
-        self.tableWidget.setItem(0,0, QTableWidgetItem("Name")) 
-        self.tableWidget.setItem(0,1, QTableWidgetItem("City")) 
-        self.tableWidget.setItem(1,0, QTableWidgetItem("Aloysius")) 
-        self.tableWidget.setItem(1,1, QTableWidgetItem("Indore")) 
-        self.tableWidget.setItem(2,0, QTableWidgetItem("Alan")) 
-        self.tableWidget.setItem(2,1, QTableWidgetItem("Bhopal")) 
-        self.tableWidget.setItem(3,0, QTableWidgetItem("Arnavi")) 
-        self.tableWidget.setItem(3,1, QTableWidgetItem("Mandsaur")) 
-        self.tableWidget.setItem(4,0, QTableWidgetItem("Aloysius")) 
-        self.tableWidget.setItem(4,1, QTableWidgetItem("Indore")) 
-        self.tableWidget.setItem(5,0, QTableWidgetItem("Alan")) 
-        self.tableWidget.setItem(5,1, QTableWidgetItem("Bhopal")) 
-        self.tableWidget.setItem(6,0, QTableWidgetItem("Arnavi")) 
-        self.tableWidget.setItem(6,1, QTableWidgetItem("Mandsaur")) 
-        self.tableWidget.setItem(7,0, QTableWidgetItem("Aloysius")) 
-        self.tableWidget.setItem(7,1, QTableWidgetItem("Indore")) 
-        self.tableWidget.setItem(8,0, QTableWidgetItem("Alan")) 
-        self.tableWidget.setItem(8,1, QTableWidgetItem("Bhopal")) 
-        self.tableWidget.setItem(9,0, QTableWidgetItem("Arnavi")) 
-        self.tableWidget.setItem(9,1, QTableWidgetItem("Mandsaur")) 
-   
-        #Table will fit the screen horizontally 
-        self.tableWidget.horizontalHeader().setStretchLastSection(True) 
-        self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch) 
-        return self.tableWidget
+
+    def dataLinesSetUp(self):
+        self.MouseClicks = MouseClicks()
+        self.Auditd = Auditd()
+        self.TimedScreenshots = TimedScreenshots()
+        self.Keypresses = Keypresses()
 
 class MainWindow(QMainWindow,Ui_MainWindow):
     def __init__(self):
@@ -411,3 +399,4 @@ class MainWindow(QMainWindow,Ui_MainWindow):
 
     def close_window(self):
         self.close()
+

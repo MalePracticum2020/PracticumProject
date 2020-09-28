@@ -6,7 +6,6 @@ from tkinter.filedialog import askopenfile
 from Dialogs.TagPopup import TagPopup
 from MainWindow.MainWindow import MainWindow
 
-
 '''This file contains the Welcoming Window of the Visualization System.'''
 #TODO: have the dialog to chose a folder working 
 class InitialWindow(QMainWindow):
