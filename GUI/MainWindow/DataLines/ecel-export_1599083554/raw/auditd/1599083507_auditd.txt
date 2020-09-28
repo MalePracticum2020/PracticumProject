@@ -1,0 +1,501 @@
+type=DAEMON_START msg=audit(1599083508.495:4525): op=start ver=2.8.5 format=raw kernel=5.5.0-kali2-amd64 auid=4294967295 pid=1941 uid=0 ses=4294967295 subj=unconfined  res=success
+type=SYSCALL msg=audit(1599083508.493:210): arch=c000003e syscall=59 success=yes exit=0 a0=5599b2e122d0 a1=7fff65971320 a2=7fff65975e48 a3=7fff65971350 items=3 ppid=1941 pid=1943 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="audispd" exe="/usr/sbin/audispd" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083508.493:210): argc=1 a0="/sbin/audispd"
+type=CWD msg=audit(1599083508.493:210): cwd="/"
+type=SYSCALL msg=audit(1599083508.493:209): arch=c000003e syscall=44 success=yes exit=56 a0=3 a1=7fff6596ccb0 a2=38 a3=0 items=0 ppid=1940 pid=1941 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="auditd" exe="/usr/sbin/auditd" subj==unconfined key=(null)
+type=SOCKADDR msg=audit(1599083508.493:209): saddr=100000000000000000000000
+type=PATH msg=audit(1599083508.493:210): item=0 name="/sbin/audispd" inode=2906367 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083508.493:209): proctitle="/sbin/auditd"
+type=PATH msg=audit(1599083508.493:210): item=1 name="/sbin/audispd" inode=2906367 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.493:210): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083508.493:210): proctitle="/sbin/audispd"
+type=CONFIG_CHANGE msg=audit(1599083508.493:211): op=set audit_pid=1941 old=0 auid=4294967295 ses=4294967295 subj==unconfined res=1
+type=SYSCALL msg=audit(1599083508.493:211): arch=c000003e syscall=44 success=yes exit=56 a0=3 a1=7fff6596a960 a2=38 a3=0 items=0 ppid=1940 pid=1941 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="auditd" exe="/usr/sbin/auditd" subj==unconfined key=(null)
+type=SOCKADDR msg=audit(1599083508.493:211): saddr=100000000000000000000000
+type=PROCTITLE msg=audit(1599083508.493:211): proctitle="/sbin/auditd"
+type=SYSCALL msg=audit(1599083508.493:212): arch=c000003e syscall=59 success=yes exit=0 a0=55b1b7bb9370 a1=55b1b7cfc160 a2=55b1b7ce6630 a3=55b1b7bb9460 items=4 ppid=1 pid=1945 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="augenrules" exe="/usr/bin/dash" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083508.493:212): argc=3 a0="/bin/sh" a1="/sbin/augenrules" a2="--load"
+type=CWD msg=audit(1599083508.493:212): cwd="/"
+type=PATH msg=audit(1599083508.493:212): item=0 name="/sbin/augenrules" inode=2906371 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.493:212): item=1 name="/sbin/augenrules" inode=2906371 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.493:212): item=2 name="/bin/sh" inode=2885290 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.493:212): item=3 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083508.493:212): proctitle=2F62696E2F7368002F7362696E2F617567656E72756C6573002D2D6C6F6164
+type=SYSCALL msg=audit(1599083508.497:213): arch=c000003e syscall=59 success=yes exit=0 a0=559f81edcc88 a1=559f81edcc30 a2=559f81edcc48 a3=20 items=3 ppid=1945 pid=1946 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="mktemp" exe="/usr/bin/mktemp" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083508.497:213): argc=2 a0="mktemp" a1="/tmp/aurules.XXXXXXXX"
+type=CWD msg=audit(1599083508.497:213): cwd="/"
+type=PATH msg=audit(1599083508.497:213): item=0 name="/usr/bin/mktemp" inode=2885124 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.497:213): item=1 name="/usr/bin/mktemp" inode=2885124 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.497:213): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083508.497:213): proctitle=6D6B74656D70002F746D702F617572756C65732E5858585858585858
+type=SYSCALL msg=audit(1599083508.497:214): arch=c000003e syscall=59 success=yes exit=0 a0=559f82d14e38 a1=559f82d17b58 a2=559f82d14df8 a3=1b6 items=3 ppid=1945 pid=1948 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="awk" exe="/usr/bin/gawk" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083508.497:214): argc=2 a0="awk" a1=0A424547494E2020207B0A20202020202020206D696E75735F65203D2022223B0A20202020202020206D696E75735F44203D2022223B0A20202020202020206D696E75735F66203D2022223B0A20202020202020206D696E75735F62203D2022223B0A202020202020202072657374203D20303B0A7D207B0A2020202020202020696620286C656E67746828243029203C203129207B206E6578743B207D0A2020202020202020696620286D617463682824302C20225E5C5C732A23222929207B206E6578743B207D0A2020202020202020696620286D617463682824302C20225E5C5C732A2D65222929207B206D696E75735F65203D2024303B206E6578743B207D0A2020202020202020696620286D617463682824302C20225E5C5C732A2D445C5C732A24222929207B206D696E75735F44203D2024303B206E6578743B207D0A2020202020202020696620286D617463682824302C20225E5C5C732A2D66222929207B206D696E75735F66203D2024303B206E6578743B207D0A2020202020202020696620286D617463682824302C20225E5C5C732A2D62222929207B206D696E75735F62203D2024303B206E6578743B207D0A202020202020202072756C65735B726573742B2B5D203D2024303B0A7D0A454E4420202020207B0A20202020202020207072696E7466202225735C6E25735C6E25735C6E222C206D696E75735F442C206D696E75735F622C206D696E75735F663B0A2020202020202020666F72202869203D20303B2069203C20726573743B20692B2B29207B207072696E7466202225735C6E222C2072756C65735B695D3B207D0A20202020202020207072696E7466202225735C6E222C206D696E75735F653B0A7D
+type=CWD msg=audit(1599083508.497:214): cwd="/"
+type=PATH msg=audit(1599083508.497:214): item=0 name="/usr/bin/awk" inode=2890713 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.497:214): item=1 name="/usr/bin/awk" inode=2886208 dev=08:01 mode=0120777 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.497:214): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083508.497:214): proctitle=61776B000A424547494E2020207B0A20202020202020206D696E75735F65203D2022223B0A20202020202020206D696E75735F44203D2022223B0A20202020202020206D696E75735F66203D2022223B0A20202020202020206D696E75735F62203D2022223B0A202020202020202072657374203D20303B0A7D207B0A202020
+type=SYSCALL msg=audit(1599083508.497:215): arch=c000003e syscall=59 success=yes exit=0 a0=559f82d17688 a1=559f82d176e8 a2=559f82d17708 a3=53 items=3 ppid=1949 pid=1950 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="ls" exe="/usr/bin/ls" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083508.497:215): argc=3 a0="/bin/ls" a1="-1v" a2="/etc/audit/rules.d"
+type=CWD msg=audit(1599083508.497:215): cwd="/"
+type=PATH msg=audit(1599083508.497:215): item=0 name="/bin/ls" inode=2885121 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.497:215): item=1 name="/bin/ls" inode=2885121 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.497:215): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083508.497:215): proctitle=2F62696E2F6C73002D3176002F6574632F61756469742F72756C65732E64
+type=SYSCALL msg=audit(1599083508.497:216): arch=c000003e syscall=59 success=yes exit=0 a0=559f82d17720 a1=559f82d176c8 a2=559f82d176e0 a3=7fc2ab535850 items=3 ppid=1949 pid=1951 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="grep" exe="/usr/bin/grep" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083508.497:216): argc=2 a0="grep" a1="\.rules$"
+type=CWD msg=audit(1599083508.497:216): cwd="/"
+type=PATH msg=audit(1599083508.497:216): item=0 name="/usr/bin/grep" inode=2885548 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.497:216): item=1 name="/usr/bin/grep" inode=2885548 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.497:216): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083508.497:216): proctitle=67726570005C2E72756C657324
+type=SYSCALL msg=audit(1599083508.497:217): arch=c000003e syscall=59 success=yes exit=0 a0=559f82d17750 a1=559f82d176f8 a2=559f82d17710 a3=7fc2ab535850 items=3 ppid=1947 pid=1952 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="cat" exe="/usr/bin/cat" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083508.497:217): argc=2 a0="cat" a1="/etc/audit/rules.d/audit.rules"
+type=CWD msg=audit(1599083508.497:217): cwd="/"
+type=PATH msg=audit(1599083508.497:217): item=0 name="/usr/bin/cat" inode=2885109 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.497:217): item=1 name="/usr/bin/cat" inode=2885109 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.497:217): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083508.497:217): proctitle=636174002F6574632F61756469742F72756C65732E642F61756469742E72756C6573
+type=SYSCALL msg=audit(1599083508.501:218): arch=c000003e syscall=59 success=yes exit=0 a0=559f82d14918 a1=559f82d14890 a2=559f82d148d8 a3=8 items=3 ppid=1945 pid=1953 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="cmp" exe="/usr/bin/cmp" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083508.501:218): argc=4 a0="cmp" a1="-s" a2="/tmp/aurules.74RroHAv" a3="/etc/audit/audit.rules"
+type=CWD msg=audit(1599083508.501:218): cwd="/"
+type=PATH msg=audit(1599083508.501:218): item=0 name="/usr/bin/cmp" inode=2885301 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.501:218): item=1 name="/usr/bin/cmp" inode=2885301 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.501:218): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083508.501:218): proctitle=636D70002D73002F746D702F617572756C65732E373452726F484176002F6574632F61756469742F61756469742E72756C6573
+type=SYSCALL msg=audit(1599083508.501:219): arch=c000003e syscall=59 success=yes exit=0 a0=559f82d14948 a1=559f82d148e8 a2=559f82d14908 a3=8 items=3 ppid=1945 pid=1954 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="cp" exe="/usr/bin/cp" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083508.501:219): argc=3 a0="cp" a1="/etc/audit/audit.rules" a2="/etc/audit/audit.rules.prev"
+type=CWD msg=audit(1599083508.501:219): cwd="/"
+type=PATH msg=audit(1599083508.501:219): item=0 name="/usr/bin/cp" inode=2885113 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.501:219): item=1 name="/usr/bin/cp" inode=2885113 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.501:219): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083508.501:219): proctitle=6370002F6574632F61756469742F61756469742E72756C6573002F6574632F61756469742F61756469742E72756C65732E70726576
+type=SYSCALL msg=audit(1599083508.505:220): arch=c000003e syscall=59 success=yes exit=0 a0=559f81edcc48 a1=559f81edcbe8 a2=559f81edcc08 a3=8 items=3 ppid=1945 pid=1955 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="cp" exe="/usr/bin/cp" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083508.505:220): argc=3 a0="cp" a1="/tmp/aurules.74RroHAv" a2="/etc/audit/audit.rules"
+type=CWD msg=audit(1599083508.505:220): cwd="/"
+type=PATH msg=audit(1599083508.505:220): item=0 name="/usr/bin/cp" inode=2885113 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.505:220): item=1 name="/usr/bin/cp" inode=2885113 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.505:220): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083508.505:220): proctitle=6370002F746D702F617572756C65732E373452726F484176002F6574632F61756469742F61756469742E72756C6573
+type=SYSCALL msg=audit(1599083508.505:221): arch=c000003e syscall=59 success=yes exit=0 a0=559f81edcc30 a1=559f81edcbd0 a2=559f81edcbf0 a3=8 items=3 ppid=1945 pid=1956 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="chmod" exe="/usr/bin/chmod" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083508.505:221): argc=3 a0="chmod" a1="0640" a2="/etc/audit/audit.rules"
+type=CWD msg=audit(1599083508.505:221): cwd="/"
+type=PATH msg=audit(1599083508.505:221): item=0 name="/usr/bin/chmod" inode=2885111 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.505:221): item=1 name="/usr/bin/chmod" inode=2885111 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.505:221): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083508.505:221): proctitle=63686D6F640030363430002F6574632F61756469742F61756469742E72756C6573
+type=SYSCALL msg=audit(1599083508.509:222): arch=c000003e syscall=59 success=yes exit=0 a0=559f81edcc28 a1=559f81edcbc8 a2=559f81edcbe8 a3=8 items=3 ppid=1945 pid=1957 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="rm" exe="/usr/bin/rm" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083508.509:222): argc=3 a0="rm" a1="-f" a2="/tmp/aurules.74RroHAv"
+type=CWD msg=audit(1599083508.509:222): cwd="/"
+type=PATH msg=audit(1599083508.509:222): item=0 name="/usr/bin/rm" inode=2885130 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.509:222): item=1 name="/usr/bin/rm" inode=2885130 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.509:222): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083508.509:222): proctitle=726D002D66002F746D702F617572756C65732E373452726F484176
+type=SYSCALL msg=audit(1599083508.509:223): arch=c000003e syscall=59 success=yes exit=0 a0=559f81edcb50 a1=559f81edcbb8 a2=559f81edcbd8 a3=8 items=3 ppid=1945 pid=1958 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="auditctl" exe="/usr/sbin/auditctl" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083508.509:223): argc=3 a0="/sbin/auditctl" a1="-R" a2="/etc/audit/audit.rules"
+type=CWD msg=audit(1599083508.509:223): cwd="/"
+type=PATH msg=audit(1599083508.509:223): item=0 name="/sbin/auditctl" inode=2906368 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.509:223): item=1 name="/sbin/auditctl" inode=2906368 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083508.509:223): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083508.509:223): proctitle=2F7362696E2F617564697463746C002D52002F6574632F61756469742F61756469742E72756C6573
+type=CONFIG_CHANGE msg=audit(1599083508.509:224): auid=4294967295 ses=4294967295 subj==unconfined op=remove_rule key="eceld" list=4 res=1
+type=SYSCALL msg=audit(1599083508.509:224): arch=c000003e syscall=44 success=yes exit=1064 a0=3 a1=7ffd5646aec0 a2=428 a3=0 items=0 ppid=1945 pid=1958 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="auditctl" exe="/usr/sbin/auditctl" subj==unconfined key=(null)
+type=SOCKADDR msg=audit(1599083508.509:224): saddr=100000000000000000000000
+type=PROCTITLE msg=audit(1599083508.509:224): proctitle=2F7362696E2F617564697463746C002D52002F6574632F61756469742F61756469742E72756C6573
+type=CONFIG_CHANGE msg=audit(1599083508.509:225): auid=4294967295 ses=4294967295 subj==unconfined op=remove_rule key="eceld" list=4 res=1
+type=SYSCALL msg=audit(1599083508.509:225): arch=c000003e syscall=44 success=yes exit=1064 a0=3 a1=7ffd5646aec0 a2=428 a3=0 items=0 ppid=1945 pid=1958 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="auditctl" exe="/usr/sbin/auditctl" subj==unconfined key=(null)
+type=SOCKADDR msg=audit(1599083508.509:225): saddr=100000000000000000000000
+type=PROCTITLE msg=audit(1599083508.509:225): proctitle=2F7362696E2F617564697463746C002D52002F6574632F61756469742F61756469742E72756C6573
+type=CONFIG_CHANGE msg=audit(1599083508.509:226): op=set audit_backlog_limit=8192 old=8192 auid=4294967295 ses=4294967295 subj==unconfined res=1
+type=CONFIG_CHANGE msg=audit(1599083508.509:227): op=set audit_failure=1 old=1 auid=4294967295 ses=4294967295 subj==unconfined res=1
+type=CONFIG_CHANGE msg=audit(1599083508.513:228): op=set audit_backlog_wait_time=0 old=0 auid=4294967295 ses=4294967295 subj==unconfined res=1
+type=CONFIG_CHANGE msg=audit(1599083508.513:229): auid=4294967295 ses=4294967295 subj==unconfined op=add_rule key="eceld" list=4 res=1
+type=CONFIG_CHANGE msg=audit(1599083508.513:230): auid=4294967295 ses=4294967295 subj==unconfined op=add_rule key="eceld" list=4 res=1
+type=SYSCALL msg=audit(1599083508.513:230): arch=c000003e syscall=44 success=yes exit=1064 a0=3 a1=7ffd5646d450 a2=428 a3=0 items=0 ppid=1945 pid=1958 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="auditctl" exe="/usr/sbin/auditctl" subj==unconfined key=(null)
+type=SOCKADDR msg=audit(1599083508.513:230): saddr=100000000000000000000000
+type=PROCTITLE msg=audit(1599083508.513:230): proctitle=2F7362696E2F617564697463746C002D52002F6574632F61756469742F61756469742E72756C6573
+type=SERVICE_START msg=audit(1599083508.513:231): pid=1 uid=0 auid=4294967295 ses=4294967295 subj==unconfined msg='unit=auditd comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+type=SYSCALL msg=audit(1599083509.206:232): arch=c000003e syscall=59 success=no exit=-2 a0=55b385bd204a a1=55b385ba83d0 a2=55b385b272e0 a3=0 items=1 ppid=1170 pid=1965 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=(none) ses=3 comm="xfce4-panel" exe="/usr/bin/xfce4-panel" subj==unconfined key="eceld"
+type=CWD msg=audit(1599083509.206:232): cwd="/home/kali"
+type=PATH msg=audit(1599083509.206:232): item=0 name="/usr/local/bin/exo-open" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083509.206:232): proctitle=78666365342D70616E656C002D2D646973706C6179003A302E30002D2D736D2D636C69656E742D6964003263333163623335622D643235622D343866622D386235662D643230306530303664643262
+type=SYSCALL msg=audit(1599083509.206:233): arch=c000003e syscall=59 success=yes exit=0 a0=55b385bd2050 a1=55b385ba83d0 a2=55b385b272e0 a3=0 items=3 ppid=1170 pid=1965 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=(none) ses=3 comm="exo-open" exe="/usr/bin/exo-open" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083509.206:233): argc=3 a0="exo-open" a1="--launch" a2="TerminalEmulator"
+type=CWD msg=audit(1599083509.206:233): cwd="/home/kali"
+type=PATH msg=audit(1599083509.206:233): item=0 name="/usr/bin/exo-open" inode=2901107 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083509.206:233): item=1 name="/usr/bin/exo-open" inode=2901107 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083509.206:233): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083509.206:233): proctitle=78666365342D70616E656C002D2D646973706C6179003A302E30002D2D736D2D636C69656E742D6964003263333163623335622D643235622D343866622D386235662D643230306530303664643262
+type=SYSCALL msg=audit(1599083509.250:234): arch=c000003e syscall=59 success=yes exit=0 a0=7f5cda517318 a1=7ffd8956e720 a2=5609bc436aa0 a3=0 items=3 ppid=1 pid=1967 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=(none) ses=3 comm="exo-helper-2" exe="/usr/lib/x86_64-linux-gnu/xfce4/exo-2/exo-helper-2" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083509.250:234): argc=3 a0="/usr/lib/x86_64-linux-gnu/xfce4/exo-2/exo-helper-2" a1="--launch" a2="TerminalEmulator"
+type=CWD msg=audit(1599083509.250:234): cwd="/home/kali"
+type=PATH msg=audit(1599083509.250:234): item=0 name="/usr/lib/x86_64-linux-gnu/xfce4/exo-2/exo-helper-2" inode=2901093 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083509.250:234): item=1 name="/usr/lib/x86_64-linux-gnu/xfce4/exo-2/exo-helper-2" inode=2901093 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083509.250:234): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083509.250:234): proctitle=2F7573722F6C69622F7838365F36342D6C696E75782D676E752F78666365342F65786F2D322F65786F2D68656C7065722D32002D2D6C61756E6368005465726D696E616C456D756C61746F72
+type=SYSCALL msg=audit(1599083509.294:235): arch=c000003e syscall=59 success=yes exit=0 a0=55fd54319180 a1=55fd54316e50 a2=55fd542d7b80 a3=0 items=3 ppid=1967 pid=1968 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=(none) ses=3 comm="qterminal" exe="/usr/bin/qterminal" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083509.294:235): argc=1 a0="/usr/bin/qterminal"
+type=CWD msg=audit(1599083509.294:235): cwd="/home/kali"
+type=PATH msg=audit(1599083509.294:235): item=0 name="/usr/bin/qterminal" inode=2902500 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083509.294:235): item=1 name="/usr/bin/qterminal" inode=2902500 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083509.294:235): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083509.294:235): proctitle="/usr/bin/qterminal"
+type=SYSCALL msg=audit(1599083509.478:236): arch=c000003e syscall=59 success=yes exit=0 a0=565496f8e8c0 a1=565496f8e8a0 a2=565496e60a40 a3=7f60db604858 items=3 ppid=1968 pid=1971 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts2 ses=3 comm="bash" exe="/usr/bin/bash" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083509.478:236): argc=1 a0="/bin/bash"
+type=CWD msg=audit(1599083509.478:236): cwd="/home/kali"
+type=PATH msg=audit(1599083509.478:236): item=0 name="/bin/bash" inode=2884971 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083509.478:236): item=1 name="/bin/bash" inode=2884971 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083509.478:236): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083509.478:236): proctitle="/bin/bash"
+type=SYSCALL msg=audit(1599083509.482:237): arch=c000003e syscall=59 success=yes exit=0 a0=55cdabfc3f10 a1=55cdabfc2d40 a2=55cdabfc12a0 a3=fffffffffffff44e items=3 ppid=1971 pid=1972 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts2 ses=3 comm="tput" exe="/usr/bin/tput" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083509.482:237): argc=3 a0="tput" a1="setaf" a2="1"
+type=CWD msg=audit(1599083509.482:237): cwd="/home/kali"
+type=PATH msg=audit(1599083509.482:237): item=0 name="/usr/bin/tput" inode=2887358 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083509.482:237): item=1 name="/usr/bin/tput" inode=2887358 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083509.482:237): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083509.482:237): proctitle=747075740073657461660031
+type=SYSCALL msg=audit(1599083509.486:238): arch=c000003e syscall=59 success=yes exit=0 a0=55cdabfc6580 a1=55cdabfc1c80 a2=55cdabfc6790 a3=fffffffffffff44e items=3 ppid=1971 pid=1973 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts2 ses=3 comm="dircolors" exe="/usr/bin/dircolors" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083509.486:238): argc=2 a0="dircolors" a1="-b"
+type=CWD msg=audit(1599083509.486:238): cwd="/home/kali"
+type=PATH msg=audit(1599083509.486:238): item=0 name="/usr/bin/dircolors" inode=2885150 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083509.486:238): item=1 name="/usr/bin/dircolors" inode=2885150 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083509.486:238): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083509.486:238): proctitle=646972636F6C6F7273002D62
+type=SYSCALL msg=audit(1599083518.570:239): arch=c000003e syscall=59 success=yes exit=0 a0=55cdabfdfc50 a1=55cdabfc1e10 a2=55cdac0e6e30 a3=fffffffffffff44e items=3 ppid=1971 pid=1982 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts2 ses=3 comm="ping" exe="/usr/bin/ping" subj==unconfined key="eceld"
+type=BPRM_FCAPS msg=audit(1599083518.570:239): fver=2 fp=0000000000002000 fi=0 fe=1 old_pp=0 old_pi=0 old_pe=0 old_pa=0 pp=0000000000002000 pi=0 pe=0000000000002000 pa=0 frootid=0
+type=EXECVE msg=audit(1599083518.570:239): argc=2 a0="ping" a1="google.com"
+type=CWD msg=audit(1599083518.570:239): cwd="/home/kali"
+type=PATH msg=audit(1599083518.570:239): item=0 name="/usr/bin/ping" inode=2888848 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0000000000002000 cap_fi=0 cap_fe=1 cap_fver=2 cap_frootid=0
+type=PATH msg=audit(1599083518.570:239): item=1 name="/usr/bin/ping" inode=2888848 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0000000000002000 cap_fi=0 cap_fe=1 cap_fver=2 cap_frootid=0
+type=PATH msg=audit(1599083518.570:239): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083518.570:239): proctitle=70696E6700676F6F676C652E636F6D
+type=SYSCALL msg=audit(1599083528.987:240): arch=c000003e syscall=59 success=yes exit=0 a0=565497116fe0 a1=565497116fc0 a2=5654971754d0 a3=7f60db604858 items=3 ppid=1968 pid=1983 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts3 ses=3 comm="bash" exe="/usr/bin/bash" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083528.987:240): argc=1 a0="/bin/bash"
+type=CWD msg=audit(1599083528.987:240): cwd="/home/kali"
+type=PATH msg=audit(1599083528.987:240): item=0 name="/bin/bash" inode=2884971 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083528.987:240): item=1 name="/bin/bash" inode=2884971 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083528.987:240): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083528.987:240): proctitle="/bin/bash"
+type=SYSCALL msg=audit(1599083528.991:241): arch=c000003e syscall=59 success=yes exit=0 a0=561574c11f20 a1=561574c10d50 a2=561574c0f290 a3=fffffffffffff44e items=3 ppid=1983 pid=1984 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts3 ses=3 comm="tput" exe="/usr/bin/tput" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083528.991:241): argc=3 a0="tput" a1="setaf" a2="1"
+type=CWD msg=audit(1599083528.991:241): cwd="/home/kali"
+type=PATH msg=audit(1599083528.991:241): item=0 name="/usr/bin/tput" inode=2887358 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083528.991:241): item=1 name="/usr/bin/tput" inode=2887358 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083528.991:241): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083528.991:241): proctitle=747075740073657461660031
+type=SYSCALL msg=audit(1599083528.995:242): arch=c000003e syscall=59 success=yes exit=0 a0=561574c14590 a1=561574c0fc90 a2=561574c147a0 a3=fffffffffffff44e items=3 ppid=1983 pid=1985 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts3 ses=3 comm="dircolors" exe="/usr/bin/dircolors" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083528.995:242): argc=2 a0="dircolors" a1="-b"
+type=CWD msg=audit(1599083528.995:242): cwd="/home/kali"
+type=PATH msg=audit(1599083528.995:242): item=0 name="/usr/bin/dircolors" inode=2885150 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083528.995:242): item=1 name="/usr/bin/dircolors" inode=2885150 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083528.995:242): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083528.995:242): proctitle=646972636F6C6F7273002D62
+type=SYSCALL msg=audit(1599083532.321:243): arch=c000003e syscall=59 success=yes exit=0 a0=561574d071a0 a1=561574c0fe60 a2=561574d03270 a3=fffffffffffff44e items=3 ppid=1983 pid=1986 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts3 ses=3 comm="find" exe="/usr/bin/find" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083532.321:243): argc=1 a0="find"
+type=CWD msg=audit(1599083532.321:243): cwd="/home/kali"
+type=PATH msg=audit(1599083532.321:243): item=0 name="/usr/bin/find" inode=2885474 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083532.321:243): item=1 name="/usr/bin/find" inode=2885474 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083532.321:243): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083532.321:243): proctitle="find"
+type=SYSCALL msg=audit(1599083540.977:244): arch=c000003e syscall=59 success=no exit=-2 a0=563088c5897a a1=563088d0ee60 a2=5630889e3e10 a3=0 items=1 ppid=1192 pid=1989 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=(none) ses=3 comm="panel-1-whisker" exe="/usr/lib/x86_64-linux-gnu/xfce4/panel/wrapper-2.0" subj==unconfined key="eceld"
+type=CWD msg=audit(1599083540.977:244): cwd="/home/kali"
+type=PATH msg=audit(1599083540.977:244): item=0 name="/usr/local/bin/exo-open" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083540.977:244): proctitle=2F7573722F6C69622F7838365F36342D6C696E75782D676E752F78666365342F70616E656C2F777261707065722D322E30002F7573722F6C69622F7838365F36342D6C696E75782D676E752F78666365342F70616E656C2F706C7567696E732F6C6962776869736B65726D656E752E736F003100313637373732323300776869
+type=SYSCALL msg=audit(1599083540.977:245): arch=c000003e syscall=59 success=yes exit=0 a0=563088c58980 a1=563088d0ee60 a2=5630889e3e10 a3=0 items=3 ppid=1192 pid=1989 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=(none) ses=3 comm="exo-open" exe="/usr/bin/exo-open" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083540.977:245): argc=3 a0="exo-open" a1="--launch" a2="WebBrowser"
+type=CWD msg=audit(1599083540.977:245): cwd="/home/kali"
+type=PATH msg=audit(1599083540.977:245): item=0 name="/usr/bin/exo-open" inode=2901107 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083540.977:245): item=1 name="/usr/bin/exo-open" inode=2901107 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083540.977:245): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083540.977:245): proctitle=2F7573722F6C69622F7838365F36342D6C696E75782D676E752F78666365342F70616E656C2F777261707065722D322E30002F7573722F6C69622F7838365F36342D6C696E75782D676E752F78666365342F70616E656C2F706C7567696E732F6C6962776869736B65726D656E752E736F003100313637373732323300776869
+type=SYSCALL msg=audit(1599083541.025:246): arch=c000003e syscall=59 success=yes exit=0 a0=7fb5c707f318 a1=7ffd9d8abc40 a2=55bbf7ce5400 a3=0 items=3 ppid=1 pid=1991 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=(none) ses=3 comm="exo-helper-2" exe="/usr/lib/x86_64-linux-gnu/xfce4/exo-2/exo-helper-2" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083541.025:246): argc=3 a0="/usr/lib/x86_64-linux-gnu/xfce4/exo-2/exo-helper-2" a1="--launch" a2="WebBrowser"
+type=CWD msg=audit(1599083541.025:246): cwd="/home/kali"
+type=PATH msg=audit(1599083541.025:246): item=0 name="/usr/lib/x86_64-linux-gnu/xfce4/exo-2/exo-helper-2" inode=2901093 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083541.025:246): item=1 name="/usr/lib/x86_64-linux-gnu/xfce4/exo-2/exo-helper-2" inode=2901093 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083541.025:246): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083541.025:246): proctitle=2F7573722F6C69622F7838365F36342D6C696E75782D676E752F78666365342F65786F2D322F65786F2D68656C7065722D32002D2D6C61756E63680057656242726F77736572
+type=SYSCALL msg=audit(1599083541.069:247): arch=c000003e syscall=59 success=yes exit=0 a0=562d53a299c0 a1=562d53a299a0 a2=562d53a1b6d0 a3=0 items=4 ppid=1991 pid=1992 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=(none) ses=3 comm="sensible-browse" exe="/usr/bin/dash" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083541.069:247): argc=2 a0="/bin/sh" a1="/usr/bin/sensible-browser"
+type=CWD msg=audit(1599083541.069:247): cwd="/home/kali"
+type=PATH msg=audit(1599083541.069:247): item=0 name="/usr/bin/sensible-browser" inode=2888994 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083541.069:247): item=1 name="/usr/bin/sensible-browser" inode=2888994 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083541.069:247): item=2 name="/bin/sh" inode=2885290 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083541.069:247): item=3 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083541.069:247): proctitle=2F62696E2F7368002F7573722F62696E2F73656E7369626C652D62726F77736572
+type=SYSCALL msg=audit(1599083541.073:248): arch=c000003e syscall=59 success=yes exit=0 a0=55ec66d3dbb8 a1=55ec669fbc00 a2=55ec66d3da98 a3=210 items=4 ppid=1992 pid=1993 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=(none) ses=3 comm="which" exe="/usr/bin/dash" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083541.073:248): argc=3 a0="/bin/sh" a1="/usr/bin/which" a2="sensible-browser"
+type=CWD msg=audit(1599083541.073:248): cwd="/home/kali"
+type=PATH msg=audit(1599083541.073:248): item=0 name="/usr/bin/which" inode=2884904 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083541.073:248): item=1 name="/usr/bin/which" inode=2884904 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083541.073:248): item=2 name="/bin/sh" inode=2885290 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083541.073:248): item=3 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083541.073:248): proctitle=2F62696E2F7368002F7573722F62696E2F77686963680073656E7369626C652D62726F77736572
+type=SYSCALL msg=audit(1599083541.073:249): arch=c000003e syscall=59 success=yes exit=0 a0=55ec66d3e738 a1=55ec66d3e790 a2=55ec66d3e7a0 a3=30 items=3 ppid=1991 pid=1992 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=(none) ses=3 comm="x-www-browser" exe="/usr/lib/firefox-esr/firefox-esr" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083541.073:249): argc=1 a0="/usr/bin/x-www-browser"
+type=CWD msg=audit(1599083541.073:249): cwd="/home/kali"
+type=PATH msg=audit(1599083541.073:249): item=0 name="/usr/bin/x-www-browser" inode=2902570 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083541.073:249): item=1 name="/usr/bin/x-www-browser" inode=2915401 dev=08:01 mode=0120777 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083541.073:249): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083541.073:249): proctitle=2F62696E2F7368002F7573722F62696E2F73656E7369626C652D62726F77736572
+type=SYSCALL msg=audit(1599083541.578:250): arch=c000003e syscall=59 success=yes exit=0 a0=7f1f3f8d04c0 a1=7f1f3f8cfbe0 a2=7f1f51b45760 a3=fffffffffffff23d items=4 ppid=1992 pid=2021 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=(none) ses=3 comm="lsb_release" exe="/usr/bin/python3.8" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083541.578:250): argc=4 a0="/usr/bin/python3" a1="-Es" a2="/usr/bin/lsb_release" a3="-idrc"
+type=CWD msg=audit(1599083541.578:250): cwd="/home/kali"
+type=PATH msg=audit(1599083541.578:250): item=0 name="/usr/bin/lsb_release" inode=2901382 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083541.578:250): item=1 name="/usr/bin/lsb_release" inode=2901382 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083541.578:250): item=2 name="/usr/bin/python3" inode=2889463 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083541.578:250): item=3 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083541.578:250): proctitle=2F7573722F62696E2F707974686F6E33002D4573002F7573722F62696E2F6C73625F72656C65617365002D69647263
+type=SYSCALL msg=audit(1599083542.162:251): arch=c000003e syscall=59 success=yes exit=0 a0=7f1f38c904c0 a1=7f1f39a6fbe0 a2=7f1f51b53e30 a3=fffffffffffff23d items=3 ppid=1992 pid=2059 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=(none) ses=3 comm="firefox-esr" exe="/usr/lib/firefox-esr/firefox-esr" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083542.162:251): argc=20 a0="/usr/lib/firefox-esr/firefox-esr" a1="-contentproc" a2="-childID" a3="1" a4="-isForBrowser" a5="-prefsLen" a6="1" a7="-prefMapSize" a8="181533" a9="-parentBuildID" a10="20200403171148" a11="-greomni" a12="/usr/lib/firefox-esr/omni.ja" a13="-appomni" a14="/usr/lib/firefox-esr/browser/omni.ja" a15="-appdir" a16="/usr/lib/firefox-esr/browser" a17="1992" a18="true" a19="tab"
+type=CWD msg=audit(1599083542.162:251): cwd="/home/kali"
+type=PATH msg=audit(1599083542.162:251): item=0 name="/usr/lib/firefox-esr/firefox-esr" inode=2902570 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083542.162:251): item=1 name="/usr/lib/firefox-esr/firefox-esr" inode=2902570 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083542.162:251): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083542.162:251): proctitle=2F7573722F6C69622F66697265666F782D6573722F66697265666F782D657372002D636F6E74656E7470726F63002D6368696C6449440031002D6973466F7242726F77736572002D70726566734C656E0031002D707265664D617053697A6500313831353333002D706172656E744275696C6449440032303230303430333137
+type=SYSCALL msg=audit(1599083542.950:252): arch=c000003e syscall=59 success=yes exit=0 a0=7f1f3745b610 a1=7f1f37e1f9d0 a2=7f1f382e1600 a3=fffffffffffff23d items=3 ppid=1992 pid=2108 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=(none) ses=3 comm="firefox-esr" exe="/usr/lib/firefox-esr/firefox-esr" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083542.950:252): argc=20 a0="/usr/lib/firefox-esr/firefox-esr" a1="-contentproc" a2="-childID" a3="2" a4="-isForBrowser" a5="-prefsLen" a6="5685" a7="-prefMapSize" a8="181533" a9="-parentBuildID" a10="20200403171148" a11="-greomni" a12="/usr/lib/firefox-esr/omni.ja" a13="-appomni" a14="/usr/lib/firefox-esr/browser/omni.ja" a15="-appdir" a16="/usr/lib/firefox-esr/browser" a17="1992" a18="true" a19="tab"
+type=CWD msg=audit(1599083542.950:252): cwd="/home/kali"
+type=PATH msg=audit(1599083542.950:252): item=0 name="/usr/lib/firefox-esr/firefox-esr" inode=2902570 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083542.950:252): item=1 name="/usr/lib/firefox-esr/firefox-esr" inode=2902570 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083542.950:252): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083542.950:252): proctitle=2F7573722F6C69622F66697265666F782D6573722F66697265666F782D657372002D636F6E74656E7470726F63002D6368696C6449440032002D6973466F7242726F77736572002D70726566734C656E0035363835002D707265664D617053697A6500313831353333002D706172656E744275696C6449440032303230303430
+type=SYSCALL msg=audit(1599083543.611:253): arch=c000003e syscall=59 success=yes exit=0 a0=7f1f31fb7460 a1=7f1f32ae5450 a2=7f1f382e3300 a3=fffffffffffff23d items=3 ppid=1992 pid=2151 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=(none) ses=3 comm="firefox-esr" exe="/usr/lib/firefox-esr/firefox-esr" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083543.611:253): argc=20 a0="/usr/lib/firefox-esr/firefox-esr" a1="-contentproc" a2="-childID" a3="3" a4="-isForBrowser" a5="-prefsLen" a6="6353" a7="-prefMapSize" a8="181533" a9="-parentBuildID" a10="20200403171148" a11="-greomni" a12="/usr/lib/firefox-esr/omni.ja" a13="-appomni" a14="/usr/lib/firefox-esr/browser/omni.ja" a15="-appdir" a16="/usr/lib/firefox-esr/browser" a17="1992" a18="true" a19="tab"
+type=CWD msg=audit(1599083543.611:253): cwd="/home/kali"
+type=PATH msg=audit(1599083543.611:253): item=0 name="/usr/lib/firefox-esr/firefox-esr" inode=2902570 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083543.611:253): item=1 name="/usr/lib/firefox-esr/firefox-esr" inode=2902570 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083543.611:253): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083543.611:253): proctitle=2F7573722F6C69622F66697265666F782D6573722F66697265666F782D657372002D636F6E74656E7470726F63002D6368696C6449440033002D6973466F7242726F77736572002D70726566734C656E0036333533002D707265664D617053697A6500313831353333002D706172656E744275696C6449440032303230303430
+type=SYSCALL msg=audit(1599083543.683:254): arch=c000003e syscall=59 success=yes exit=0 a0=7f1f369027f0 a1=7f1f3331b920 a2=7f1f382e36a0 a3=fffffffffffff23d items=3 ppid=1992 pid=2164 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=(none) ses=3 comm="firefox-esr" exe="/usr/lib/firefox-esr/firefox-esr" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083543.683:254): argc=20 a0="/usr/lib/firefox-esr/firefox-esr" a1="-contentproc" a2="-childID" a3="4" a4="-isForBrowser" a5="-prefsLen" a6="6353" a7="-prefMapSize" a8="181533" a9="-parentBuildID" a10="20200403171148" a11="-greomni" a12="/usr/lib/firefox-esr/omni.ja" a13="-appomni" a14="/usr/lib/firefox-esr/browser/omni.ja" a15="-appdir" a16="/usr/lib/firefox-esr/browser" a17="1992" a18="true" a19="tab"
+type=CWD msg=audit(1599083543.683:254): cwd="/home/kali"
+type=PATH msg=audit(1599083543.683:254): item=0 name="/usr/lib/firefox-esr/firefox-esr" inode=2902570 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083543.683:254): item=1 name="/usr/lib/firefox-esr/firefox-esr" inode=2902570 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083543.683:254): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083543.683:254): proctitle=2F7573722F6C69622F66697265666F782D6573722F66697265666F782D657372002D636F6E74656E7470726F63002D6368696C6449440034002D6973466F7242726F77736572002D70726566734C656E0036333533002D707265664D617053697A6500313831353333002D706172656E744275696C6449440032303230303430
+type=SYSCALL msg=audit(1599083553.079:255): arch=c000003e syscall=59 success=no exit=-2 a0=7fbbc267ed90 a1=7fbbc267e790 a2=7ffd7fafd940 a3=fffffffffffff24e items=1 ppid=1463 pid=2211 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="python3" exe="/usr/bin/python3.8" subj==unconfined key="eceld"
+type=CWD msg=audit(1599083553.079:255): cwd="/home/kali/eceld-netsys/eceld/plugins/collectors/auditd"
+type=PATH msg=audit(1599083553.079:255): item=0 name="/usr/local/sbin/service" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.079:255): proctitle=707974686F6E33002E2F6563656C642F6563656C645F73657276696365
+type=SYSCALL msg=audit(1599083553.079:256): arch=c000003e syscall=59 success=no exit=-2 a0=7fbbc267e730 a1=7fbbc267e790 a2=7ffd7fafd940 a3=fffffffffffff24e items=1 ppid=1463 pid=2211 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="python3" exe="/usr/bin/python3.8" subj==unconfined key="eceld"
+type=CWD msg=audit(1599083553.079:256): cwd="/home/kali/eceld-netsys/eceld/plugins/collectors/auditd"
+type=PATH msg=audit(1599083553.079:256): item=0 name="/usr/local/bin/service" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.079:256): proctitle=707974686F6E33002E2F6563656C642F6563656C645F73657276696365
+type=SYSCALL msg=audit(1599083553.079:257): arch=c000003e syscall=59 success=yes exit=0 a0=7fbbc267e5d0 a1=7fbbc267e790 a2=7ffd7fafd940 a3=fffffffffffff24e items=4 ppid=1463 pid=2211 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="service" exe="/usr/bin/dash" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.079:257): argc=4 a0="/bin/sh" a1="/usr/sbin/service" a2="auditd" a3="stop"
+type=CWD msg=audit(1599083553.079:257): cwd="/home/kali/eceld-netsys/eceld/plugins/collectors/auditd"
+type=PATH msg=audit(1599083553.079:257): item=0 name="/usr/sbin/service" inode=2885664 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.079:257): item=1 name="/usr/sbin/service" inode=2885664 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.079:257): item=2 name="/bin/sh" inode=2885290 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.079:257): item=3 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.079:257): proctitle=707974686F6E33002E2F6563656C642F6563656C645F73657276696365
+type=SYSCALL msg=audit(1599083553.083:258): arch=c000003e syscall=59 success=yes exit=0 a0=5616886fb738 a1=561686b67c28 a2=5616886fb698 a3=30 items=3 ppid=2211 pid=2212 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="basename" exe="/usr/bin/basename" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.083:258): argc=2 a0="basename" a1="/usr/sbin/service"
+type=CWD msg=audit(1599083553.083:258): cwd="/home/kali/eceld-netsys/eceld/plugins/collectors/auditd"
+type=PATH msg=audit(1599083553.083:258): item=0 name="/usr/bin/basename" inode=2885144 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.083:258): item=1 name="/usr/bin/basename" inode=2885144 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.083:258): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.083:258): proctitle=626173656E616D65002F7573722F7362696E2F73657276696365
+type=SYSCALL msg=audit(1599083553.087:259): arch=c000003e syscall=59 success=yes exit=0 a0=5616886fb738 a1=561686b67c78 a2=5616886fb698 a3=7f63d0fa5ac0 items=3 ppid=2211 pid=2213 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="basename" exe="/usr/bin/basename" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.087:259): argc=2 a0="basename" a1="/usr/sbin/service"
+type=CWD msg=audit(1599083553.087:259): cwd="/home/kali/eceld-netsys/eceld/plugins/collectors/auditd"
+type=PATH msg=audit(1599083553.087:259): item=0 name="/usr/bin/basename" inode=2885144 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.087:259): item=1 name="/usr/bin/basename" inode=2885144 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.087:259): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.087:259): proctitle=626173656E616D65002F7573722F7362696E2F73657276696365
+type=SYSCALL msg=audit(1599083553.091:260): arch=c000003e syscall=59 success=yes exit=0 a0=5616886fd628 a1=5616886fd4a8 a2=5616886fd588 a3=0 items=3 ppid=2211 pid=2214 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="systemctl" exe="/usr/bin/systemctl" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.091:260): argc=4 a0="systemctl" a1="--quiet" a2="is-active" a3="multi-user.target"
+type=CWD msg=audit(1599083553.091:260): cwd="/"
+type=PATH msg=audit(1599083553.091:260): item=0 name="/usr/bin/systemctl" inode=2887460 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.091:260): item=1 name="/usr/bin/systemctl" inode=2887460 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.091:260): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.091:260): proctitle=73797374656D63746C002D2D71756965740069732D616374697665006D756C74692D757365722E746172676574
+type=SYSCALL msg=audit(1599083553.099:261): arch=c000003e syscall=59 success=yes exit=0 a0=5616886fd698 a1=5616886fd4b8 a2=5616886fd5f8 a3=0 items=3 ppid=2215 pid=2216 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="systemctl" exe="/usr/bin/systemctl" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.099:261): argc=4 a0="systemctl" a1="list-unit-files" a2="--full" a3="--type=socket"
+type=CWD msg=audit(1599083553.099:261): cwd="/"
+type=PATH msg=audit(1599083553.099:261): item=0 name="/usr/bin/systemctl" inode=2887460 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.099:261): item=1 name="/usr/bin/systemctl" inode=2887460 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.099:261): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.099:261): proctitle=73797374656D63746C006C6973742D756E69742D66696C6573002D2D66756C6C002D2D747970653D736F636B6574
+type=SYSCALL msg=audit(1599083553.099:262): arch=c000003e syscall=59 success=yes exit=0 a0=5616886fd6c8 a1=5616886fd4b0 a2=5616886fd628 a3=210 items=3 ppid=2215 pid=2217 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="sed" exe="/usr/bin/sed" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.099:262): argc=3 a0="sed" a1="-ne" a2="s/\.socket\s*[a-z]*\s*$/.socket/p"
+type=CWD msg=audit(1599083553.099:262): cwd="/"
+type=PATH msg=audit(1599083553.099:262): item=0 name="/usr/bin/sed" inode=2887375 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.099:262): item=1 name="/usr/bin/sed" inode=2887375 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.099:262): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.099:262): proctitle=736564002D6E6500732F5C2E736F636B65745C732A5B612D7A5D2A5C732A242F2E736F636B65742F70
+type=ANOM_PROMISCUOUS msg=audit(1599083553.099:263): dev=eth0 prom=0 old_prom=256 auid=1000 uid=115 gid=119 ses=3
+type=SYSCALL msg=audit(1599083553.103:264): arch=c000003e syscall=59 success=no exit=-2 a0=7fbbc2f31270 a1=7fbbc2f31950 a2=7ffd7fafd940 a3=fffffffffffff24e items=1 ppid=1463 pid=2218 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="python3" exe="/usr/bin/python3.8" subj==unconfined key="eceld"
+type=CWD msg=audit(1599083553.103:264): cwd="/home/kali/eceld-netsys/eceld/plugins/collectors/pykeylogger"
+type=PATH msg=audit(1599083553.103:264): item=0 name="/usr/local/sbin/xhost" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.103:264): proctitle=707974686F6E33002E2F6563656C642F6563656C645F73657276696365
+type=SYSCALL msg=audit(1599083553.103:265): arch=c000003e syscall=59 success=no exit=-2 a0=7fbbc2f318d0 a1=7fbbc2f31950 a2=7ffd7fafd940 a3=fffffffffffff24e items=1 ppid=1463 pid=2218 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="python3" exe="/usr/bin/python3.8" subj==unconfined key="eceld"
+type=CWD msg=audit(1599083553.103:265): cwd="/home/kali/eceld-netsys/eceld/plugins/collectors/pykeylogger"
+type=PATH msg=audit(1599083553.103:265): item=0 name="/usr/local/bin/xhost" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.103:265): proctitle=707974686F6E33002E2F6563656C642F6563656C645F73657276696365
+type=SYSCALL msg=audit(1599083553.103:266): arch=c000003e syscall=59 success=no exit=-2 a0=7fbbd1d26af0 a1=7fbbc2f31950 a2=7ffd7fafd940 a3=fffffffffffff24e items=1 ppid=1463 pid=2218 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="python3" exe="/usr/bin/python3.8" subj==unconfined key="eceld"
+type=CWD msg=audit(1599083553.103:266): cwd="/home/kali/eceld-netsys/eceld/plugins/collectors/pykeylogger"
+type=PATH msg=audit(1599083553.103:266): item=0 name="/usr/sbin/xhost" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.103:266): proctitle=707974686F6E33002E2F6563656C642F6563656C645F73657276696365
+type=SYSCALL msg=audit(1599083553.103:267): arch=c000003e syscall=59 success=yes exit=0 a0=7fbbd1d26bb0 a1=7fbbc2f31950 a2=7ffd7fafd940 a3=fffffffffffff24e items=3 ppid=1463 pid=2218 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="xhost" exe="/usr/bin/xhost" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.103:267): argc=2 a0="xhost" a1="-SI:localuser:root"
+type=CWD msg=audit(1599083553.103:267): cwd="/home/kali/eceld-netsys/eceld/plugins/collectors/pykeylogger"
+type=PATH msg=audit(1599083553.103:267): item=0 name="/usr/bin/xhost" inode=2914074 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.103:267): item=1 name="/usr/bin/xhost" inode=2914074 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.103:267): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.103:267): proctitle=707974686F6E33002E2F6563656C642F6563656C645F73657276696365
+type=SYSCALL msg=audit(1599083553.131:268): arch=c000003e syscall=59 success=yes exit=0 a0=7fbbc2687530 a1=7fbbc2f318d0 a2=7ffd7fafd940 a3=fffffffffffff24e items=4 ppid=1463 pid=2219 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="auditd_parser.s" exe="/usr/bin/env" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.131:268): argc=5 a0="/usr/bin/env" a1="bash" a2="/home/kali/eceld-netsys/eceld/plugins/parsers/auditd/auditd_parser.sh" a3="/home/kali/eceld-netsys/eceld/plugins/collectors/auditd/raw" a4="/home/kali/eceld-netsys/eceld/plugins/collectors/auditd/parsed"
+type=CWD msg=audit(1599083553.131:268): cwd="/home/kali/eceld-netsys/eceld"
+type=PATH msg=audit(1599083553.131:268): item=0 name="/home/kali/eceld-netsys/eceld/plugins/parsers/auditd/auditd_parser.sh" inode=1315157 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.131:268): item=1 name="/home/kali/eceld-netsys/eceld/plugins/parsers/auditd/auditd_parser.sh" inode=1315157 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.131:268): item=2 name="/usr/bin/env" inode=2885153 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.131:268): item=3 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.131:268): proctitle=2F7573722F62696E2F656E760062617368002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F706172736572732F6175646974642F6175646974645F7061727365722E7368002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F636F
+type=SYSCALL msg=audit(1599083553.131:269): arch=c000003e syscall=59 success=no exit=-2 a0=7fff39533180 a1=7fff395333a0 a2=7fff395333c8 a3=55662adc2b23 items=1 ppid=1463 pid=2219 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="auditd_parser.s" exe="/usr/bin/env" subj==unconfined key="eceld"
+type=CWD msg=audit(1599083553.131:269): cwd="/home/kali/eceld-netsys/eceld"
+type=PATH msg=audit(1599083553.131:269): item=0 name="/usr/local/sbin/bash" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.131:269): proctitle=2F7573722F62696E2F656E760062617368002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F706172736572732F6175646974642F6175646974645F7061727365722E7368002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F636F
+type=SYSCALL msg=audit(1599083553.135:270): arch=c000003e syscall=59 success=no exit=-2 a0=7fff39533180 a1=7fff395333a0 a2=7fff395333c8 a3=55662adc2b23 items=1 ppid=1463 pid=2219 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="auditd_parser.s" exe="/usr/bin/env" subj==unconfined key="eceld"
+type=CWD msg=audit(1599083553.135:270): cwd="/home/kali/eceld-netsys/eceld"
+type=PATH msg=audit(1599083553.135:270): item=0 name="/usr/local/bin/bash" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.135:270): proctitle=2F7573722F62696E2F656E760062617368002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F706172736572732F6175646974642F6175646974645F7061727365722E7368002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F636F
+type=SYSCALL msg=audit(1599083553.135:271): arch=c000003e syscall=59 success=no exit=-2 a0=7fff39533180 a1=7fff395333a0 a2=7fff395333c8 a3=55662adc2b23 items=1 ppid=1463 pid=2219 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="auditd_parser.s" exe="/usr/bin/env" subj==unconfined key="eceld"
+type=CWD msg=audit(1599083553.135:271): cwd="/home/kali/eceld-netsys/eceld"
+type=PATH msg=audit(1599083553.135:271): item=0 name="/usr/sbin/bash" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.135:271): proctitle=2F7573722F62696E2F656E760062617368002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F706172736572732F6175646974642F6175646974645F7061727365722E7368002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F636F
+type=SYSCALL msg=audit(1599083553.135:272): arch=c000003e syscall=59 success=yes exit=0 a0=7fff39533180 a1=7fff395333a0 a2=7fff395333c8 a3=55662adc2b23 items=3 ppid=1463 pid=2219 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="bash" exe="/usr/bin/bash" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.135:272): argc=4 a0="bash" a1="/home/kali/eceld-netsys/eceld/plugins/parsers/auditd/auditd_parser.sh" a2="/home/kali/eceld-netsys/eceld/plugins/collectors/auditd/raw" a3="/home/kali/eceld-netsys/eceld/plugins/collectors/auditd/parsed"
+type=CWD msg=audit(1599083553.135:272): cwd="/home/kali/eceld-netsys/eceld"
+type=PATH msg=audit(1599083553.135:272): item=0 name="/usr/bin/bash" inode=2884971 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.135:272): item=1 name="/usr/bin/bash" inode=2884971 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.135:272): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.135:272): proctitle=2F7573722F62696E2F656E760062617368002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F706172736572732F6175646974642F6175646974645F7061727365722E7368002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F636F
+type=SYSCALL msg=audit(1599083553.135:273): arch=c000003e syscall=59 success=yes exit=0 a0=564f3802e4d0 a1=564f3802ed30 a2=564f3802e850 a3=fffffffffffff44e items=3 ppid=2219 pid=2220 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="cat" exe="/usr/bin/cat" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.135:273): argc=2 a0="cat" a1="/home/kali/eceld-netsys/eceld/plugins/collectors/auditd/raw/1599083507_auditd.txt"
+type=CWD msg=audit(1599083553.135:273): cwd="/home/kali/eceld-netsys/eceld"
+type=PATH msg=audit(1599083553.135:273): item=0 name="/usr/bin/cat" inode=2885109 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.135:273): item=1 name="/usr/bin/cat" inode=2885109 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.135:273): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.135:273): proctitle=636174002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F636F6C6C6563746F72732F6175646974642F7261772F313539393038333530375F6175646974642E747874
+type=SYSCALL msg=audit(1599083553.139:274): arch=c000003e syscall=59 success=yes exit=0 a0=564f38043f60 a1=564f3802e1d0 a2=564f3802e850 a3=fffffffffffff44e items=3 ppid=2219 pid=2221 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="mkdir" exe="/usr/bin/mkdir" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.139:274): argc=3 a0="mkdir" a1="-p" a2="/home/kali/eceld-netsys/eceld/plugins/collectors/auditd/parsed"
+type=CWD msg=audit(1599083553.139:274): cwd="/home/kali/eceld-netsys/eceld"
+type=PATH msg=audit(1599083553.139:274): item=0 name="/usr/bin/mkdir" inode=2885122 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.139:274): item=1 name="/usr/bin/mkdir" inode=2885122 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.139:274): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.139:274): proctitle=6D6B646972002D70002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F636F6C6C6563746F72732F6175646974642F706172736564
+type=SYSCALL msg=audit(1599083553.139:275): arch=c000003e syscall=59 success=yes exit=0 a0=564f38044510 a1=564f3802cb40 a2=564f3802e850 a3=fffffffffffff44e items=3 ppid=2219 pid=2222 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="java" exe="/usr/lib/jvm/java-11-openjdk-amd64/bin/java" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.139:275): argc=6 a0="java" a1="-cp" a2="plugins/parsers/auditd" a3="AuditdToJSON" a4="/home/kali/eceld-netsys/eceld/plugins/collectors/auditd/raw/merged" a5="/home/kali/eceld-netsys/eceld/plugins/collectors/auditd/parsed"
+type=CWD msg=audit(1599083553.139:275): cwd="/home/kali/eceld-netsys/eceld"
+type=PATH msg=audit(1599083553.139:275): item=0 name="/usr/bin/java" inode=3803000 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.139:275): item=1 name="/usr/bin/java" inode=2915443 dev=08:01 mode=0120777 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.139:275): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.139:275): proctitle=6A617661002D637000706C7567696E732F706172736572732F61756469746400417564697464546F4A534F4E002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F636F6C6C6563746F72732F6175646974642F7261772F6D6572676564002F686F6D652F6B616C692F6563656C64
+type=SYSCALL msg=audit(1599083553.360:276): arch=c000003e syscall=59 success=yes exit=0 a0=564f38043fc0 a1=564f38044570 a2=564f3802e850 a3=fffffffffffff44e items=3 ppid=2219 pid=2240 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="rm" exe="/usr/bin/rm" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.360:276): argc=2 a0="rm" a1="/home/kali/eceld-netsys/eceld/plugins/collectors/auditd/raw/merged"
+type=CWD msg=audit(1599083553.360:276): cwd="/home/kali/eceld-netsys/eceld"
+type=PATH msg=audit(1599083553.360:276): item=0 name="/usr/bin/rm" inode=2885130 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.360:276): item=1 name="/usr/bin/rm" inode=2885130 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.360:276): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.360:276): proctitle=726D002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F636F6C6C6563746F72732F6175646974642F7261772F6D6572676564
+type=SYSCALL msg=audit(1599083553.380:277): arch=c000003e syscall=59 success=yes exit=0 a0=7fbbd19bfcb0 a1=7fbbc269b310 a2=7ffd7fafd940 a3=fffffffffffff24e items=4 ppid=1463 pid=2241 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="tshark_parser.s" exe="/usr/bin/env" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.380:277): argc=5 a0="/usr/bin/env" a1="bash" a2="/home/kali/eceld-netsys/eceld/plugins/parsers/tshark/tshark_parser.sh" a3="/home/kali/eceld-netsys/eceld/plugins/collectors/tshark/raw" a4="/home/kali/eceld-netsys/eceld/plugins/collectors/tshark/parsed"
+type=CWD msg=audit(1599083553.380:277): cwd="/home/kali/eceld-netsys/eceld"
+type=PATH msg=audit(1599083553.380:277): item=0 name="/home/kali/eceld-netsys/eceld/plugins/parsers/tshark/tshark_parser.sh" inode=1315216 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.380:277): item=1 name="/home/kali/eceld-netsys/eceld/plugins/parsers/tshark/tshark_parser.sh" inode=1315216 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.380:277): item=2 name="/usr/bin/env" inode=2885153 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.380:277): item=3 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.380:277): proctitle=2F7573722F62696E2F656E760062617368002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F706172736572732F74736861726B2F74736861726B5F7061727365722E7368002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F636F
+type=SYSCALL msg=audit(1599083553.384:278): arch=c000003e syscall=59 success=no exit=-2 a0=7fff602b7660 a1=7fff602b7880 a2=7fff602b78a8 a3=555a612b1b23 items=1 ppid=1463 pid=2241 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="tshark_parser.s" exe="/usr/bin/env" subj==unconfined key="eceld"
+type=CWD msg=audit(1599083553.384:278): cwd="/home/kali/eceld-netsys/eceld"
+type=PATH msg=audit(1599083553.384:278): item=0 name="/usr/local/sbin/bash" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.384:278): proctitle=2F7573722F62696E2F656E760062617368002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F706172736572732F74736861726B2F74736861726B5F7061727365722E7368002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F636F
+type=SYSCALL msg=audit(1599083553.384:279): arch=c000003e syscall=59 success=no exit=-2 a0=7fff602b7660 a1=7fff602b7880 a2=7fff602b78a8 a3=555a612b1b23 items=1 ppid=1463 pid=2241 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="tshark_parser.s" exe="/usr/bin/env" subj==unconfined key="eceld"
+type=CWD msg=audit(1599083553.384:279): cwd="/home/kali/eceld-netsys/eceld"
+type=PATH msg=audit(1599083553.384:279): item=0 name="/usr/local/bin/bash" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.384:279): proctitle=2F7573722F62696E2F656E760062617368002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F706172736572732F74736861726B2F74736861726B5F7061727365722E7368002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F636F
+type=SYSCALL msg=audit(1599083553.384:280): arch=c000003e syscall=59 success=no exit=-2 a0=7fff602b7660 a1=7fff602b7880 a2=7fff602b78a8 a3=555a612b1b23 items=1 ppid=1463 pid=2241 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="tshark_parser.s" exe="/usr/bin/env" subj==unconfined key="eceld"
+type=CWD msg=audit(1599083553.384:280): cwd="/home/kali/eceld-netsys/eceld"
+type=PATH msg=audit(1599083553.384:280): item=0 name="/usr/sbin/bash" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.384:280): proctitle=2F7573722F62696E2F656E760062617368002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F706172736572732F74736861726B2F74736861726B5F7061727365722E7368002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F636F
+type=SYSCALL msg=audit(1599083553.384:281): arch=c000003e syscall=59 success=yes exit=0 a0=7fff602b7660 a1=7fff602b7880 a2=7fff602b78a8 a3=555a612b1b23 items=3 ppid=1463 pid=2241 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="bash" exe="/usr/bin/bash" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.384:281): argc=4 a0="bash" a1="/home/kali/eceld-netsys/eceld/plugins/parsers/tshark/tshark_parser.sh" a2="/home/kali/eceld-netsys/eceld/plugins/collectors/tshark/raw" a3="/home/kali/eceld-netsys/eceld/plugins/collectors/tshark/parsed"
+type=CWD msg=audit(1599083553.384:281): cwd="/home/kali/eceld-netsys/eceld"
+type=PATH msg=audit(1599083553.384:281): item=0 name="/usr/bin/bash" inode=2884971 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.384:281): item=1 name="/usr/bin/bash" inode=2884971 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.384:281): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.384:281): proctitle=2F7573722F62696E2F656E760062617368002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F706172736572732F74736861726B2F74736861726B5F7061727365722E7368002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F636F
+type=SYSCALL msg=audit(1599083553.384:282): arch=c000003e syscall=59 success=yes exit=0 a0=5619ea0a9560 a1=5619ea0aa260 a2=5619ea0a9de0 a3=fffffffffffff44e items=3 ppid=2241 pid=2242 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="mergecap" exe="/usr/local/bin/mergecap" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.384:282): argc=4 a0="mergecap" a1="/home/kali/eceld-netsys/eceld/plugins/collectors/tshark/raw/1599083507_eth0.pcap" a2="-w" a3="/home/kali/eceld-netsys/eceld/plugins/collectors/tshark/raw/merged.pcapng"
+type=CWD msg=audit(1599083553.384:282): cwd="/home/kali/eceld-netsys/eceld"
+type=PATH msg=audit(1599083553.384:282): item=0 name="/usr/local/bin/mergecap" inode=3020363 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.384:282): item=1 name="/usr/local/bin/mergecap" inode=3020363 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.384:282): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.384:282): proctitle=6D65726765636170002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F636F6C6C6563746F72732F74736861726B2F7261772F313539393038333530375F657468302E70636170002D77002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C756769
+type=SYSCALL msg=audit(1599083553.400:283): arch=c000003e syscall=59 success=yes exit=0 a0=5619ea0bf260 a1=5619ea0a9690 a2=5619ea0a9de0 a3=fffffffffffff44e items=3 ppid=2241 pid=2243 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="mkdir" exe="/usr/bin/mkdir" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.400:283): argc=3 a0="mkdir" a1="-p" a2="/home/kali/eceld-netsys/eceld/plugins/collectors/tshark/parsed"
+type=CWD msg=audit(1599083553.400:283): cwd="/home/kali/eceld-netsys/eceld"
+type=PATH msg=audit(1599083553.400:283): item=0 name="/usr/bin/mkdir" inode=2885122 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.400:283): item=1 name="/usr/bin/mkdir" inode=2885122 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.400:283): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.400:283): proctitle=6D6B646972002D70002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F636F6C6C6563746F72732F74736861726B2F706172736564
+type=SYSCALL msg=audit(1599083553.404:284): arch=c000003e syscall=59 success=yes exit=0 a0=5619ea0bf770 a1=5619ea0a7c70 a2=5619ea0a9de0 a3=fffffffffffff44e items=3 ppid=2241 pid=2244 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="java" exe="/usr/lib/jvm/java-11-openjdk-amd64/bin/java" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.404:284): argc=6 a0="java" a1="-cp" a2="plugins/parsers/tshark" a3="NetworkDataParser" a4="/home/kali/eceld-netsys/eceld/plugins/collectors/tshark/raw/merged.pcapng" a5="/home/kali/eceld-netsys/eceld/plugins/collectors/tshark/parsed"
+type=CWD msg=audit(1599083553.404:284): cwd="/home/kali/eceld-netsys/eceld"
+type=PATH msg=audit(1599083553.404:284): item=0 name="/usr/bin/java" inode=3803000 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.404:284): item=1 name="/usr/bin/java" inode=2915443 dev=08:01 mode=0120777 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.404:284): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.404:284): proctitle=6A617661002D637000706C7567696E732F706172736572732F74736861726B004E6574776F726B44617461506172736572002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F636F6C6C6563746F72732F74736861726B2F7261772F6D65726765642E706361706E67002F686F6D
+type=SYSCALL msg=audit(1599083553.464:285): arch=c000003e syscall=59 success=no exit=-2 a0=7f055e715290 a1=7f0558116180 a2=7ffd19f02770 a3=7f055e5e78f0 items=1 ppid=2244 pid=2261 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="java" exe="/usr/lib/jvm/java-11-openjdk-amd64/bin/java" subj==unconfined key="eceld"
+type=CWD msg=audit(1599083553.464:285): cwd="/home/kali/eceld-netsys/eceld"
+type=PATH msg=audit(1599083553.464:285): item=0 name="/usr/local/sbin/tshark" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.464:285): proctitle=6A617661002D637000706C7567696E732F706172736572732F74736861726B004E6574776F726B44617461506172736572002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F636F6C6C6563746F72732F74736861726B2F7261772F6D65726765642E706361706E67002F686F6D
+type=SYSCALL msg=audit(1599083553.464:286): arch=c000003e syscall=59 success=yes exit=0 a0=7f055e715290 a1=7f0558116180 a2=7ffd19f02770 a3=7f055e5e78f0 items=3 ppid=2244 pid=2261 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="tshark" exe="/usr/local/bin/tshark" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.464:286): argc=24 a0="tshark" a1="-r" a2="/home/kali/eceld-netsys/eceld/plugins/collectors/tshark/raw/merged.pcapng" a3="-T" a4="fields" a5="-E" a6="separator=," a7="-eframe.protocols" a8="-eframe.time_epoch" a9="-eeth.src" a10="-eeth.dst" a11="-earp.src.proto_ipv4" a12="-earp.dst.proto_ipv4" a13="-eip.src" a14="-eip.dst" a15="-eudp.srcport" a16="-eudp.dstport" a17="-etcp.srcport" a18="-etcp.dstport" a19="-etcp.flags" a20="-erip.ip" a21="-erip.netmask" a22="-erip.next_hop" a23="-erip.metric"
+type=CWD msg=audit(1599083553.464:286): cwd="/home/kali/eceld-netsys/eceld"
+type=PATH msg=audit(1599083553.464:286): item=0 name="/usr/local/bin/tshark" inode=3019067 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.464:286): item=1 name="/usr/local/bin/tshark" inode=3019067 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.464:286): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.464:286): proctitle=6A617661002D637000706C7567696E732F706172736572732F74736861726B004E6574776F726B44617461506172736572002F686F6D652F6B616C692F6563656C642D6E65747379732F6563656C642F706C7567696E732F636F6C6C6563746F72732F74736861726B2F7261772F6D65726765642E706361706E67002F686F6D
+type=SYSCALL msg=audit(1599083553.628:287): arch=c000003e syscall=59 success=yes exit=0 a0=7f2b243aace0 a1=7f2b2444c300 a2=7ffe2672f140 a3=fffffffffffffc4a items=3 ppid=2261 pid=2268 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="androiddump" exe="/usr/local/lib/wireshark/extcap/androiddump" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.628:287): argc=3 a0="/usr/local/lib/wireshark/extcap/androiddump" a1="--extcap-interfaces" a2="--extcap-version=3.2"
+type=CWD msg=audit(1599083553.628:287): cwd="/usr/local/lib/wireshark/extcap"
+type=PATH msg=audit(1599083553.628:287): item=0 name="/usr/local/lib/wireshark/extcap/androiddump" inode=3030594 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=SYSCALL msg=audit(1599083553.628:288): arch=c000003e syscall=59 success=yes exit=0 a0=7f2b1c001390 a1=7f2b1c001360 a2=7ffe2672f140 a3=fffffffffffffc4a items=3 ppid=2261 pid=2269 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="randpktdump" exe="/usr/local/lib/wireshark/extcap/randpktdump" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.628:288): argc=3 a0="/usr/local/lib/wireshark/extcap/randpktdump" a1="--extcap-interfaces" a2="--extcap-version=3.2"
+type=CWD msg=audit(1599083553.628:288): cwd="/usr/local/lib/wireshark/extcap"
+type=PATH msg=audit(1599083553.628:288): item=0 name="/usr/local/lib/wireshark/extcap/randpktdump" inode=3030620 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.628:288): item=1 name="/usr/local/lib/wireshark/extcap/randpktdump" inode=3030620 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.628:288): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.628:288): proctitle=2F7573722F6C6F63616C2F6C69622F77697265736861726B2F6578746361702F72616E64706B7464756D70002D2D6578746361702D696E7465726661636573002D2D6578746361702D76657273696F6E3D332E32
+type=SYSCALL msg=audit(1599083553.628:289): arch=c000003e syscall=59 success=yes exit=0 a0=7f2b20001390 a1=7f2b20001360 a2=7ffe2672f140 a3=fffffffffffffc4a items=3 ppid=2261 pid=2270 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="udpdump" exe="/usr/local/lib/wireshark/extcap/udpdump" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.628:289): argc=3 a0="/usr/local/lib/wireshark/extcap/udpdump" a1="--extcap-interfaces" a2="--extcap-version=3.2"
+type=CWD msg=audit(1599083553.628:289): cwd="/usr/local/lib/wireshark/extcap"
+type=PATH msg=audit(1599083553.628:289): item=0 name="/usr/local/lib/wireshark/extcap/udpdump" inode=3030619 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.628:289): item=1 name="/usr/local/lib/wireshark/extcap/udpdump" inode=3030619 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.628:289): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.628:289): proctitle=2F7573722F6C6F63616C2F6C69622F77697265736861726B2F6578746361702F75647064756D70002D2D6578746361702D696E7465726661636573002D2D6578746361702D76657273696F6E3D332E32
+type=PATH msg=audit(1599083553.628:287): item=1 name="/usr/local/lib/wireshark/extcap/androiddump" inode=3030594 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.628:287): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.628:287): proctitle=2F7573722F6C6F63616C2F6C69622F77697265736861726B2F6578746361702F616E64726F696464756D70002D2D6578746361702D696E7465726661636573002D2D6578746361702D76657273696F6E3D332E32
+type=SYSCALL msg=audit(1599083553.632:290): arch=c000003e syscall=59 success=yes exit=0 a0=7f2b200034c0 a1=7f2b20003800 a2=7ffe2672f140 a3=fffffffffffffc4a items=3 ppid=2261 pid=2272 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="udpdump" exe="/usr/local/lib/wireshark/extcap/udpdump" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.632:290): argc=4 a0="/usr/local/lib/wireshark/extcap/udpdump" a1="--extcap-config" a2="--extcap-interface" a3="udpdump"
+type=SYSCALL msg=audit(1599083553.632:291): arch=c000003e syscall=59 success=yes exit=0 a0=7f2b1c003910 a1=561c1555ae70 a2=7ffe2672f140 a3=fffffffffffffc4a items=3 ppid=2261 pid=2273 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="randpktdump" exe="/usr/local/lib/wireshark/extcap/randpktdump" subj==unconfined key="eceld"
+type=EXECVE msg=audit(1599083553.632:291): argc=4 a0="/usr/local/lib/wireshark/extcap/randpktdump" a1="--extcap-config" a2="--extcap-interface" a3="randpkt"
+type=CWD msg=audit(1599083553.632:291): cwd="/usr/local/lib/wireshark/extcap"
+type=PATH msg=audit(1599083553.632:291): item=0 name="/usr/local/lib/wireshark/extcap/randpktdump" inode=3030620 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.632:291): item=1 name="/usr/local/lib/wireshark/extcap/randpktdump" inode=3030620 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.632:291): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.632:291): proctitle=2F7573722F6C6F63616C2F6C69622F77697265736861726B2F6578746361702F72616E64706B7464756D70002D2D6578746361702D636F6E666967002D2D6578746361702D696E746572666163650072616E64706B74
+type=CWD msg=audit(1599083553.632:290): cwd="/usr/local/lib/wireshark/extcap"
+type=PATH msg=audit(1599083553.632:290): item=0 name="/usr/local/lib/wireshark/extcap/udpdump" inode=3030619 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.632:290): item=1 name="/usr/local/lib/wireshark/extcap/udpdump" inode=3030619 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1599083553.632:290): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=2883605 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083553.632:290): proctitle=2F7573722F6C6F63616C2F6C69622F77697265736861726B2F6578746361702F75647064756D70002D2D6578746361702D636F6E666967002D2D6578746361702D696E746572666163650075647064756D70
+type=SYSCALL msg=audit(1599083554.084:292): arch=c000003e syscall=59 success=no exit=-2 a0=5616886fd658 a1=5616886fd4c0 a2=5616886fd5b8 a3=0 items=1 ppid=1463 pid=2211 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=3 comm="service" exe="/usr/bin/dash" subj==unconfined key="eceld"
+type=CWD msg=audit(1599083554.084:292): cwd="/"
+type=PATH msg=audit(1599083554.084:292): item=0 name="/usr/local/sbin/systemctl" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PROCTITLE msg=audit(1599083554.084:292): proctitle=707974686F6E33002E2F6563656C642F6563656C645F73657276696365
+type=DAEMON_END msg=audit(1599083554.097:4526): op=terminate auid=-1 pid=-1 subj=? res=success

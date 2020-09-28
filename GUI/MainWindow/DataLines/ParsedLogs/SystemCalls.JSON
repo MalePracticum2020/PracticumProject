@@ -1,0 +1,17 @@
+[
+	{"auditd_id" : 0, "content" : "bash", "className" : "auditd", "start" : "2020-09-02T21:51:49"},
+	{"auditd_id" : 1, "content" : "tput setaf 1", "className" : "auditd", "start" : "2020-09-02T21:51:49"},
+	{"auditd_id" : 2, "content" : "dircolors -b", "className" : "auditd", "start" : "2020-09-02T21:51:49"},
+	{"auditd_id" : 3, "content" : "bash", "className" : "auditd", "start" : "2020-09-02T21:52:08"},
+	{"auditd_id" : 4, "content" : "tput setaf 1", "className" : "auditd", "start" : "2020-09-02T21:52:08"},
+	{"auditd_id" : 5, "content" : "dircolors -b", "className" : "auditd", "start" : "2020-09-02T21:52:08"},
+	{"auditd_id" : 6, "content" : "find", "className" : "auditd", "start" : "2020-09-02T21:52:12"},
+	{"auditd_id" : 7, "content" : "service \/usr\/sbin\/service auditd stop", "className" : "auditd", "start" : "2020-09-02T21:52:33"},
+	{"auditd_id" : 8, "content" : "basename \/usr\/sbin\/service", "className" : "auditd", "start" : "2020-09-02T21:52:33"},
+	{"auditd_id" : 9, "content" : "basename \/usr\/sbin\/service", "className" : "auditd", "start" : "2020-09-02T21:52:33"},
+	{"auditd_id" : 10, "content" : "systemctl --quiet is-active multi-user.target", "className" : "auditd", "start" : "2020-09-02T21:52:33"},
+	{"auditd_id" : 11, "content" : "systemctl list-unit-files --full multi-user.target", "className" : "auditd", "start" : "2020-09-02T21:52:33"},
+	{"auditd_id" : 12, "content" : "sed -ne s\/\\.socket\\s*[a-z]*\\s*$\/.socket\/p", "className" : "auditd", "start" : "2020-09-02T21:52:33"},
+	{"auditd_id" : 13, "content" : "xhost -SI:localuser:root", "className" : "auditd", "start" : "2020-09-02T21:52:33"},
+	{"auditd_id" : 14, "content" : "auditd_parser.s bash \/home\/kali\/eceld-netsys\/eceld\/plugins\/parsers\/auditd\/auditd_parser.sh \/home\/kali\/eceld-netsys\/eceld\/plugins\/collectors\/auditd\/raw \/home\/kali\/eceld-netsys\/eceld\/plugins\/collectors\/auditd\/parsed", "className" : "auditd", "start" : "2020-09-02T21:52:33"}
+]
