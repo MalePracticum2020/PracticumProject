@@ -1,6 +1,9 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QFileDialog, QMessageBox)
 import sys, os, subprocess, platform
+
+from pip._internal.utils import logging
+
 from Dialogs.TagPopup import TagPopup
 from MainWindow.MainWindow import MainWindow
 
@@ -17,7 +20,7 @@ class InitialWindow(QMainWindow):
 	def initUI(self):		
 		self.label = QtWidgets.QLabel(self)
 		self.label.setText("Data Visualization System")
-		self.label.setGeometry(QtCore.QRect(40, 30, 711, 101))
+		self.label.setGeometry(QtCore.QRect(150, 30, 711, 101))
 		font = QtGui.QFont()
 		font.setPointSize(45)
 		self.label.setFont(font)
