@@ -1,13 +1,11 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QFileDialog
-from tkinter import * 
-from tkinter.ttk import *
-from tkinter.filedialog import askopenfile 
+from PyQt5.QtWidgets import (QApplication, QMainWindow, QFileDialog, QMessageBox)
+import sys, os, subprocess, platform
 from Dialogs.TagPopup import TagPopup
 from MainWindow.MainWindow import MainWindow
 
 '''This file contains the Welcoming Window of the Visualization System.'''
-#TODO: have the dialog to chose a folder working 
+#TODO: Synchronize the packet view -> timeline view and vice versa
 class InitialWindow(QMainWindow):
 	def __init__(self):
 		super(InitialWindow, self).__init__()
@@ -19,9 +17,9 @@ class InitialWindow(QMainWindow):
 	def initUI(self):		
 		self.label = QtWidgets.QLabel(self)
 		self.label.setText("Data Visualization System")
-		self.label.setGeometry(QtCore.QRect(60, 30, 711, 101))
+		self.label.setGeometry(QtCore.QRect(40, 30, 711, 101))
 		font = QtGui.QFont()
-		font.setPointSize(64)
+		font.setPointSize(45)
 		self.label.setFont(font)
 
 		self.createNewButton = QtWidgets.QPushButton(self)
@@ -31,9 +29,8 @@ class InitialWindow(QMainWindow):
 		self.openButton = QtWidgets.QPushButton(self)
 		self.openButton.setGeometry(QtCore.QRect(310, 270, 141, 32))
 		self.openButton.setText("Open")
-		self.openButton.clicked.connect(self.openFileNameDialog)
-		# self.openButton.clicked.connect(self.openMainWindowUi)
-		# self.openButton.clicked.connect(self.openPopup)
+		self.openButton.clicked.connect(self.openFileEvent)
+		self.openButton.clicked.connect(self.openMainWindowUi)
 		self.TagPopup = TagPopup()
 		self.MainWindowUi = MainWindow()
 
@@ -45,37 +42,31 @@ class InitialWindow(QMainWindow):
 	def openMainWindowUi(self):        
 		self.MainWindowUi.show()
 
-	#File manager open		
-	def openFileManager(self):
-		root = Tk() 
-		root.geometry('200x100') 
-		file = askopenfile(mode ='r', filetypes =[('Python Files', '*.py')]) 
-		if file is not None: 
-			content = file.read() 
-			print(content) 
+	#File manager to open pcap file in wireshark and timeline view
+	def openFileEvent(self):
 
-	def openFileNameDialog(self):
-		options = QFileDialog.Options()
-		options |= QFileDialog.DontUseNativeDialog
-		fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)", options=options)
-		if fileName:
-			self.MainWindowUi.show()
-			print(fileName)
+			# Ask user if they want to import file or dir
+			import_type = QMessageBox.question(self,
+											   "Open",
+											   "Do you want to import a .pcap file?",
+											   QMessageBox.Yes | QMessageBox.No)
 
-	def openFileNamesDialog(self):
-		options = QFileDialog.Options()
-		options |= QFileDialog.DontUseNativeDialog
-		files, _ = QFileDialog.getOpenFileNames(self,"QFileDialog.getOpenFileNames()", "","All Files (*);;Python Files (*.py)", options=options)
-		if files:
-			print(files)
+			if import_type == QMessageBox.Yes:
+				pcap_file = QFileDialog()
+				filenames, _ = QFileDialog.getOpenFileNames(pcap_file, "Select File")
 
-	def saveFileDialog(self):
-		options = QFileDialog.Options()
-		options |= QFileDialog.DontUseNativeDialog
-		fileName, _ = QFileDialog.getSaveFileName(self,"QFileDialog.getSaveFileName()","","All Files (*);;Text Files (*.txt)", options=options)
-		if fileName:
-			print(fileName)
+				if len(filenames) < 0:
+					logging.debug("File choose cancelled")
+					return
 
+				if len(filenames) > 0:
+					self.pcap_to_import = filenames[0]
+					if platform.system() == 'Darwin':  # macOS
+						subprocess.call(('open', self.pcap_to_import ))
+					elif platform.system() == 'Windows':  # Windows
+						os.startfile(self.pcap_to_import )
+					else:  # linux variants
+						subprocess.call(('xdg-open', self.pcap_to_import ))
 
 
 def window():
