@@ -61,10 +61,9 @@ class Auditd(QWidget):
                 self.tableWidget.setItem(row, 2, cell)
 
                 self.content.append(p['content'])
-                cell = QPixmap(str(p['content'])).scaledToWidth(80)
-                label = QLabel(self)
-                label.setPixmap(cell)
-                self.tableWidget.setCellWidget(row, 3, label)
+                cell = QTableWidgetItem(p['content'])
+                self.tableWidget.setItem(row, 3, cell)
+
                 row = row +1
 
 

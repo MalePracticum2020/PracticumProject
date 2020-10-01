@@ -61,10 +61,14 @@ class MouseClicks(QWidget):
                 self.tableWidget.setItem(row, 2, cell)
 
                 self.content.append(p['content'])
-                cell = QPixmap(str(p['content'])).scaledToWidth(80)
-                label = QLabel(self)
-                label.setPixmap(cell)
-                self.tableWidget.setCellWidget(row, 3, label)
+                if QPixmap(str(p['content'])) is None:
+                    pixmap = QPixmap('image:' +str(p['content'])).scaledToWidth(80)
+                    cell = QLabel(self)
+                    cell.setPixmap(pixmap)
+                    self.tableWidget.setCellWidget(row, 3, cell)
+                else:
+                    cell = QTableWidgetItem(p['content'])
+                    self.tableWidget.setItem(row, 3, cell)
 
                 self.types.append(p['type'])
                 cell = QTableWidgetItem(p['type'])
