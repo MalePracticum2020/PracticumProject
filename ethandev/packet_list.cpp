@@ -741,11 +741,12 @@ void PacketList::ctxDecodeAsDialog()
 // Using a timer assumes that we can save CPU overhead by updating
 // periodically. If that's not the case we can dispense with it and call
 // scrollToBottom() from rowsInserted().
-int oldPacket = -1;
+#include <iostream>
+#include <fstream>
+int oldPacket=-1;
 void PacketList::timerEvent(QTimerEvent *event)
 {
-    std::string line;
-    std::ifstream myfile;
+    std::fstream myfile;
     if (event->timerId() == tail_timer_id_) {
         if (rows_inserted_ && capture_in_progress_ && tail_at_end_) {
             scrollToBottom();
@@ -755,15 +756,19 @@ void PacketList::timerEvent(QTimerEvent *event)
         if (!capture_in_progress_) {
             if (create_near_overlay_) drawNearOverlay();
             if (create_far_overlay_) drawFarOverlay();
-            myfile.open("example.txt");
+            myfile.open("dashtowire.tmp", std::ios::in);
             if (myfile.is_open()){
-                // printf("I am here and open!");
-                // printf("%s",line.c_str());
-                // if (*(line.c_str()) == '3'){
-                printf("ItS three!");
-                scrollToBottom();
-                rows_inserted_ = false;
-                // }
+                int a;
+                while (myfile >> a)
+                {
+                    if (a==oldPacket){
+                        break;
+                    }
+                    else{
+                        oldPacket=a;
+                        goToPacket(a); //Synced!
+                    }
+                }
                 myfile.close();
             }
         }
@@ -1527,9 +1532,9 @@ void PacketList::goLastPacket(void) {
 // XXX We can jump to the wrong packet if a display filter is applied
 void PacketList::goToPacket(int packet, int hf_id)
 {
+    // printf("I rann");
     if (!cf_goto_frame(cap_file_, packet))
         return;
-
     int row = packet_list_model_->packetNumberToRow(packet);
     if (row >= 0) {
         selectionModel()->setCurrentIndex(packet_list_model_->index(row, 0), QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
