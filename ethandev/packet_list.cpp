@@ -795,6 +795,13 @@ void PacketList::mousePressEvent (QMouseEvent *event)
     QModelIndex curIndex = indexAt(event->pos());
     mouse_pressed_at_ = curIndex;
 
+    std::fstream myfile;
+    myfile.open("wiretodash.tmp", std::ios::out);
+    if(myfile.is_open() && mouse_pressed_at_.isValid()){
+        myfile << (mouse_pressed_at_.row()+1); //write to file. Can be socket or something
+        myfile.close();
+    }
+
     bool midButton = (event->buttons() & Qt::MidButton) == Qt::MidButton;
     if (midButton && cap_file_ && packet_list_model_)
     {
