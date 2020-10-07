@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PACKAGEPROGRAMS= "python3-pip python3-venv git python3-pyqt5.qtwebengine"
+PACKAGEPROGRAMS="python3-pip python3-venv git python3-pyqt5.qtwebengine"
 
 if [ -x "/usr/bin/apt-get" ]; then
     OS_VERSION="Debian"
@@ -15,4 +15,4 @@ fi
 
 pip install pip --upgrade
 
-pip install "PyQT5 plotly dash Flask pandas plotly-express cachetools"
+pip install PyQT5 plotly dash Flask pandas plotly-express cachetools
