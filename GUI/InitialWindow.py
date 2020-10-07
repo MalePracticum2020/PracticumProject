@@ -1,11 +1,12 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QFileDialog, QMessageBox)
 import sys, os, subprocess, platform
-
+# from helloworld import callme
 from pip._internal.utils import logging
-
+import threading
 from Dialogs.TagPopup import TagPopup
 from MainWindow.MainWindow import MainWindow
+import subprocess
 
 '''This file contains the Welcoming Window of the Visualization System.'''
 #TODO: Synchronize the packet view -> timeline view and vice versa
@@ -77,6 +78,8 @@ def window():
 	win = InitialWindow()
 	win.show()
 	sys.exit(app.exec_())
+	
+pid = subprocess.Popen(["python3", "/home/kali/eceld-netsys/PracticumProject/GUI/helloworld.py"])
 
-
+# os.system('python3 .\helloworld.py &') #threading.Thread(target= callme, daemon=True).start()
 window()
