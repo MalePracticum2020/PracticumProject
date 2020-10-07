@@ -1,29 +1,32 @@
-[
-	{"timed_id" : 0,
-	"type" : "point",
-	"classname" : "imgPoint",
-	"content" : "\/home\/kali\/eceld-netsys\/eceld\/plugins\/collectors\/pykeylogger\/raw\/timed_screenshots\/1599083518.1073492_screenshot.png",
-	"start" : "2020-09-02T21:51:58"
-	},
+[{
+        "timed_id": 0,
+        "type": "point",
+        "classname": "imgPoint",
+        "content": "\/home\/kali\/eceld-netsys\/eceld\/plugins\/collectors\/pykeylogger\/raw\/timed_screenshots\/1599083518.1073492_screenshot.png",
+        "start": "2020-09-02T21:51:58"
+    },
 
-	{"timed_id" : 1,
-	"type" : "point",
-	"classname" : "imgPoint",
-	"content" : "\/home\/kali\/eceld-netsys\/eceld\/plugins\/collectors\/pykeylogger\/raw\/timed_screenshots\/1599083538.9907105_screenshot.png",
-	"start" : "2020-09-02T21:52:18"
-	},
+    {
+        "timed_id": 1,
+        "type": "point",
+        "classname": "imgPoint",
+        "content": ".\/smiley.png",
+        "start": "2020-09-02T21:52:18"
+    },
 
-	{"timed_id" : 2,
-	"type" : "point",
-	"classname" : "imgPoint",
-	"content" : "\/home\/kali\/eceld-netsys\/eceld\/plugins\/collectors\/pykeylogger\/raw\/timed_screenshots\/1599083549.2382607_screenshot.png",
-	"start" : "2020-09-02T21:52:29"
-	},
+    {
+        "timed_id": 2,
+        "type": "point",
+        "classname": "imgPoint",
+        "content": "\/home\/kali\/eceld-netsys\/eceld\/plugins\/collectors\/pykeylogger\/raw\/timed_screenshots\/1599083549.2382607_screenshot.png",
+        "start": "2020-09-02T21:52:29"
+    },
 
-	{"timed_id" : 3,
-	"type" : "point",
-	"classname" : "imgPoint",
-	"content" : "\/home\/kali\/eceld-netsys\/eceld\/plugins\/collectors\/pykeylogger\/raw\/timed_screenshots\/1599083528.6368434_screenshot.png",
-	"start" : "2020-09-02T21:52:08"
-	}
+    {
+        "timed_id": 3,
+        "type": "point",
+        "classname": "imgPoint",
+        "content": "\/home\/kali\/eceld-netsys\/eceld\/plugins\/collectors\/pykeylogger\/raw\/timed_screenshots\/1599083528.6368434_screenshot.png",
+        "start": "2020-09-02T21:52:08"
+    }
 ]

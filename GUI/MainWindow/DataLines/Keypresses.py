@@ -57,11 +57,10 @@ class Keypresses(QWidget):
                 cell = QTableWidgetItem(str(p['start']))
                 self.tableWidget.setItem(row, 1, cell)
 
+
                 self.content.append(p['content'])
-                cell = QPixmap(str(p['content'])).scaledToWidth(80)
-                label = QLabel(self)
-                label.setPixmap(cell)
-                self.tableWidget.setCellWidget(row, 2, label)
+                cell = QTableWidgetItem(p['content'])
+                self.tableWidget.setItem(row, 2, cell)
 
                 self.classname.append(p['className'])
                 cell = QTableWidgetItem(p['className'])

@@ -1,0 +1,3 @@
+ui,qt,packlistcpp
+789,747
+
