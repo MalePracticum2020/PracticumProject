@@ -71,6 +71,8 @@ class InitialWindow(QMainWindow):
 						os.startfile(self.pcap_to_import )
 					else:  # linux variants
 						subprocess.call(('xdg-open', self.pcap_to_import ))
+						# print(self.pcap_to_import)
+						pid = subprocess.Popen(["python3", "/home/kali/eceld-netsys/PracticumProject/GUI/helloworld.py", self.pcap_to_import])
 
 
 def window():
@@ -79,7 +81,7 @@ def window():
 	win.show()
 	sys.exit(app.exec_())
 	
-pid = subprocess.Popen(["python3", "/home/kali/eceld-netsys/PracticumProject/GUI/helloworld.py"])
+
 
 # os.system('python3 .\helloworld.py &') #threading.Thread(target= callme, daemon=True).start()
 window()
