@@ -452,7 +452,7 @@ class Ui_MainWindow(object):
         self.sync_button.setText(_translate("MainWindow", "Sync"))
         self.search_button.setText(_translate("MainWindow", "Search"))
         # self.add_data_line.setText(_translate("MainWindow", "+ Data Line"))
-        self.save_button.setText(_translate("MainWindow", "Save"))
+        self.save_button.setText(_translate("MainWindow", "Save/toggle"))
         self.throughput_label.setText(_translate("MainWindow", "Throughput"))
         self.auditd_label.setText(_translate("MainWindow", "Auditd"))
         self.mouseclicks_label.setText(
