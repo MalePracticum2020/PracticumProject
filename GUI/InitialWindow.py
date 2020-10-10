@@ -1,9 +1,7 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QFileDialog, QMessageBox)
 import sys, os, subprocess, platform
-
 from pip._internal.utils import logging
-
 from Dialogs.TagPopup import TagPopup
 from MainWindow.MainWindow import MainWindow
 
@@ -28,15 +26,15 @@ class InitialWindow(QMainWindow):
 		self.createNewButton = QtWidgets.QPushButton(self)
 		self.createNewButton.setGeometry(QtCore.QRect(310, 330, 141, 32))
 		self.createNewButton.setText("Create New Project")
+		self.createNewButton.clicked.connect(self.openFileNameDialog)
 
 		self.openButton = QtWidgets.QPushButton(self)
 		self.openButton.setGeometry(QtCore.QRect(310, 270, 141, 32))
 		self.openButton.setText("Open")
 		self.openButton.clicked.connect(self.openFileEvent)
-		self.openButton.clicked.connect(self.openMainWindowUi)
+		# self.openButton.clicked.connect(self.openMainWindowUi)
 		self.TagPopup = TagPopup()
-		self.MainWindowUi = MainWindow()
-
+		# self.MainWindowUi = MainWindow("")
 	#Instead of openPopup, this will be replaced with the main window. 
 	def openPopup(self):        
 		self.TagPopup.show()
@@ -70,6 +68,13 @@ class InitialWindow(QMainWindow):
 						os.startfile(self.pcap_to_import )
 					else:  # linux variants
 						subprocess.call(('xdg-open', self.pcap_to_import ))
+
+	def openFileNameDialog(self):
+		dialog = QFileDialog()
+		folder_path = dialog.getExistingDirectory(None, "Select Folder")
+		if folder_path:
+			self.MainWindowUi = MainWindow(folder_path)
+			self.openMainWindowUi()
 
 
 def window():

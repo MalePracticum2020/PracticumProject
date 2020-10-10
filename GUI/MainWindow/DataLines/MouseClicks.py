@@ -19,8 +19,10 @@ absolute_path = os.path.dirname(os.path.abspath(__file__))
 
 
 class MouseClicks(QWidget):
-    def __init__(self):
+    folder_path=""
+    def __init__(self,folder_path):
         super(MouseClicks, self).__init__()
+        self.folder_path = folder_path
         self.createTable()
 
     clicks_id = []
@@ -42,7 +44,7 @@ class MouseClicks(QWidget):
 
     # @cached(cache ={}) 
     def openJsonFile(self):
-        with open(absolute_path+'/ParsedLogs/MouseClicks.JSON') as json_file:
+        with open(self.folder_path+'/ParsedLogs/MouseClicks.JSON') as json_file:
             data = json.load(json_file)
             self.tableWidget.setRowCount(len(data))
             row = 0
@@ -61,10 +63,14 @@ class MouseClicks(QWidget):
                 self.tableWidget.setItem(row, 2, cell)
 
                 self.content.append(p['content'])
-                cell = QPixmap(str(p['content'])).scaledToWidth(80)
-                label = QLabel(self)
-                label.setPixmap(cell)
-                self.tableWidget.setCellWidget(row, 3, label)
+                if QPixmap(str(p['content'])) is None:
+                    pixmap = QPixmap('image:' +str(p['content'])).scaledToWidth(80)
+                    cell = QLabel(self)
+                    cell.setPixmap(pixmap)
+                    self.tableWidget.setCellWidget(row, 3, cell)
+                else:
+                    cell = QTableWidgetItem(p['content'])
+                    self.tableWidget.setItem(row, 3, cell)
 
                 self.types.append(p['type'])
                 cell = QTableWidgetItem(p['type'])
@@ -73,7 +79,6 @@ class MouseClicks(QWidget):
 
     @pyqtSlot()
     def on_click(self):
-        print("\n")
         print(self.on_click)
         for currentQTableWidgetItem in self.tableWidget.selectedItems():
             print(type(currentQTableWidgetItem))

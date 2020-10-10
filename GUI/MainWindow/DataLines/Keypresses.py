@@ -19,8 +19,10 @@ absolute_path = os.path.dirname(os.path.abspath(__file__))
 
 
 class Keypresses(QWidget):
-    def __init__(self):
+    folder_path=""
+    def __init__(self,folder_path):
         super(Keypresses, self).__init__()
+        self.folder_path = folder_path
         self.createTable()
 
     keypresses_id = []
@@ -42,13 +44,11 @@ class Keypresses(QWidget):
 
     # @cached(cache ={}) 
     def openJsonFile(self):
-        with open(absolute_path+'/ParsedLogs/Keypresses.JSON') as json_file:
+        with open(self.folder_path+'/ParsedLogs/Keypresses.JSON') as json_file:
             data = json.load(json_file)
             self.tableWidget.setRowCount(len(data))
             row = 0
             for p in data:
-
-                print(p['start'])
                 self.keypresses_id.append(p['keypresses_id'])
                 cell = QTableWidgetItem(str(p['keypresses_id']))
                 self.tableWidget.setItem(row, 0, cell)
@@ -57,11 +57,10 @@ class Keypresses(QWidget):
                 cell = QTableWidgetItem(str(p['start']))
                 self.tableWidget.setItem(row, 1, cell)
 
+
                 self.content.append(p['content'])
-                cell = QPixmap(str(p['content'])).scaledToWidth(80)
-                label = QLabel(self)
-                label.setPixmap(cell)
-                self.tableWidget.setCellWidget(row, 2, label)
+                cell = QTableWidgetItem(p['content'])
+                self.tableWidget.setItem(row, 2, cell)
 
                 self.classname.append(p['className'])
                 cell = QTableWidgetItem(p['className'])
@@ -71,7 +70,6 @@ class Keypresses(QWidget):
 
     @pyqtSlot()
     def on_click(self):
-        print("\n")
         print(self.on_click)
         for currentQTableWidgetItem in self.tableWidget.selectedItems():
             print(type(currentQTableWidgetItem))
