@@ -17,9 +17,11 @@ import os
 # Look for your absolute directory path
 absolute_path = os.path.dirname(os.path.abspath(__file__))
 
-class TimedScreenshots(QWidget):
-    def __init__(self):
+class TimedScreenshots(QWidget,):
+    folder_path=""
+    def __init__(self,folder_path):
         super(TimedScreenshots, self).__init__()
+        self.folder_path = folder_path
         self.createTable()
 
     time_id = []
@@ -41,14 +43,13 @@ class TimedScreenshots(QWidget):
 
     # @cached(cache ={}) 
     def openJsonFile(self):
-        with open(absolute_path+'/ParsedLogs/TimedScreenshots.JSON') as json_file:
+        with open(self.folder_path+'/ParsedLogs/TimedScreenshots.JSON') as json_file:
             data = json.load(json_file)
             self.tableWidget.setRowCount(len(data))
             row = 0
             for p in data:
                 self.time_id.append(p['timed_id'])
                 cell = QTableWidgetItem(str(p['timed_id']))
-                print(row)
                 self.tableWidget.setItem(row, 0, cell)
 
                 self.start.append(p['start'])
@@ -76,7 +77,6 @@ class TimedScreenshots(QWidget):
 
     @pyqtSlot()
     def on_click(self):
-        print("\n")
         print(self.on_click)
         for currentQTableWidgetItem in self.tableWidget.selectedItems():
             print(type(currentQTableWidgetItem))

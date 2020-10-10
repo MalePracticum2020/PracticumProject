@@ -19,8 +19,10 @@ absolute_path = os.path.dirname(os.path.abspath(__file__))
 
 
 class Auditd(QWidget):
-    def __init__(self):
+    folder_path=""
+    def __init__(self,folder_path):
         super(Auditd, self).__init__()
+        self.folder_path = folder_path
         self.createTable()
 
     auditd_id = []
@@ -42,7 +44,7 @@ class Auditd(QWidget):
 
     # @cached(cache ={}) 
     def openJsonFile(self):
-        with open(absolute_path+'/ParsedLogs/SystemCalls.JSON') as json_file:
+        with open(self.folder_path+'/ParsedLogs/SystemCalls.JSON') as json_file:
             data = json.load(json_file)
             self.tableWidget.setRowCount(len(data))
             row = 0
@@ -69,7 +71,6 @@ class Auditd(QWidget):
 
     @pyqtSlot()
     def on_click(self):
-        print("\n")
         print(self.on_click)
         for currentQTableWidgetItem in self.tableWidget.selectedItems():
             print(type(currentQTableWidgetItem))
