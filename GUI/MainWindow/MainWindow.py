@@ -252,7 +252,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(
             self.scrollAreaWidgetContents)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
-
         # plotly app frame
         self.webEngine = QWebEngineView()
         self.webEngine.load(QUrl("http://localhost:8050/"))
@@ -262,8 +261,7 @@ class Ui_MainWindow(object):
             QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            self.webEngine.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(self.webEngine.sizePolicy().hasHeightForWidth())
         self.webEngine.setSizePolicy(sizePolicy)
         self.webEngine.setMinimumSize(QtCore.QSize(0, 250))
         self.webEngine.setMaximumSize(QtCore.QSize(16877215, 16877215))
@@ -306,6 +304,7 @@ class Ui_MainWindow(object):
         # self.throughput_scrollarea.setWidget(self.throughput_scrollareawidget)
         # self.verticalLayout_2.addWidget(self.throughput_scrollarea)
         self.verticalLayout_6.addWidget(self.webEngine)
+        
         ####
         self.auditd_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
         self.auditd_frame.setMinimumSize(QtCore.QSize(0, 250))
@@ -544,7 +543,6 @@ class Ui_MainWindow(object):
         # fig.update_traces(quartilemethod="exclusive") # or "inclusive", or "linear" by default
         # self.webEngine.setHtml(fig.to_html(include_plotlyjs='cdn'))
         # threading.Thread(target=run_dash, args=(fig, "Data Visualization"), daemon=True).start()
-
 
 class CheckableComboBox(QComboBox):
     def __init__(self):
