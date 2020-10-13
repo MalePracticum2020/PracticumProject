@@ -12,9 +12,10 @@ clone repository and go into directory and run the following
 sudo ./linuxinstaller.sh
 ```
 ## Installation (Windows)
-clone repository and go into directory and run the following
+Download the DatasetVisualizationSystem.exe from the Releases menu
 ```
-sudo ./windowsinstaller.sh
+Unzip the file and double click on the executable
+Follow the prompt to install the program 
 ```
 ## Run the GUI
 ```

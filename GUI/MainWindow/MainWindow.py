@@ -256,7 +256,7 @@ class Ui_MainWindow(object):
         self.webEngine = QWebEngineView()
         self.webEngine.load(QUrl("http://localhost:8050/"))
         self.webEngine.show()
-        self.show_graph()
+        self.show_graph(folder_path)
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -536,13 +536,15 @@ class Ui_MainWindow(object):
         self.dataLineDictionary[itemIndex] = itemDictionaryValue
         self.dataLineDictionary[itemIndex]['frame'].setHidden(False)
 
-    def show_graph(self):
-        basePath = os.path.dirname(os.path.abspath(__file__))
-        df = pd.read_json(basePath + '/throughput.json')
-        fig = px.line(df, x="traffic_xy_id", y="y")
-        # fig.update_traces(quartilemethod="exclusive") # or "inclusive", or "linear" by default
-        # self.webEngine.setHtml(fig.to_html(include_plotlyjs='cdn'))
-        threading.Thread(target=run_dash, args=(fig, "Data Visualization"), daemon=True).start()
+    def show_graph(self, folder_path):
+        #basePath = os.path.dirname(os.path.abspath(__file__))
+        basePath = folder_path
+        with open(basePath +'/ParsedLogs/Throughput.JSON') as json_file:
+            data = pd.read_json(json_file)
+            fig = px.line(data, x="traffic_xy_id", y="y")
+            # fig.update_traces(quartilemethod="exclusive") # or "inclusive", or "linear" by default
+            # self.webEngine.setHtml(fig.to_html(include_plotlyjs='cdn'))
+            threading.Thread(target=run_dash, args=(fig, "Data Visualization"), daemon=True).start()
 
 class CheckableComboBox(QComboBox):
     def __init__(self):
