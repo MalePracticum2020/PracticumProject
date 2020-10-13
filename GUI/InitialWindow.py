@@ -4,6 +4,7 @@ import sys, os, subprocess, platform
 # from helloworld import callme
 from pip._internal.utils import logging
 import threading
+from pip._internal.utils import logging
 from Dialogs.TagPopup import TagPopup
 from MainWindow.MainWindow import MainWindow
 import subprocess
@@ -29,15 +30,15 @@ class InitialWindow(QMainWindow):
 		self.createNewButton = QtWidgets.QPushButton(self)
 		self.createNewButton.setGeometry(QtCore.QRect(310, 330, 141, 32))
 		self.createNewButton.setText("Create New Project")
+		self.createNewButton.clicked.connect(self.openFileNameDialog)
 
 		self.openButton = QtWidgets.QPushButton(self)
 		self.openButton.setGeometry(QtCore.QRect(310, 270, 141, 32))
 		self.openButton.setText("Open")
 		self.openButton.clicked.connect(self.openFileEvent)
-		self.openButton.clicked.connect(self.openMainWindowUi)
+		# self.openButton.clicked.connect(self.openMainWindowUi)
 		self.TagPopup = TagPopup()
-		self.MainWindowUi = MainWindow()
-
+		# self.MainWindowUi = MainWindow("")
 	#Instead of openPopup, this will be replaced with the main window. 
 	def openPopup(self):        
 		self.TagPopup.show()
@@ -73,6 +74,13 @@ class InitialWindow(QMainWindow):
 						subprocess.call(('xdg-open', self.pcap_to_import ))
 						# print(self.pcap_to_import)
 						pid = subprocess.Popen(["python3", "/home/kali/eceld-netsys/PracticumProject/GUI/helloworld.py", self.pcap_to_import])
+
+	def openFileNameDialog(self):
+		dialog = QFileDialog()
+		folder_path = dialog.getExistingDirectory(None, "Select Folder")
+		if folder_path:
+			self.MainWindowUi = MainWindow(folder_path)
+			self.openMainWindowUi()
 
 
 def window():
