@@ -2,8 +2,8 @@ from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QFileDialog, QMessageBox)
 import sys, os, subprocess, platform
 from pip._internal.utils import logging
-from Dialogs.TagPopup import TagPopup
-from MainWindow.MainWindow import MainWindow
+from GUI.Dialogs.TagPopup import TagPopup
+from GUI.MainWindow.MainWindow import MainWindow
 
 '''This file contains the Welcoming Window of the Visualization System.'''
 #TODO: Synchronize the packet view -> timeline view and vice versa
@@ -20,7 +20,7 @@ class InitialWindow(QMainWindow):
 		self.label.setText("Data Visualization System")
 		self.label.setGeometry(QtCore.QRect(150, 30, 711, 101))
 		font = QtGui.QFont()
-		font.setPointSize(45)
+		font.setPointSize(30)
 		self.label.setFont(font)
 
 		self.createNewButton = QtWidgets.QPushButton(self)
@@ -75,6 +75,7 @@ class InitialWindow(QMainWindow):
 		if folder_path:
 			self.MainWindowUi = MainWindow(folder_path)
 			self.openMainWindowUi()
+
 
 
 def window():

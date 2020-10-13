@@ -12,7 +12,7 @@ from PyQt5 import QtWidgets, QtCore, QtGui, QtWebEngineWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QHeaderView, QComboBox, QHBoxLayout
 from PyQt5.QtCore import pyqtSlot
 import sys
-# from Dash.dash_graph import run_dash
+from Dash.dash_graph import run_dash
 from .DataLines.MouseClicks import MouseClicks
 from .DataLines.Auditd import Auditd
 from .DataLines.Keypresses import Keypresses
@@ -542,7 +542,7 @@ class Ui_MainWindow(object):
         fig = px.line(df, x="traffic_xy_id", y="y")
         # fig.update_traces(quartilemethod="exclusive") # or "inclusive", or "linear" by default
         # self.webEngine.setHtml(fig.to_html(include_plotlyjs='cdn'))
-        # threading.Thread(target=run_dash, args=(fig, "Data Visualization"), daemon=True).start()
+        threading.Thread(target=run_dash, args=(fig, "Data Visualization"), daemon=True).start()
 
 class CheckableComboBox(QComboBox):
     def __init__(self):
