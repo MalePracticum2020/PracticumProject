@@ -1,9 +1,13 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QFileDialog, QMessageBox)
 import sys, os, subprocess, platform
+# from helloworld import callme
 from pip._internal.utils import logging
-from GUI.Dialogs.TagPopup import TagPopup
-from GUI.MainWindow.MainWindow import MainWindow
+import threading
+from pip._internal.utils import logging
+from Dialogs.TagPopup import TagPopup
+from MainWindow.MainWindow import MainWindow
+import subprocess
 
 '''This file contains the Welcoming Window of the Visualization System.'''
 #TODO: Synchronize the packet view -> timeline view and vice versa
@@ -20,7 +24,7 @@ class InitialWindow(QMainWindow):
 		self.label.setText("Data Visualization System")
 		self.label.setGeometry(QtCore.QRect(150, 30, 711, 101))
 		font = QtGui.QFont()
-		font.setPointSize(30)
+		font.setPointSize(45)
 		self.label.setFont(font)
 
 		self.createNewButton = QtWidgets.QPushButton(self)
@@ -68,6 +72,8 @@ class InitialWindow(QMainWindow):
 						os.startfile(self.pcap_to_import )
 					else:  # linux variants
 						subprocess.call(('xdg-open', self.pcap_to_import ))
+						# print(self.pcap_to_import)
+						pid = subprocess.Popen(["python3", "/home/kali/eceld-netsys/PracticumProject/GUI/helloworld.py", self.pcap_to_import])
 
 	def openFileNameDialog(self):
 		dialog = QFileDialog()
@@ -77,12 +83,13 @@ class InitialWindow(QMainWindow):
 			self.openMainWindowUi()
 
 
-
 def window():
 	app = QApplication(sys.argv)
 	win = InitialWindow()
 	win.show()
 	sys.exit(app.exec_())
+	
 
 
+# os.system('python3 .\helloworld.py &') #threading.Thread(target= callme, daemon=True).start()
 window()
