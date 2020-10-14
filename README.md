@@ -11,6 +11,11 @@ clone repository and go into directory and run the following
 ```
 ./linuxinstaller.sh
 ```
+To start the GUI, run the following command
+```
+sudo python3 -m GUI.InitialWindow.py --no-sandbox
+```
+
 ## Installation (Windows)
 Follow the instructions from the latest release to download the DatasetVisualizationSystem_v1.0-beta.zip
 Extract the contents of the zip file to your local directory. There is an executable and a windows installer. Feel free to use which ever one you feel most comfortable with.
