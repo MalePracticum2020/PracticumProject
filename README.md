@@ -9,7 +9,7 @@ DVS should run in the following O.S.
 ## Installation (Linux)
 clone repository and go into directory and run the following
 ```
-sudo ./linuxinstaller.sh
+./linuxinstaller.sh
 ```
 ## Installation (Windows)
 Follow the instructions from the latest release to download the DatasetVisualizationSystem_v1.0-beta.zip
