@@ -9,13 +9,12 @@ from dash.dependencies import Input, Output
 import json
 import sys
 import glob
-
+import subprocess
 from datetime import datetime
-
+import re
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-dest = "ecel-export_1599863833/parsed/tshark/networkDataXY.JSON"
-projHome = "/home/kali/eceld-netsys/ProjectData/"
+
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
@@ -89,14 +88,24 @@ def click_event_graph(hoverData):
 
 
 if sys.argv[1]:
-    # if (app)
+    popen = subprocess.Popen(['netstat', '-lpn'],
+                         shell=False,
+                         stdout=subprocess.PIPE)
+    (data, err) = popen.communicate()
+    for line in data.decode().split("\n"):
+        if re.match('^tcp.*8050.*python.*$',line):
+            dataline=line
+            temp=dataline.split("LISTEN")[1].strip()
+            pid = temp.split("/")[0]
+            subprocess.Popen(['kill', '-9', pid])
+
     projDir = sys.argv[1].split("ProjectData/")
     projName = projDir[1].split("/")[0]
-    networkDataxyDir=projDir[0]+"ProjectData/"+projName #"ecel-export_"
+    networkDataxyDir=projDir[0]+"ProjectData/"+projName 
     relevDir=glob.glob(networkDataxyDir+'/ecel-export_*')
     print(relevDir)
     displayApp(relevDir[0]+"/parsed/tshark/networkDataXY.JSON")
-    app.run_server(debug=False, use_reloader=True)
+    app.run_server(debug=False, use_reloader=True) #port 8050 is default port
 
 
 

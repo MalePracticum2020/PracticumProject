@@ -23,7 +23,7 @@ import plotly.express as px
 import os
 from PyQt5.QtWebEngineWidgets import *
 from PyQt5.Qt import *
-
+import time
 
 class Ui_MainWindow(object):
     dataLineDictionary = {}
@@ -254,10 +254,11 @@ class Ui_MainWindow(object):
             self.scrollAreaWidgetContents)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
         # plotly app frame
+        self.show_graph(folder_path)
         self.webEngine = QWebEngineView()
+        time.sleep(2) #sleep since the dash app is starting up
         self.webEngine.load(QUrl("http://localhost:8050/"))
         self.webEngine.show()
-        self.show_graph(folder_path)
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
