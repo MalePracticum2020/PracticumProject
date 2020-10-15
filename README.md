@@ -32,8 +32,3 @@ run the executable outside of the directory where it was installed. A solution t
 ![Screenshot1](screenshots/choose-install.png)  
 ![Screenshot2](screenshots/installing.png)  
 ![Screenshot3](screenshots/completed-install.png)
-
-## Run the GUI
-```
-python3 GUI/InitialWindow.py
-```
