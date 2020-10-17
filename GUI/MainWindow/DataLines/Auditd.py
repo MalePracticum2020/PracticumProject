@@ -9,6 +9,7 @@ import pandas as pd
 from cachetools import cached 
 import time 
 import sys
+from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QWidget, QTableWidget,QTableWidgetItem,QVBoxLayout, QLabel,QHeaderView
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtGui import QPixmap, QImage
@@ -38,35 +39,39 @@ class Auditd(QWidget):
         self.tableWidget.setHorizontalHeaderLabels(["Auditd_id", "Start", "ClassName", "Content"])
         self.tableWidget.verticalHeader().setVisible(True)
         self.tableWidget.horizontalHeader().setStretchLastSection(True) 
-        self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.tableWidget.horizontalHeader().setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)#(QHeaderView.Stretch)
         self.openJsonFile()
-        self.tableWidget.doubleClicked.connect(self.on_click)
 
     # @cached(cache ={}) 
     def openJsonFile(self):
-        with open(self.folder_path+'/ParsedLogs/SystemCalls.JSON') as json_file:
-            data = json.load(json_file)
-            self.tableWidget.setRowCount(len(data))
-            row = 0
-            for p in data:
+        try:
+            with open(self.folder_path+'/ParsedLogs/SystemCalls.JSON') as json_file:
+                data = json.load(json_file)
+                self.tableWidget.setRowCount(len(data))
+                row = 0
+                for p in data:
 
-                self.auditd_id.append(p['auditd_id'])
-                cell = QTableWidgetItem(str(p['auditd_id']))
-                self.tableWidget.setItem(row, 0, cell)
+                    self.auditd_id.append(p['auditd_id'])
+                    cell = QTableWidgetItem(str(p['auditd_id']))
+                    self.tableWidget.setItem(row, 0, cell)
 
-                self.start.append(p['start'])
-                cell = QTableWidgetItem(str(p['start']))
-                self.tableWidget.setItem(row, 1, cell)
+                    self.start.append(p['start'])
+                    cell = QTableWidgetItem(str(p['start']))
+                    self.tableWidget.setItem(row, 1, cell)
 
-                self.classname.append(p['className'])
-                cell = QTableWidgetItem(p['className'])
-                self.tableWidget.setItem(row, 2, cell)
+                    self.classname.append(p['className'])
+                    cell = QTableWidgetItem(p['className'])
+                    self.tableWidget.setItem(row, 2, cell)
 
-                self.content.append(p['content'])
-                cell = QTableWidgetItem(p['content'])
-                self.tableWidget.setItem(row, 3, cell)
+                    self.content.append(p['content'])
+                    cell = QTableWidgetItem(p['content'])
+                    self.tableWidget.setItem(row, 3, cell)
 
-                row = row +1
+                    row = row +1
+            self.tableWidget.doubleClicked.connect(self.on_click)
+        except:
+            print("Something went wrong while reading Auditd.JSON")
+            self.tableWidget = None
 
 
     @pyqtSlot()
