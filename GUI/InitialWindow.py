@@ -1,19 +1,27 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QFileDialog, QMessageBox)
-import sys, os, subprocess, platform
+from PyQt5.QtWidgets import (QApplication, QFrame, QStyleFactory,
+                             QProxyStyle, QStyle, QMainWindow, QFileDialog, QMessageBox)
+import sys
+import os
+import subprocess
+import platform
 # from helloworld import callme
 from pip._internal.utils import logging
 import threading
 from pip._internal.utils import logging
-from GUI.Dialogs.TagPopup import TagPopup
-from GUI.MainWindow.MainWindow import MainWindow
+from Dialogs.TagPopup import TagPopup
+from MainWindow.MainWindow import MainWindow
+from PyQt5.QtGui import QPalette, QColor
+from PyQt5.QtCore import Qt
+
 import os
 import subprocess
 
 '''This file contains the Welcoming Window of the Visualization System.'''
 
-
 # TODO: Synchronize the packet view -> timeline view and vice versa
+
+
 class InitialWindow(QMainWindow):
     def __init__(self):
         super(InitialWindow, self).__init__()
@@ -62,7 +70,8 @@ class InitialWindow(QMainWindow):
 
         if import_type == QMessageBox.Yes:
             pcap_file = QFileDialog()
-            filenames, _ = QFileDialog.getOpenFileNames(pcap_file, "Select File")
+            filenames, _ = QFileDialog.getOpenFileNames(
+                pcap_file, "Select File")
 
             if len(filenames) < 0:
                 logging.debug("File choose cancelled")
@@ -100,6 +109,27 @@ class InitialWindow(QMainWindow):
 
 def window():
     app = QApplication(sys.argv)
+    app.setStyle("Fusion")
+    dark_palette = QPalette()
+    dark_palette.setColor(QPalette.Window, QColor(53, 53, 53))
+    dark_palette.setColor(QPalette.WindowText, Qt.white)
+    dark_palette.setColor(QPalette.Base, QColor(25, 25, 25))
+    dark_palette.setColor(QPalette.AlternateBase, QColor(53, 53, 53))
+    dark_palette.setColor(QPalette.ToolTipBase, Qt.white)
+    dark_palette.setColor(QPalette.ToolTipText, Qt.white)
+    dark_palette.setColor(QPalette.Text, Qt.white)
+    dark_palette.setColor(QPalette.Button, QtGui.QColor("#0D1225"))
+    dark_palette.setColor(QPalette.ButtonText, Qt.white)
+    dark_palette.setColor(QPalette.BrightText, Qt.red)
+    dark_palette.setColor(QPalette.Link, QColor(42, 130, 218))
+    dark_palette.setColor(QPalette.Highlight, QColor(42, 130, 218))
+    dark_palette.setColor(QPalette.HighlightedText, Qt.black)
+    app.setPalette(dark_palette)
+    app.setStyleSheet('QMainWindow{border: 5px solid black;}')
+    # error_dialog = QtWidgets.QErrorMessage()
+    # error_dialog.showMessage('Oh no!')
+	# app.setStyleSheet("background-color: #0D1225;")
+	# app.set.setForeground(QtGui.QColor("#F2F2F2"))
     win = InitialWindow()
     win.show()
     sys.exit(app.exec_())
@@ -107,3 +137,4 @@ def window():
 
 # os.system('python3 .\helloworld.py &') #threading.Thread(target= callme, daemon=True).start()
 window()
+

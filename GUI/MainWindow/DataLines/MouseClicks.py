@@ -9,6 +9,7 @@ import pandas as pd
 from cachetools import cached 
 import time 
 import sys
+from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QWidget, QTableWidget,QTableWidgetItem,QVBoxLayout, QLabel, QHeaderView
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtGui import QPixmap, QImage
@@ -36,46 +37,53 @@ class MouseClicks(QWidget):
         self.tableWidget = QTableWidget(self)
         self.tableWidget.setColumnCount(5)
         self.tableWidget.setHorizontalHeaderLabels(["Clicks_id", "Start", "ClassName", "Content","Type"])
-        self.tableWidget.verticalHeader().setVisible(True)
+        self.tableWidget.verticalHeader().setVisible(False)
         self.tableWidget.horizontalHeader().setStretchLastSection(True) 
-        self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.tableWidget.horizontalHeader().setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)#(QHeaderView.Stretch)
         self.openJsonFile()
-        self.tableWidget.doubleClicked.connect(self.on_click)
 
     # @cached(cache ={}) 
     def openJsonFile(self):
-        with open(self.folder_path+'/ParsedLogs/MouseClicks.JSON') as json_file:
-            data = json.load(json_file)
-            self.tableWidget.setRowCount(len(data))
-            row = 0
-            for p in data:
+        try:
+            with open(self.folder_path+'/ParsedLogs/MouseClicks.JSON') as json_file:
+                data = json.load(json_file)
+                self.tableWidget.setRowCount(len(data))
+                row = 0
+                for p in data:
 
-                self.clicks_id.append(p['clicks_id'])
-                cell = QTableWidgetItem(str(p['clicks_id']))
-                self.tableWidget.setItem(row, 0, cell)
+                    self.clicks_id.append(p['clicks_id'])
+                    cell = QTableWidgetItem(str(p['clicks_id']))
+                    self.tableWidget.setItem(row, 0, cell)
 
-                self.start.append(p['start'])
-                cell = QTableWidgetItem(str(p['start']))
-                self.tableWidget.setItem(row, 1, cell)
+                    self.start.append(p['start'])
+                    cell = QTableWidgetItem(str(p['start']))
+                    self.tableWidget.setItem(row, 1, cell)
 
-                self.classname.append(p['classname'])
-                cell = QTableWidgetItem(p['classname'])
-                self.tableWidget.setItem(row, 2, cell)
+                    self.classname.append(p['classname'])
+                    cell = QTableWidgetItem(p['classname'])
+                    self.tableWidget.setItem(row, 2, cell)
 
-                self.content.append(p['content'])
-                if QPixmap(str(p['content'])) is None:
-                    pixmap = QPixmap('image:' +str(p['content'])).scaledToWidth(80)
-                    cell = QLabel(self)
-                    cell.setPixmap(pixmap)
-                    self.tableWidget.setCellWidget(row, 3, cell)
-                else:
-                    cell = QTableWidgetItem(p['content'])
-                    self.tableWidget.setItem(row, 3, cell)
+                    self.content.append(p['content'])
+                    pixmap = QPixmap(str(p['content']))
+                    if pixmap is None:
+                        pixmap.scaledToWidth(80)
+                        # pixmap = QPixmap('image:' +str(p['content'])).scaledToWidth(80)
+                        cell = QLabel(self)
+                        cell.setPixmap(pixmap)
+                        self.tableWidget.setCellWidget(row, 3, cell)
+                    else:
+                        cell = QTableWidgetItem(p['content'])
+                        self.tableWidget.setItem(row, 3, cell)
 
-                self.types.append(p['type'])
-                cell = QTableWidgetItem(p['type'])
-                self.tableWidget.setItem(row, 4, cell)
-                row = row +1
+                    self.types.append(p['type'])
+                    cell = QTableWidgetItem(p['type'])
+                    self.tableWidget.setItem(row, 4, cell)
+                    row = row +1
+            self.tableWidget.doubleClicked.connect(self.on_click)
+
+        except:
+            print("Something went wrong while reading MouseClicks.JSON")
+            self.tableWidget = None
 
     @pyqtSlot()
     def on_click(self):
