@@ -37,7 +37,7 @@ class MouseClicks(QWidget):
         self.tableWidget = QTableWidget(self)
         self.tableWidget.setColumnCount(5)
         self.tableWidget.setHorizontalHeaderLabels(["Clicks_id", "Start", "ClassName", "Content","Type"])
-        self.tableWidget.verticalHeader().setVisible(False)
+        self.tableWidget.verticalHeader().setVisible(True)
         self.tableWidget.horizontalHeader().setStretchLastSection(True) 
         self.tableWidget.horizontalHeader().setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)#(QHeaderView.Stretch)
         self.openJsonFile()
@@ -64,15 +64,19 @@ class MouseClicks(QWidget):
                     self.tableWidget.setItem(row, 2, cell)
 
                     self.content.append(p['content'])
-                    pixmap = QPixmap(str(p['content']))
-                    if pixmap is None:
+                    pixmap = QPixmap("image:"+str(p['content']))
+                    if not pixmap.isNull:
                         pixmap.scaledToWidth(80)
-                        # pixmap = QPixmap('image:' +str(p['content'])).scaledToWidth(80)
                         cell = QLabel(self)
                         cell.setPixmap(pixmap)
                         self.tableWidget.setCellWidget(row, 3, cell)
+
+                        # cell = QPixmap(item[6:]).scaledToWidth(80)
+                        # label = QLabel(self)
+                        # label.setPixmap(cell)
+                        # self.tableWidget.setCellWidget(row, col, label)
                     else:
-                        cell = QTableWidgetItem(p['content'])
+                        cell = QTableWidgetItem(str(p['content']))
                         self.tableWidget.setItem(row, 3, cell)
 
                     self.types.append(p['type'])

@@ -37,7 +37,7 @@ class Keypresses(QWidget):
         self.tableWidget = QTableWidget(self)
         self.tableWidget.setColumnCount(4)
         self.tableWidget.setHorizontalHeaderLabels(["Keypresses_id", "Start", "ClassName", "Content"])
-        self.tableWidget.verticalHeader().setVisible(False)
+        self.tableWidget.verticalHeader().setVisible(True)
         self.tableWidget.horizontalHeader().setStretchLastSection(True) 
         self.tableWidget.horizontalHeader().setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)#(QHeaderView.Stretch)
         self.openJsonFile()
