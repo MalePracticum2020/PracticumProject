@@ -341,28 +341,38 @@ class Ui_MainWindow(object):
 
         else:
             table_flag = False
+            color = 'black'
             if type_name == "Auditd" and self.Auditd.getTable() is not None:
                 table_flag = True
                 tablewidget = self.Auditd.getTable()
+                color = Qt.red
             if type_name == "MouseClicks" and self.MouseClicks.getTable() is not None:
                 table_flag = True
                 tablewidget = self.MouseClicks.getTable()
+                color = Qt.blue
             if type_name == "TimedScreenshots" and self.TimedScreenshots.getTable() is not None:
                 table_flag = True
+                color = Qt.magenta
                 tablewidget = self.TimedScreenshots.getTable()
             if type_name == "Keypresses" and self.Keypresses.getTable() is not None:
                 table_flag = True
                 tablewidget = self.Keypresses.getTable()
+                color = Qt.darkGreen
             if table_flag is True:
                 tablewidget.setObjectName("widget" + str(itemIndex))
-                itemDictionaryValue = self.build_frame(itemIndex,type_name,tablewidget)
+                itemDictionaryValue = self.build_frame(itemIndex,type_name,tablewidget, color)#.update({"background-color":  color})
+                print(itemDictionaryValue)
                 # self.verticalLayout_6.addWidget(itemDictionaryValue['frame'])
                 self.split_modules.addWidget(itemDictionaryValue['frame'])
                 self.verticalLayout_6.addWidget(self.split_modules)
                 # frame.setHidden(True)
 
-    def build_frame(self, itemIndex, type_name, tablewidget):
+    def build_frame(self, itemIndex, type_name, tablewidget, color):
         frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
+        p = frame.palette()
+        p.setColor(frame.backgroundRole(), color)
+        frame.setPalette(p)
+        frame.setAutoFillBackground(True)
         frame.setMinimumSize(QtCore.QSize(0, 250))
         frame.setFrameShape(QtWidgets.QFrame.StyledPanel)#frame.setFrameShape(QtWidgets.QFrame.NoFrame)
         frame.setFrameShadow(QtWidgets.QFrame.Raised)
