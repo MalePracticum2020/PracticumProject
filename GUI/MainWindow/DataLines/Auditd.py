@@ -94,7 +94,6 @@ class Auditd(QWidget):
             action = menu.exec_(self.tableWidget.mapToGlobal(pos))
             if action == item1:
                 self.openEditDialog(self.tableWidget.item(row, column))
-                print('You selected option one, the current line text is: ', self.tableWidget.item(row, column).text())
 
     @pyqtSlot()
     def on_click(self):

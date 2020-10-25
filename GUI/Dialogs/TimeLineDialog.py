@@ -6,9 +6,9 @@ class TimeLineDialog(QDialog):
 	checkboxes=[]
 	def __init__(self, dataLineDictionary):
 		super(TimeLineDialog, self).__init__()
-		self.setWindowTitle("Select Data Lines")
+		self.setWindowTitle("Add Data Lines")
 		self.layout = QVBoxLayout()
-
+		self.resize(200, 200)
 		for i in range(len(dataLineDictionary)):
 			self.checkboxes.append(QCheckBox(dataLineDictionary[i]['name'], self))
 			if dataLineDictionary[i]['frame'].isHidden():

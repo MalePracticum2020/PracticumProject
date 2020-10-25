@@ -208,6 +208,7 @@ class Ui_MainWindow(object):
         MainWindow.setPalette(palette)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+        
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName("verticalLayout")
         self.top_right_horizontal_layout = QtWidgets.QHBoxLayout()
@@ -341,7 +342,7 @@ class Ui_MainWindow(object):
                 'tableWidget': "none"
             }
             self.dataLineDictionary[itemIndex] = itemDictionaryValue
-            self.dataLineDictionary[itemIndex]['frame'].setHidden(True)
+            self.dataLineDictionary[itemIndex]['frame'].setHidden(False)
 
         else:
             table_flag = False
@@ -417,12 +418,10 @@ class Ui_MainWindow(object):
     
     def openTimeLineDialog(self, s):
         if self.dataLineDialog == None:
-            print("self.dataLineDialog is none")
             self.dataLineDialog = TimeLineDialog(self.dataLineDictionary)
         if self.dataLineDialog.exec_():
             print("Success!")
         else:
-            print("Cancel!")
             del self.dataLineDialog
 
     def show_graph(self, folder_path):
