@@ -10,17 +10,24 @@ from cachetools import cached
 import time 
 import sys
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QApplication, QWidget, QTableWidget,QTableWidgetItem,QVBoxLayout, QLabel,QHeaderView
+from PyQt5.QtWidgets import QApplication, QWidget, QTableWidget,QTableWidgetItem,QVBoxLayout, QLabel,QHeaderView,QMenu
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtGui import QPixmap, QImage
 import PyQt5.QtCore as QtCore
 import os
+from Dialogs.EditDialog import EditDialog
+from PyQt5.QtCore import Qt
+
 # Look for your absolute directory path
 absolute_path = os.path.dirname(os.path.abspath(__file__))
 
-
 class Auditd(QWidget):
     folder_path=""
+    editDialog = None
+
+    def __del__(self):
+        self.editDialog = None
+
     def __init__(self,folder_path):
         super(Auditd, self).__init__()
         self.folder_path = folder_path
@@ -41,6 +48,8 @@ class Auditd(QWidget):
         self.tableWidget.horizontalHeader().setStretchLastSection(True) 
         self.tableWidget.horizontalHeader().setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)#(QHeaderView.Stretch)
         self.openJsonFile()
+        self.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.tableWidget.customContextMenuRequested.connect(self.editMenu)
 
     # @cached(cache ={}) 
     def openJsonFile(self):
@@ -69,10 +78,23 @@ class Auditd(QWidget):
 
                     row = row +1
             self.tableWidget.doubleClicked.connect(self.on_click)
+
         except:
             print("Something went wrong while reading Auditd.JSON")
             self.tableWidget = None
 
+    def editMenu(self, pos):
+        row = -1
+        column = -1
+        for i in self.tableWidget.selectionModel().selection().indexes():
+            row, column = i.row(), i.column()
+        if row > -1 and column > -1:
+            menu = QMenu()
+            item1 = menu.addAction(u'Edit Tag')
+            action = menu.exec_(self.tableWidget.mapToGlobal(pos))
+            if action == item1:
+                self.openEditDialog(self.tableWidget.item(row, column))
+                print('You selected option one, the current line text is: ', self.tableWidget.item(row, column).text())
 
     @pyqtSlot()
     def on_click(self):
@@ -81,6 +103,15 @@ class Auditd(QWidget):
             print(type(currentQTableWidgetItem))
             print(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text())
 
+    def openEditDialog(self,cell):
+        if self.editDialog == None:
+            self.editDialog = EditDialog(cell)
+        if self.editDialog.exec_():
+            print("Success!")
+
+        else:
+            print("Cancel!")
+            del self.editDialog
     
     def getTable(self):
         return self.tableWidget

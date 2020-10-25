@@ -27,9 +27,11 @@ from PyQt5.Qt import *
 from PyQt5.QtGui import QPalette, QColor
 from PyQt5.QtCore import Qt
 import time
+from Dialogs.TimeLineDialog import TimeLineDialog
 
 class Ui_MainWindow(object):
     dataLineDictionary = {}
+    dataLineDialog = None
 
     def setupUi(self, MainWindow, folder_path):
         self.dataLinesSetUp(folder_path)
@@ -228,7 +230,7 @@ class Ui_MainWindow(object):
             40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.top_right_horizontal_layout.addItem(spacerItem1)
         # QtWidgets.QPushButton(self.centralwidget)
-        self.add_data_line = self.dropDownAddDataLines()
+        self.add_data_line = QtWidgets.QPushButton(self.centralwidget)#self.dropDownAddDataLines()
         # self.add_data_line.setObjectName("add_data_line")
         self.top_right_horizontal_layout.addWidget(self.add_data_line)
         self.save_button = QtWidgets.QPushButton(self.centralwidget)
@@ -263,7 +265,8 @@ class Ui_MainWindow(object):
         self.createDataLinesDisplayBoxes("", 3, "MouseClicks")
         self.createDataLinesDisplayBoxes("", 4, "Keypresses")
 
-        self.save_button.clicked.connect(self.toggle)
+        # self.save_button.clicked.connect(self.toggle)
+        self.add_data_line.clicked.connect(self.openTimeLineDialog)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.verticalLayout.addWidget(self.scrollArea)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -283,8 +286,8 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "Timeline View"))
         self.sync_button.setText(_translate("MainWindow", "Sync"))
         self.search_button.setText(_translate("MainWindow", "Search"))
-        # self.add_data_line.setText(_translate("MainWindow", "+ Data Line"))
-        self.save_button.setText(_translate("MainWindow", "Save/toggle"))
+        self.add_data_line.setText(_translate("MainWindow", "+ Data Line"))
+        self.save_button.setText(_translate("MainWindow", "Save"))
 
     def dataLinesSetUp(self, folder_path):
         self.MouseClicks = MouseClicks(folder_path)
@@ -300,9 +303,9 @@ class Ui_MainWindow(object):
         cb.setEditable(False)
         return cb
 
-    def setWebEngine(self,folder_path):
+    def setWebEngine(self,address):
         # plotly app frame
-        self.show_graph(folder_path)
+        self.show_graph(address)
         self.webEngine = QWebEngineView()
         time.sleep(2) #sleep since the dash app is starting up
         self.webEngine.load(QUrl("http://localhost:8050/"))
@@ -328,6 +331,7 @@ class Ui_MainWindow(object):
             self.verticalLayout_6.addWidget(self.split_modules)
 
             itemDictionaryValue = {
+                'name': type_name,
                 'frame': frame,
                 'scrollArea': "none",
                 'scrollAreaWidget': "none",
@@ -337,7 +341,7 @@ class Ui_MainWindow(object):
                 'tableWidget': "none"
             }
             self.dataLineDictionary[itemIndex] = itemDictionaryValue
-            self.dataLineDictionary[itemIndex]['frame'].setHidden(False)
+            self.dataLineDictionary[itemIndex]['frame'].setHidden(True)
 
         else:
             table_flag = False
@@ -397,6 +401,7 @@ class Ui_MainWindow(object):
         label.setText(_translate("MainWindow", type_name))
 
         itemDictionaryValue = {
+            'name': type_name,
             'frame': frame,
             'scrollArea': scrollarea,
             'scrollAreaWidget': scrollareawidget,
@@ -407,9 +412,18 @@ class Ui_MainWindow(object):
         }
 
         self.dataLineDictionary[itemIndex] = itemDictionaryValue
-        self.dataLineDictionary[itemIndex]['frame'].setHidden(False)
-
+        self.dataLineDictionary[itemIndex]['frame'].setHidden(True)
         return itemDictionaryValue
+    
+    def openTimeLineDialog(self, s):
+        if self.dataLineDialog == None:
+            print("self.dataLineDialog is none")
+            self.dataLineDialog = TimeLineDialog(self.dataLineDictionary)
+        if self.dataLineDialog.exec_():
+            print("Success!")
+        else:
+            print("Cancel!")
+            del self.dataLineDialog
 
     def show_graph(self, folder_path):
         #basePath = os.path.dirname(os.path.abspath(__file__))
