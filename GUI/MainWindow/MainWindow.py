@@ -27,7 +27,7 @@ from PyQt5.Qt import *
 from PyQt5.QtGui import QPalette, QColor
 from PyQt5.QtCore import Qt
 import time
-from Dialogs.TimeLineDialog import TimeLineDialog
+from GUI.Dialogs.TimeLineDialog import TimeLineDialog
 
 class Ui_MainWindow(object):
     dataLineDictionary = {}
