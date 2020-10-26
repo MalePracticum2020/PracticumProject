@@ -15,7 +15,7 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtGui import QPixmap, QImage
 import PyQt5.QtCore as QtCore
 import os
-from Dialogs.EditDialog import EditDialog
+from GUI.Dialogs.EditDialog import EditDialog
 from PyQt5.QtCore import Qt
 
 # Look for your absolute directory path
@@ -55,7 +55,8 @@ class Keypresses(QWidget):
     # @cached(cache ={}) 
     def openJsonFile(self):
         try:
-            with open(self.folder_path+'/ParsedLogs/Keypresses.JSON') as json_file:
+            self.file = self.folder_path+'/ParsedLogs/Keypresses.JSON'
+            with open(self.file) as json_file:
                 data = json.load(json_file)
                 self.tableWidget.setRowCount(len(data))
                 row = 0
@@ -68,14 +69,15 @@ class Keypresses(QWidget):
                     cell = QTableWidgetItem(str(p['start']))
                     self.tableWidget.setItem(row, 1, cell)
 
+                    self.classname.append(p['className'])
+                    cell = QTableWidgetItem(p['className'])
+                    self.tableWidget.setItem(row, 2, cell)
 
                     self.content.append(p['content'])
                     cell = QTableWidgetItem(p['content'])
-                    self.tableWidget.setItem(row, 2, cell)
-
-                    self.classname.append(p['className'])
-                    cell = QTableWidgetItem(p['className'])
                     self.tableWidget.setItem(row, 3, cell)
+
+
                     row = row +1
             self.tableWidget.doubleClicked.connect(self.on_click)
         except:
@@ -88,7 +90,7 @@ class Keypresses(QWidget):
         column = -1
         for i in self.tableWidget.selectionModel().selection().indexes():
             row, column = i.row(), i.column()
-        if row > -1 and column > -1:
+        if row > -1 and column > -1 and column == 3:
             menu = QMenu()
             item1 = menu.addAction(u'Edit Tag')
             action = menu.exec_(self.tableWidget.mapToGlobal(pos))
@@ -104,7 +106,7 @@ class Keypresses(QWidget):
 
     def openEditDialog(self,cell):
         if self.editDialog == None:
-            self.editDialog = EditDialog(cell)
+            self.editDialog = EditDialog(cell, self.file)
         if self.editDialog.exec_():
             print("Success!")
         else:

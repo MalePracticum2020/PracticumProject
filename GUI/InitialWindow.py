@@ -9,8 +9,8 @@ import platform
 from pip._internal.utils import logging
 import threading
 from pip._internal.utils import logging
-from Dialogs.TagPopup import TagPopup
-from MainWindow.MainWindow import MainWindow
+from GUI.Dialogs.TagPopup import TagPopup
+from GUI.MainWindow.MainWindow import MainWindow
 from PyQt5.QtGui import QPalette, QColor
 from PyQt5.QtCore import Qt
 
