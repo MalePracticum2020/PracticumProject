@@ -12,6 +12,7 @@ import glob
 import subprocess
 from datetime import datetime
 import re
+import os
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -33,7 +34,7 @@ def displayApp(dst):
         iter = iter + 1
     
     trace1 = go.Scatter(x=xData, y=yData, mode='lines+markers')
-    f = go.FigureWidget(data=[trace1],layout=go.Layout(title=dict(text='HelloWOrld'),barmode='overlay'))
+    f = go.FigureWidget(data=[trace1],layout=go.Layout(title=dict(text='Throughput data'),barmode='overlay'))
 
     
     app.layout = html.Div([
@@ -49,11 +50,12 @@ packet=-1
     [dash.dependencies.Input('interval1', 'n_intervals')])
 def update_interval(n):
     global packet
-    with open("wiretodash.tmp","r") as files:
-        packett = files.read()
-    if packett != packet:
-        packet=packett
-        print("Going to packet ="+str(packet))
+    if os.path.exists("wiretodash.tmp"):
+        with open("wiretodash.tmp","r") as files:
+            packett = files.read()
+        if packett != packet:
+            packet=packett
+            print("Going to packet ="+str(packet))
         
 
         

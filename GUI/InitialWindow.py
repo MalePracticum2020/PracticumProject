@@ -136,5 +136,9 @@ def window():
 
 
 # os.system('python3 .\helloworld.py &') #threading.Thread(target= callme, daemon=True).start()
+if os.path.exists("wiretodash.tmp"):
+    os.remove("wiretodash.tmp")
+if os.path.exists("dashtowire.tmp"):
+    os.remove("dashtowire.tmp")
 window()
 
