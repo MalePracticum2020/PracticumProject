@@ -61,30 +61,22 @@ class InitialWindow(QMainWindow):
 
     # File manager to open pcap file in wireshark and timeline view
     def openFileEvent(self):
+        pcap_file = QFileDialog()
+        filenames, _ = QFileDialog.getOpenFileNames(
+            pcap_file, "Select File")
 
-        # Ask user if they want to import file or dir
-        import_type = QMessageBox.question(self,
-                                           "Open",
-                                           "Do you want to import a .pcap file?",
-                                           QMessageBox.Yes | QMessageBox.No)
+        if len(filenames) < 0:
+            logging.debug("File choose cancelled")
+            return
 
-        if import_type == QMessageBox.Yes:
-            pcap_file = QFileDialog()
-            filenames, _ = QFileDialog.getOpenFileNames(
-                pcap_file, "Select File")
-
-            if len(filenames) < 0:
-                logging.debug("File choose cancelled")
-                return
-
-            if len(filenames) > 0:
-                self.pcap_to_import = filenames[0]
-                if platform.system() == 'Darwin':  # macOS
-                    subprocess.call(('open', self.pcap_to_import))
-                elif platform.system() == 'Windows':  # Windows
-                    os.startfile(self.pcap_to_import)
-                else:  # linux variants
-                    subprocess.call(('xdg-open', self.pcap_to_import))
+        if len(filenames) > 0:
+            self.pcap_to_import = filenames[0]
+            if platform.system() == 'Darwin':  # macOS
+                subprocess.call(('open', self.pcap_to_import))
+            elif platform.system() == 'Windows':  # Windows
+                os.startfile(self.pcap_to_import)
+            else:  # linux variants
+                subprocess.call(('xdg-open', self.pcap_to_import))
             file_path = os.path.dirname(os.path.abspath(filenames[0]))
             file_path = file_path.replace('PCAP', '')
             self.MainWindowUi = MainWindow(file_path)
