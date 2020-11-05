@@ -19,6 +19,7 @@ from .DataLines.MouseClicks import MouseClicks
 from .DataLines.Auditd import Auditd
 from .DataLines.Keypresses import Keypresses
 from .DataLines.TimedScreenshots import TimedScreenshots
+from .DataLines.Suricata import Suricata
 import pandas as pd
 import plotly.express as px
 import os
@@ -265,6 +266,7 @@ class Ui_MainWindow(object):
         self.createDataLinesDisplayBoxes("", 2, "Auditd")
         self.createDataLinesDisplayBoxes("", 3, "MouseClicks")
         self.createDataLinesDisplayBoxes("", 4, "Keypresses")
+        self.createDataLinesDisplayBoxes("", 5, "Suricata")
 
         # self.save_button.clicked.connect(self.toggle)
         self.add_data_line.clicked.connect(self.openTimeLineDialog)
@@ -295,6 +297,7 @@ class Ui_MainWindow(object):
         self.Auditd = Auditd(folder_path)
         self.TimedScreenshots = TimedScreenshots(folder_path)
         self.Keypresses = Keypresses(folder_path)
+        self.Suricata = Suricata(folder_path)
 
     def dropDownAddDataLines(self):
         cb = CheckableComboBox()
@@ -363,6 +366,10 @@ class Ui_MainWindow(object):
                 table_flag = True
                 tablewidget = self.Keypresses.getTable()
                 color = Qt.darkGreen
+            if type_name == "Suricata" and self.Suricata.getTable() is not None:
+                table_flag = True
+                tablewidget = self.Suricata.getTable()
+                color = Qt.darkCyan
             if table_flag is True:
                 tablewidget.setObjectName("widget" + str(itemIndex))
                 itemDictionaryValue = self.build_frame(itemIndex,type_name,tablewidget, color)#.update({"background-color":  color})
