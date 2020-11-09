@@ -108,12 +108,13 @@ class TimedScreenshots(QWidget,):
                 self.tableWidget.setItem(row, 2, cell)
 
                 self.content.append(p['content'])
-                pixmap = QPixmap("image:"+str(p['content']))
-                if not pixmap.isNull:
-                    pixmap.scaledToWidth(80)
-                    cell = QLabel(self)
-                    cell.setPixmap(pixmap)
-                    self.tableWidget.setCellWidget(row, 3, cell)
+                picture = p['content']
+                newpath = self.folder_path+ 'Timed'+ picture[picture.rindex('/'):]
+                cell = QPixmap(newpath).scaledToWidth(80)
+                if not cell.isNull:
+                    label = QLabel(self)
+                    label.setPixmap(cell)
+                    self.tableWidget.setCellWidget(row, 3, label)
                 else:
                     cell = QTableWidgetItem(p['content'])
                     self.tableWidget.setItem(row, 3, cell)
