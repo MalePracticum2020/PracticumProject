@@ -24,13 +24,15 @@ absolute_path = os.path.dirname(os.path.abspath(__file__))
 class TimedScreenshots(QWidget,):
     folder_path=""
     editDialog = None
-
+    dataJsonContent = None
+    
     def __del__(self):
         self.editDialog = None
 
-    def __init__(self,folder_path):
+    def __init__(self,folder_path,stringSearched):
         super(TimedScreenshots, self).__init__()
         self.folder_path = folder_path
+        self.stringSearched = stringSearched
         self.createTable()
 
     time_id = []
@@ -41,15 +43,33 @@ class TimedScreenshots(QWidget,):
 
     def createTable(self):
        # Create table
+        self.setTableBasicStructure()
+        self.openJsonFile()
+        self.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.tableWidget.customContextMenuRequested.connect(self.editMenu)
+
+    def setTableBasicStructure(self):
         self.tableWidget = QTableWidget(self)
         self.tableWidget.setColumnCount(5)
         self.tableWidget.setHorizontalHeaderLabels(["Timed_id", "Start", "ClassName", "Content","Type"])
         self.tableWidget.verticalHeader().setVisible(True)
         self.tableWidget.horizontalHeader().setStretchLastSection(True) 
         self.tableWidget.horizontalHeader().setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)#(QHeaderView.Stretch)
-        self.openJsonFile()
-        self.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)
-        self.tableWidget.customContextMenuRequested.connect(self.editMenu)
+
+    def modifyTable(self,stringSearched):
+        if not stringSearched == self.stringSearched:
+            self.stringSearched = stringSearched
+            self.time_id = []
+            self.content = []
+            self.types = []
+            self.classname = []
+            self.start = []
+            # Create table
+            self.tableWidget = None
+            self.setTableBasicStructure()
+            self.buildTableFromSearchInformation()
+            self.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)
+            self.tableWidget.customContextMenuRequested.connect(self.editMenu)
 
     # @cached(cache ={}) 
     def openJsonFile(self):
@@ -57,41 +77,50 @@ class TimedScreenshots(QWidget,):
             self.file = self.folder_path+'/ParsedLogs/TimedScreenshots.JSON'
             with open(self.file) as json_file:
                 data = json.load(json_file)
-                self.tableWidget.setRowCount(len(data))
-                row = 0
-                for p in data:
-                    self.time_id.append(p['timed_id'])
-                    cell = QTableWidgetItem(str(p['timed_id']))
-                    self.tableWidget.setItem(row, 0, cell)
-
-                    self.start.append(p['start'])
-                    cell = QTableWidgetItem(str(p['start']))
-                    self.tableWidget.setItem(row, 1, cell)
-
-                    self.classname.append(p['classname'])
-                    cell = QTableWidgetItem(p['classname'])
-                    self.tableWidget.setItem(row, 2, cell)
-
-                    self.content.append(p['content'])
-                    pixmap = QPixmap("image:"+str(p['content']))
-                    if not pixmap.isNull:
-                        pixmap.scaledToWidth(80)
-                        cell = QLabel(self)
-                        cell.setPixmap(pixmap)
-                        self.tableWidget.setCellWidget(row, 3, cell)
-                    else:
-                        cell = QTableWidgetItem(p['content'])
-                        self.tableWidget.setItem(row, 3, cell)
-
-                    self.types.append(p['type'])
-                    cell = QTableWidgetItem(p['type'])
-                    self.tableWidget.setItem(row, 4, cell)
-                    row = row +1
-            self.tableWidget.doubleClicked.connect(self.on_click)
+                self.dataJsonContent = data
+                self.buildTableFromSearchInformation()
+                
         except:
             print("Something went wrong while reading TimedScreenshots.JSON")
             self.tableWidget = None
 
+
+    def buildTableFromSearchInformation(self):
+        self.tableWidget.setRowCount(len(self.dataJsonContent))
+        row = 0
+        for p in self.dataJsonContent:
+            if self.stringSearched not in json.dumps(p): 
+                self.tableWidget.removeRow(row)
+                continue
+            else:
+                self.time_id.append(p['timed_id'])
+                cell = QTableWidgetItem(str(p['timed_id']))
+                self.tableWidget.setItem(row, 0, cell)
+
+                self.start.append(p['start'])
+                cell = QTableWidgetItem(str(p['start']))
+                self.tableWidget.setItem(row, 1, cell)
+
+                self.classname.append(p['classname'])
+                cell = QTableWidgetItem(p['classname'])
+                self.tableWidget.setItem(row, 2, cell)
+
+                self.content.append(p['content'])
+                pixmap = QPixmap("image:"+str(p['content']))
+                if not pixmap.isNull:
+                    pixmap.scaledToWidth(80)
+                    cell = QLabel(self)
+                    cell.setPixmap(pixmap)
+                    self.tableWidget.setCellWidget(row, 3, cell)
+                else:
+                    cell = QTableWidgetItem(p['content'])
+                    self.tableWidget.setItem(row, 3, cell)
+
+                self.types.append(p['type'])
+                cell = QTableWidgetItem(p['type'])
+                self.tableWidget.setItem(row, 4, cell)
+            row = row +1
+        self.tableWidget.doubleClicked.connect(self.on_click)
 
     def editMenu(self, pos):
         row = -1
@@ -107,7 +136,6 @@ class TimedScreenshots(QWidget,):
 
     @pyqtSlot()
     def on_click(self):
-        print(self.on_click)
         for currentQTableWidgetItem in self.tableWidget.selectedItems():
             print(type(currentQTableWidgetItem))
             print(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text())
