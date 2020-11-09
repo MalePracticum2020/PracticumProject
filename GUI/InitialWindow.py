@@ -1,6 +1,5 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
-from PyQt5.QtWidgets import (QApplication, QFrame, QStyleFactory,
-                             QProxyStyle, QStyle, QMainWindow, QFileDialog, QMessageBox)
+from PyQt5.QtWidgets import (QApplication, QFrame, QStyleFactory,QProxyStyle, QStyle, QMainWindow, QFileDialog, QMessageBox)
 import sys
 import os
 import subprocess
