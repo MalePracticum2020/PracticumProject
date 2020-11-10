@@ -1,19 +1,14 @@
-import plotly
-from plotly.graph_objs import Scatter, Layout
+
 import json
-import datetime
-from datetime import datetime
-import plotly.express as px
-import plotly.graph_objects as go
-import pandas as pd
-from cachetools import cached 
-import time 
+import subprocess
 import sys
+from PIL import Image
+import matplotlib.image as mpimg
+import matplotlib.pyplot as plt
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QApplication, QWidget, QTableWidget,QTableWidgetItem,QVBoxLayout, QLabel,QHeaderView,QMenu
+from PyQt5.QtWidgets import QWidget, QTableWidget,QTableWidgetItem, QLabel,QMenu
 from PyQt5.QtCore import pyqtSlot
-from PyQt5.QtGui import QPixmap, QImage
-import PyQt5.QtCore as QtCore
+from PyQt5.QtGui import QPixmap
 import os
 from GUI.Dialogs.EditDialog import EditDialog
 from PyQt5.QtCore import Qt
@@ -31,9 +26,11 @@ class TimedScreenshots(QWidget,):
 
     def __init__(self,folder_path,stringSearched):
         super(TimedScreenshots, self).__init__()
+        self.fileList = []
         self.folder_path = folder_path
         self.stringSearched = stringSearched
         self.createTable()
+
 
     time_id = []
     content = []
@@ -109,13 +106,15 @@ class TimedScreenshots(QWidget,):
 
                 self.content.append(p['content'])
                 picture = p['content']
-                newpath = self.folder_path+ 'Timed'+ picture[picture.rindex('/'):]
-                cell = QPixmap(newpath).scaledToWidth(80)
-                if not cell.isNull:
+                newpath = self.folder_path+'Timed'+ picture[picture.rindex('/'):]
+                self.fileList.append(newpath)
+                cell = QPixmap(newpath).scaledToWidth(160).scaledToHeight(160)
+                try:
                     label = QLabel(self)
+                    self.resize(cell.width(), cell.height())
                     label.setPixmap(cell)
                     self.tableWidget.setCellWidget(row, 3, label)
-                else:
+                except:
                     cell = QTableWidgetItem(p['content'])
                     self.tableWidget.setItem(row, 3, cell)
 
@@ -133,9 +132,17 @@ class TimedScreenshots(QWidget,):
         if row > -1 and column > -1 and column == 3:
             menu = QMenu()
             item1 = menu.addAction(u'Edit Tag')
+            item2 = menu.addAction(u'View Image')
             action = menu.exec_(self.tableWidget.mapToGlobal(pos))
             if action == item1:
                 self.openEditDialog(self.tableWidget.item(row, column))
+            elif action == item2:
+                self.openViewImage(self.fileList[row])
+                print(self.fileList[row])
+
+    def openViewImage(self, path):
+        img = mpimg.imread(path)
+        plt.imshow(img)
 
     @pyqtSlot()
     def on_click(self):
@@ -154,3 +161,4 @@ class TimedScreenshots(QWidget,):
 
     def getTable(self):
         return self.tableWidget
+
