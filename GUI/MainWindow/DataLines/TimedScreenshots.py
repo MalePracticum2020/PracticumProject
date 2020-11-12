@@ -9,7 +9,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QWidget, QTableWidget,QTableWidgetItem, QLabel,QMenu
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtGui import QPixmap
-import os
+import os, webbrowser
 from GUI.Dialogs.EditDialog import EditDialog
 from PyQt5.QtCore import Qt
 
@@ -138,11 +138,15 @@ class TimedScreenshots(QWidget,):
                 self.openEditDialog(self.tableWidget.item(row, column))
             elif action == item2:
                 self.openViewImage(self.fileList[row])
-                print(self.fileList[row])
+                print("This is the picture file", self.fileList[row])
 
     def openViewImage(self, path):
-        img = mpimg.imread(path)
-        plt.imshow(img)
+        # img = mpimg.imread(path)
+        # plt.imshow(img)
+        try:
+            img = Image.open(r''+path).show()
+        except IOError:
+            pass
 
     @pyqtSlot()
     def on_click(self):
