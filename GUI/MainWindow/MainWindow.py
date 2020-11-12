@@ -293,7 +293,7 @@ class Ui_MainWindow(object):
         self.Auditd = Auditd(folder_path, "")
         self.TimedScreenshots = TimedScreenshots(folder_path, "")
         self.Keypresses = Keypresses(folder_path, "")
-        self.Suricata = Suricata(folder_path,"")
+        # self.Suricata = Suricata(folder_path,"")
 
     def setWebEngine(self,address):
         # plotly app frame
@@ -350,9 +350,9 @@ class Ui_MainWindow(object):
             if type_name == "Keypresses" and self.Keypresses.getTable() is not None:
                 table_flag = True
                 tablewidget = self.Keypresses.getTable()
-            if type_name == "Suricata" and self.Suricata.getTable() is not None:
-                table_flag = True
-                tablewidget = self.Suricata.getTable()
+            # if type_name == "Suricata" and self.Suricata.getTable() is not None:
+            #     table_flag = True
+            #     tablewidget = self.Suricata.getTable()
             if table_flag is True:
                 tablewidget.setObjectName("widget" + str(itemIndex))
                 itemDictionaryValue = self.build_frame(itemIndex,type_name,tablewidget)

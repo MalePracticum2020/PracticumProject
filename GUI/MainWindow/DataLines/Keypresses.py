@@ -79,6 +79,8 @@ class Keypresses(QWidget):
                 data = json.load(json_file)
                 self.dataJsonContent = data
                 self.buildTableFromSearchInformation()
+                with open(self.folder_path+'/ParsedLogs/OGData/Keypresses.json', "w") as f:
+                    json.dump(data, f, indent=4)
         except:
             print("Something went wrong while reading Keypresses.JSON")
             self.tableWidget = None
