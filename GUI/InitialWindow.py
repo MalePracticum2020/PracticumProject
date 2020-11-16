@@ -96,17 +96,18 @@ class InitialWindow(QMainWindow):
             # file_path = file_path.replace('PCAP', '')
             # file_path=projFin
             print(projFin)
+            OGpath = os.path.join(projFin, 'ParsedLogs/OGData')
+            if not os.path.exists(OGpath):
+                try:
+                    os.makedirs(OGpath, exist_ok=True)
+                except OSError:
+                    print("Creation of the directory failed")
+            else:
+                print("Directory already exists")
             self.MainWindowUi = MainWindow(projFin)
             self.openMainWindowUi()
 
-        OGpath = os.path.join(file_path, 'ParsedLogs/OGData')
-        if not os.path.exists(OGpath):
-            try:
-                os.makedirs(OGpath, exist_ok=True)
-            except OSError:
-                print("Creation of the directory failed")
-        else:
-            print("Directory already exists")
+
 
     # pid = subprocess.Popen(["python3", "/home/kali/eceld-netsys/PracticumProject/GUI/helloworld.py", self.pcap_to_import])
 
