@@ -70,15 +70,33 @@ class InitialWindow(QMainWindow):
 
         if len(filenames) > 0:
             self.pcap_to_import = filenames[0]
+            projDir = self.pcap_to_import.split("ProjectData/")
+            projName = projDir[1].split("/")[0]
+            projFin=projDir[0]+"ProjectData/"+projName
             if platform.system() == 'Darwin':  # macOS
                 subprocess.call(('open', self.pcap_to_import))
             elif platform.system() == 'Windows':  # Windows
                 os.startfile(self.pcap_to_import)
             else:  # linux variants
-                subprocess.call(('xdg-open', self.pcap_to_import))
+                lua_scripts=[]
+                self.dissector_path=projFin+"/GeneratedDissectors/"
+                for r, d, f in os.walk(self.dissector_path):
+                    for file in f:
+                        if '.lua' in file:
+                            lua_scripts.append(os.path.join(r, file))
+                wirecmd='/usr/local/bin/wireshark -r '+self.pcap_to_import
+                if lua_scripts != None and len(lua_scripts) > 0:
+                    for lua_script in lua_scripts:
+                        wirecmd+= " -Xlua_script:" + lua_script
+                
+                subprocess.Popen(wirecmd.split())
+                # subprocess.call(('xdg-open', self.pcap_to_import))
+                    
             file_path = os.path.dirname(os.path.abspath(filenames[0]))
-            file_path = file_path.replace('PCAP', '')
-            self.MainWindowUi = MainWindow(file_path)
+            # file_path = file_path.replace('PCAP', '')
+            # file_path=projFin
+            print(projFin)
+            self.MainWindowUi = MainWindow(projFin)
             self.openMainWindowUi()
 
         OGpath = os.path.join(file_path, 'ParsedLogs/OGData')
