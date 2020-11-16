@@ -46,11 +46,15 @@ class TimeLineDialog(QDialog):
 	
 	def openColorDialog(self,dataLine):
 		color = QColorDialog.getColor()
+		aa=color.getRgb()
 		if color.isValid():
 			self.changeObjectBackgroundColor(dataLine['frame'], color)
 			self.changeObjectBackgroundColor(dataLine['scrollAreaWidget'], color)
 			self.changeObjectBackgroundColor(dataLine['scrollArea'], color)
 			self.changeObjectBackgroundColor(dataLine['tableWidget'], color)
+			# print(aa[0]*257,aa[1]*257,aa[2]*257)
+			# print(dataLine['name'])
+
 	
 	def changeObjectBackgroundColor(self, dataLineObject, color):
 		p = dataLineObject.palette()
