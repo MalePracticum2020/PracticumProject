@@ -32,6 +32,7 @@ def displayApp(dst):
         yData.append(entry["y"])
         globalThroughputMap[iter]=entry
         iter = iter + 1
+    
     trace1 = go.Scatter(x=xData, y=yData, mode='lines+markers')
     f = go.FigureWidget(data=[trace1],layout=go.Layout(title=dict(text='Throughput data'),barmode='overlay'))
 
@@ -43,57 +44,21 @@ def displayApp(dst):
         html.Div(id='hidden-div2', style={'display':'none'})
     ])
 
-selectTime=-1
 packet=-1 
-internalPacket=-1
 @app.callback(
     dash.dependencies.Output('hidden-div2', 'children'),
     [dash.dependencies.Input('interval1', 'n_intervals')])
 def update_interval(n):
     global packet
-    global selectTime
-    packetOffset=-1
-    internalPacket=-1
     if os.path.exists("wiretodash.tmp"):
         with open("wiretodash.tmp","r") as files:
             packett = files.read()
         if packett != packet:
             packet=packett
-            print("wire to dash packet ="+str(packet))
-    if os.path.exists("internalTime.tmp"):
-        with open("internalTime.tmp","r") as infile:
-            selectedTime=infile.read()
-        if selectTime != selectedTime:
-            try:
-                datetimeTarget=datetime.strptime(selectedTime, '%Y-%m-%dT%H:%M:%S') #2020-09-11 22:36:54
-                for i in range(0,len(globalThroughputMap)):
-                    datetimeObjCurr=datetime.strptime(globalThroughputMap[i]['start'], '%Y-%m-%dT%H:%M:%S')
-                    if datetimeObjCurr < datetimeTarget:
-                        packetOffset+=globalThroughputMap[i]['y']
-                    else:
-                        packetOffset+=globalThroughputMap[i]['y']
-                        break
-            except ValueError:
-                try:
-                    datetimeTarget=datetime.strptime(selectedTime, '%Y-%m-%dT%H:%M')
-                    for i in range(0,len(globalThroughputMap)):
-                        datetimeObjCurr=datetime.strptime(globalThroughputMap[i]['start'], '%Y-%m-%dT%H:%M:%S')
-                        if datetimeObjCurr < datetimeTarget:
-                            packetOffset+=globalThroughputMap[i]['y']
-                        else:
-                            packetOffset+=globalThroughputMap[i]['y']
-                            break
-                except:
-                    print("invalid time format, please select the time cell")
-                    selectTime = selectedTime
-            
-        if packetOffset != internalPacket:
-            print("dash to wire packet ="+str(packetOffset))
-            internalPacket = packetOffset
-            with open("dashtowire.tmp","w") as files:
-                files.write(str(packetOffset))
-            selectTime = selectedTime
+            print("Going to packet ="+str(packet))
+        
 
+        
 
 @app.callback(
     Output('hidden-div', 'children'),
@@ -119,8 +84,6 @@ def click_event_graph(hoverData):
         # print(packetOffset)
         with open("dashtowire.tmp","w") as files:
             files.write(str(packetOffset))
-        with open("internalTime.tmp","w") as outfile:
-                outfile.write(datetimeTarget.strftime("%Y-%m-%dT%H:%M:%S"))
     except TypeError: #Starting up of app causes typeerror for no reason... bug
         return None
 
@@ -144,24 +107,9 @@ if sys.argv[1]:
     relevDir=glob.glob(networkDataxyDir+'/ecel-export_*')
     print(relevDir)
     displayApp(relevDir[0]+"/parsed/tshark/networkDataXY.JSON")
-    app.run_server(debug=False, use_reloader=False) #port 8050 is default port
+    app.run_server(debug=False, use_reloader=True) #port 8050 is default port
 
 
 
 
 
-def time_to_packet(startTime):
-    global packetOffset
-    try:
-        datetimeTarget=datetime.strptime(startTime, '%Y-%m-%dT%H:%M:%S') #2020-09-11 22:36:54
-    except ValueError:
-        datetimeTarget=datetime.strptime(startTime, '%Y-%m-%dT%H:%M')
-    for i in range(0,len(globalThroughputMap)):
-        datetimeObjCurr=datetime.strptime(globalThroughputMap[i]['start'], '%Y-%m-%dT%H:%M:%S')
-        if datetimeObjCurr < datetimeTarget:
-            packetOffset+=globalThroughputMap[i]['y']
-        else:
-            packetOffset+=globalThroughputMap[i]['y']
-            break
-        print(packetOffset)
-    return packetOffset
