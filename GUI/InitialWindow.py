@@ -159,5 +159,7 @@ if os.path.exists("wiretodash.tmp"):
     os.remove("wiretodash.tmp")
 if os.path.exists("dashtowire.tmp"):
     os.remove("dashtowire.tmp")
+if os.path.exists("internalTime.tmp"):
+    os.remove("internalTime.tmp")
 window()
 

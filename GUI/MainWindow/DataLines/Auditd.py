@@ -18,6 +18,7 @@ import os
 from GUI.Dialogs.EditDialog import EditDialog
 from PyQt5.QtCore import Qt
 
+
 # Look for your absolute directory path
 absolute_path = os.path.dirname(os.path.abspath(__file__))
 
@@ -127,6 +128,8 @@ class Auditd(QWidget):
     @pyqtSlot()
     def on_click(self):
         for currentQTableWidgetItem in self.tableWidget.selectedItems():
+            with open("internalTime.tmp","w")as outfile:
+                outfile.write(currentQTableWidgetItem.text())
             print(type(currentQTableWidgetItem))
             print(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text())
 
