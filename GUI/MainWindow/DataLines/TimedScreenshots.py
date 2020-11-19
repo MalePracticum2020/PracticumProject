@@ -6,12 +6,13 @@ from PIL import Image
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QWidget, QTableWidget,QTableWidgetItem, QLabel,QMenu
+from PyQt5.QtWidgets import QWidget, QTableWidget,QTableWidgetItem, QLabel,QMenu, QApplication
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtGui import QPixmap
 import os, webbrowser
 from GUI.Dialogs.EditDialog import EditDialog
 from PyQt5.QtCore import Qt
+from GUI.OpenImage import OpenImage
 
 # Look for your absolute directory path
 absolute_path = os.path.dirname(os.path.abspath(__file__))
@@ -106,13 +107,21 @@ class TimedScreenshots(QWidget,):
 
                 self.content.append(p['content'])
                 picture = p['content']
-                newpath = self.folder_path+'Timed'+ picture[picture.rindex('/'):]
+                newpath = self.folder_path+'/Timed'+ picture[picture.rindex('/'):]
                 self.fileList.append(newpath)
-                cell = QPixmap(newpath).scaledToWidth(160).scaledToHeight(160)
+                counter = 0
+                thumb = Image.open(newpath)
+                thumb.thumbnail((150,150))
+                thumbPath = newpath.replace('screenshot', 'thumbnail')
+                thumbPath.replace('png', 'jpg')
+                thumb.save(thumbPath)
+                # cell = QPixmap(newpath).scaledToWidth(160).scaledToHeight(160)
+                # image = QPixmap(newpath)
+                image = QPixmap(thumbPath)
                 try:
                     label = QLabel(self)
-                    self.resize(cell.width(), cell.height())
-                    label.setPixmap(cell)
+                    self.resize(image.width(), image.height())
+                    label.setPixmap(image)
                     self.tableWidget.setCellWidget(row, 3, label)
                 except:
                     cell = QTableWidgetItem(p['content'])
@@ -143,10 +152,14 @@ class TimedScreenshots(QWidget,):
     def openViewImage(self, path):
         # img = mpimg.imread(path)
         # plt.imshow(img)
+        # try:
+        #     img = Image.open(r''+path).show()
+        # except IOError:
+        #     pass
         try:
-            img = Image.open(r''+path).show()
-        except IOError:
-            pass
+            image = OpenImage(path)
+        except:
+            print('COULD NOT OPEN IMAGE')
 
     @pyqtSlot()
     def on_click(self):
