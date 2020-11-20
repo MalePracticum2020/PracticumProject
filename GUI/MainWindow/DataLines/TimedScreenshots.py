@@ -157,7 +157,10 @@ class TimedScreenshots(QWidget,):
         # except IOError:
         #     pass
         try:
-            image = OpenImage(path)
+            # image = OpenImage(path)
+            img = mpimg.imread(path)
+            plt.imshow(img)
+            plt.show()
         except:
             print('COULD NOT OPEN IMAGE')
 
