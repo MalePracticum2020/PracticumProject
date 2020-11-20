@@ -151,12 +151,6 @@ class TimedScreenshots(QWidget,):
                 print("This is the picture file", self.fileList[row])
 
     def openViewImage(self, path):
-        # img = mpimg.imread(path)
-        # plt.imshow(img)
-        # try:
-        #     img = Image.open(r''+path).show()
-        # except IOError:
-        #     pass
         try:
             # image = OpenImage(path)
             # img = mpimg.imread(path)
