@@ -2,6 +2,7 @@
 import json
 import subprocess
 import sys
+import platform
 from PIL import Image
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
@@ -158,9 +159,15 @@ class TimedScreenshots(QWidget,):
         #     pass
         try:
             # image = OpenImage(path)
-            img = mpimg.imread(path)
-            plt.imshow(img)
-            plt.show()
+            # img = mpimg.imread(path)
+            # plt.imshow(img)
+            # plt.show()
+            if platform.system() == 'Darwin':  # macOS
+                subprocess.call(('open', path))
+            elif platform.system() == 'Windows':  # Windows
+                os.startfile(path)
+            else:
+                subprocess.call(['/usr/bin/ristretto', path])
         except:
             print('COULD NOT OPEN IMAGE')
 
