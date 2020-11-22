@@ -81,7 +81,7 @@ class Suricata(QWidget):
     # @cached(cache ={}) 
     def openJsonFile(self):
         try:
-            self.file = self.folder_path+'/ParsedLogs/Suricata.JSON' # '/home/kali/PycharmProjects/PracticumProject/GUI/MainWindow/DataLines/ParsedLogs/Suricata.JSON'
+            self.file = '/home/kali/PycharmProjects/PracticumProject/GUI/MainWindow/DataLines/ParsedLogs/Suricata.JSON'
             with open(self.file) as json_file:
                 data = json.load(json_file)
                 self.dataJsonContent = data
