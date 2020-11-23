@@ -114,7 +114,7 @@ class InitialWindow(QMainWindow):
 
     def openFileNameDialog(self):
         dialog = QFileDialog()
-        projectName, okPressed = QInputDialog.getText(self, "Enter Name of New Project", "This will placed in Project Data folder: ")
+        projectName, okPressed = QInputDialog.getText(self, "Enter Name of New Project", "This will placed in eceld-netsys/ProjectData folder: ")
         if okPressed and projectName != " ":
             print(projectName, "FIND ME")
             folder_path = dialog.getExistingDirectory(None, "Select Folder")
