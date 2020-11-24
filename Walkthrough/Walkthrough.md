@@ -1,12 +1,14 @@
-##Linux Walkthrough
-###Command to run the GUI
+#Linux Walkthrough
+
+##Command to run the GUI
+
 `sudo python3 -m GUI.InitialWindow.py --no-sandbox'
 
-###File Menu
+#File Menu
 ![File Menu](./FileMenu.png)
 Uses system's file manager for selection
 
-###Starting Screen
+##Starting Screen
 ![Starting Screen](./StartingScreen.png)
 
 Once the project has been created/selected. eceld-wireshark and the timeline view
@@ -22,7 +24,7 @@ dataline can also be right clicked to show what possible actions can be performe
 on the data. Any edited information will be saved in OGData in the ParsedLogs folder
 of the project. 
 
-###Adding a Dataline
+##Adding a Dataline
 ![Adding Dataline](./AddDataline.png)
 
 To add a dataline people can choose which datalines they want displayed by using checkboxes.
