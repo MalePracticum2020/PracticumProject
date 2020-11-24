@@ -45,8 +45,12 @@ class Keypresses(QWidget):
         # Create table
         self.setTableBasicStructure()
         self.openJsonFile()
-        self.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)
-        self.tableWidget.customContextMenuRequested.connect(self.editMenu)
+        if not self.tableWidget == None:
+            try:
+                self.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)
+                self.tableWidget.customContextMenuRequested.connect(self.editMenu)
+            except Exception as e:
+                print(e)
         
     def setTableBasicStructure(self):
         self.tableWidget = QTableWidget(self)
@@ -81,8 +85,9 @@ class Keypresses(QWidget):
                 self.buildTableFromSearchInformation()
                 with open(self.folder_path+'/ParsedLogs/OGData/Keypresses.json', "w") as f:
                     json.dump(data, f, indent=4)
-        except:
+        except Exception as e:
             print("Something went wrong while reading Keypresses.JSON")
+            print(e)
             self.tableWidget = None
 
     def buildTableFromSearchInformation(self):

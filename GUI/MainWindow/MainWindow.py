@@ -354,10 +354,10 @@ class Ui_MainWindow(object):
                 table_flag = True
                 tablewidget = self.Keypresses.getTable()
                 color = Qt.darkGreen
-            if type_name == "Suricata" and self.Suricata.getTable() is not None:
-                table_flag = True
-                tablewidget = self.Suricata.getTable()
-                color = Qt.cyan
+            # if type_name == "Suricata" and self.Suricata.getTable() is not None:
+            #     table_flag = True
+            #     tablewidget = self.Suricata.getTable()
+            #     color = Qt.cyan
             if table_flag is True:
                 tablewidget.setObjectName("widget" + str(itemIndex))
                 itemDictionaryValue = self.build_frame(itemIndex,type_name,tablewidget,color)
