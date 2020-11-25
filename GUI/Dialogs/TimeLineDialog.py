@@ -13,21 +13,26 @@ class TimeLineDialog(QDialog):
 
 
 		for i in range(len(dataLineDictionary)):
-			horizontalLayout = QHBoxLayout()
-			self.checkboxes.append(QCheckBox(dataLineDictionary[i]['name'], self))
-			if dataLineDictionary[i]['frame'].isHidden():
-				self.checkboxes[i].setChecked(False)
-			else:
-				self.checkboxes[i].setChecked(True)
-			self.checkboxes[i].clicked.connect(lambda _,a=i: self.showDataLine(self.checkboxes[a],dataLineDictionary[a]))
+			try:
+				horizontalLayout = QHBoxLayout()
+				self.checkboxes.append(QCheckBox(dataLineDictionary[i]['name'], self))
+				if dataLineDictionary[i]['frame'].isHidden():
+					self.checkboxes[i].setChecked(False)
+				else:
+					self.checkboxes[i].setChecked(True)
+				self.checkboxes[i].clicked.connect(lambda _,a=i: self.showDataLine(self.checkboxes[a],dataLineDictionary[a]))
 
-			horizontalLayout.addWidget(self.checkboxes[i])
-			if not dataLineDictionary[i]['name'] == "Plotly":
-				button = QPushButton('Color', self)
-				button.setToolTip('Color')
-				button.clicked.connect(lambda _,a=i: self.on_click(dataLineDictionary[a]))
-				horizontalLayout.addWidget(button)
-			self.layout.addLayout(horizontalLayout)
+				horizontalLayout.addWidget(self.checkboxes[i])
+				if not dataLineDictionary[i]['name'] == "Plotly":
+					button = QPushButton('Color', self)
+					button.setToolTip('Color')
+					button.clicked.connect(lambda _,a=i: self.on_click(dataLineDictionary[a]))
+					horizontalLayout.addWidget(button)
+				self.layout.addLayout(horizontalLayout)
+
+			except Exception as e:
+				print("Something went wrong on TimeLineDialog")
+				print(e)
 
 		self.setLayout(self.layout)
 

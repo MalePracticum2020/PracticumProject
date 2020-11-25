@@ -359,10 +359,11 @@ class Ui_MainWindow(object):
                 tablewidget = self.Suricata.getTable()
                 color = Qt.cyan
             if table_flag is True:
-                tablewidget.setObjectName("widget" + str(itemIndex))
-                itemDictionaryValue = self.build_frame(itemIndex,type_name,tablewidget,color)
-                self.split_modules.addWidget(itemDictionaryValue['frame'])
-                self.verticalLayout_6.addWidget(self.split_modules)
+                if tablewidget is not None:
+                    tablewidget.setObjectName("widget" + str(itemIndex))
+                    itemDictionaryValue = self.build_frame(itemIndex,type_name,tablewidget,color)
+                    self.split_modules.addWidget(itemDictionaryValue['frame'])
+                    self.verticalLayout_6.addWidget(self.split_modules)
 
     def build_frame(self, itemIndex, type_name, tablewidget, color):
         frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
