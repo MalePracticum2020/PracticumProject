@@ -25,7 +25,7 @@ class InitialWindow(QMainWindow):
     def __init__(self):
         super(InitialWindow, self).__init__()
         self.setGeometry(200, 200, 300, 300)
-        self.resize(800, 600)
+        self.resize(1000, 500)
         self.setWindowTitle("Data Visualization System")
         self.initUI()
 
