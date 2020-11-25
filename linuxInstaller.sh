@@ -14,6 +14,6 @@ fi
 
 pip install pip --upgrade
 
-sudo pip install PyQT5 plotly dash Flask pandas plotly-express cachetools
+pip install PyQT5 plotly dash Flask pandas plotly-express cachetools
 
 sudo python3 -m pip install ipywidgets
