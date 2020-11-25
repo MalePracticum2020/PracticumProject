@@ -143,10 +143,23 @@ class TimedScreenshots(QWidget,):
     def openViewImage(self, path):
         # img = mpimg.imread(path)
         # plt.imshow(img)
+        # try:
+        #     img = Image.open(r''+path).show()
+        # except IOError:
+        #     pass
         try:
-            img = Image.open(r''+path).show()
-        except IOError:
-            pass
+            # image = OpenImage(path)
+            # img = mpimg.imread(path)
+            # plt.imshow(img)
+            # plt.show()
+            if platform.system() == 'Darwin':  # macOS
+                subprocess.call(('open', path))
+            elif platform.system() == 'Windows':  # Windows
+                os.startfile(path)
+            else:
+                subprocess.call(['/usr/bin/ristretto', path])
+        except:
+            print('COULD NOT OPEN IMAGE')
 
     @pyqtSlot()
     def on_click(self):
