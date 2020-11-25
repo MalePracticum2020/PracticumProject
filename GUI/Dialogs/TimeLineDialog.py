@@ -47,13 +47,34 @@ class TimeLineDialog(QDialog):
 	def openColorDialog(self,dataLine):
 		color = QColorDialog.getColor()
 		aa=color.getRgb()
+		colormap={"Auditd":"syscal"}
 		if color.isValid():
 			self.changeObjectBackgroundColor(dataLine['frame'], color)
 			self.changeObjectBackgroundColor(dataLine['scrollAreaWidget'], color)
 			self.changeObjectBackgroundColor(dataLine['scrollArea'], color)
 			self.changeObjectBackgroundColor(dataLine['tableWidget'], color)
-			# print(aa[0]*257,aa[1]*257,aa[2]*257)
-			# print(dataLine['name'])
+			print(aa[0]*257,aa[1]*257,aa[2]*257)
+			print(dataLine['name'])
+			moddedtext=""
+			with open("defaultcolorfilters","r") as colorfile:
+				for line in colorfile:
+					if colormap[dataLine['name']] in line:
+						oldline=line
+						oldline=line.split("@")
+						temp=oldline[3].split("]")
+						# print(temp)
+						a=str(aa[0]*257)
+						b=str(aa[1]*257)
+						c=str(aa[2]*257)
+						newcolor = a+","+b+","+c+"]"+temp[1]+"]\n"
+						print("@"+oldline[1]+"@"+oldline[2]+"@["+newcolor)
+						moddedtext+="@"+oldline[1]+"@"+oldline[2]+"@["+newcolor
+					else:
+						moddedtext+=line
+			with open("defaultcolorfilters","w") as colorfile:
+				colorfile.write(moddedtext)
+			# fout.close()
+
 
 	
 	def changeObjectBackgroundColor(self, dataLineObject, color):
