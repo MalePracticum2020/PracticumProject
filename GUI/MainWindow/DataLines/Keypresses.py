@@ -18,6 +18,8 @@ import os
 from GUI.Dialogs.EditDialog import EditDialog
 from PyQt5.QtCore import Qt
 
+
+
 # Look for your absolute directory path
 absolute_path = os.path.dirname(os.path.abspath(__file__))
 
@@ -45,12 +47,8 @@ class Keypresses(QWidget):
         # Create table
         self.setTableBasicStructure()
         self.openJsonFile()
-        if not self.tableWidget == None:
-            try:
-                self.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)
-                self.tableWidget.customContextMenuRequested.connect(self.editMenu)
-            except Exception as e:
-                print(e)
+        self.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.tableWidget.customContextMenuRequested.connect(self.editMenu)
         
     def setTableBasicStructure(self):
         self.tableWidget = QTableWidget(self)
@@ -85,9 +83,8 @@ class Keypresses(QWidget):
                 self.buildTableFromSearchInformation()
                 with open(self.folder_path+'/ParsedLogs/OGData/Keypresses.json', "w") as f:
                     json.dump(data, f, indent=4)
-        except Exception as e:
+        except:
             print("Something went wrong while reading Keypresses.JSON")
-            print(e)
             self.tableWidget = None
 
     def buildTableFromSearchInformation(self):
@@ -132,6 +129,8 @@ class Keypresses(QWidget):
     @pyqtSlot()
     def on_click(self):
         for currentQTableWidgetItem in self.tableWidget.selectedItems():
+            with open("internalTime.tmp","w") as outfile:
+                outfile.write(currentQTableWidgetItem.text())
             print(type(currentQTableWidgetItem))
             print(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text())
 

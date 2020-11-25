@@ -1,7 +1,6 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
-from PyQt5.QtWidgets import (QApplication, QFrame, QStyleFactory,QProxyStyle, QStyle, QMainWindow, QFileDialog, QMessageBox, QInputDialog, QLineEdit)
+from PyQt5.QtWidgets import (QApplication, QFrame, QStyleFactory,QProxyStyle, QStyle, QMainWindow, QFileDialog, QMessageBox)
 import sys
-import shutil
 import os
 import subprocess
 import platform
@@ -114,25 +113,17 @@ class InitialWindow(QMainWindow):
 
     def openFileNameDialog(self):
         dialog = QFileDialog()
-        projectName, okPressed = QInputDialog.getText(self, "Enter Name of New Project", "This will placed in eceld-netsys/ProjectData folder: ")
-        if okPressed and projectName != " ":
-            print(projectName, "FIND ME")
-            folder_path = dialog.getExistingDirectory(None, "Select Folder")
-            if folder_path:
-                newPath = os.path.dirname(folder_path)+'/'+projectName #creates the new project path with the new project name
-                try:
-                    shutil.copytree(folder_path, newPath)
-                except:
-                    print("A folder with this name already exists")
-                pcap_file = folder_path + '/PCAP/AnnotatedPCAP.pcapng'
-                if platform.system() == 'Darwin':  # macOS
-                    subprocess.call(('open', pcap_file))
-                elif platform.system() == 'Windows':  # Windows
-                    os.startfile(pcap_file)
-                else:  # linux variants
-                    subprocess.call(('xdg-open', pcap_file))
-                self.MainWindowUi = MainWindow(newPath)
-                self.openMainWindowUi()
+        folder_path = dialog.getExistingDirectory(None, "Select Folder")
+        if folder_path:
+            pcap_file = folder_path + '/PCAP/AnnotatedPCAP.pcapng'
+            if platform.system() == 'Darwin':  # macOS
+                subprocess.call(('open', pcap_file))
+            elif platform.system() == 'Windows':  # Windows
+                os.startfile(pcap_file)
+            else:  # linux variants
+                subprocess.call(('xdg-open', pcap_file))
+            self.MainWindowUi = MainWindow(folder_path)
+            self.openMainWindowUi()
 
 
 def window():

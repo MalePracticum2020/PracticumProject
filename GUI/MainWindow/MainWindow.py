@@ -29,7 +29,7 @@ from PyQt5.QtGui import QPalette, QColor
 from PyQt5.QtCore import Qt
 import time
 from GUI.Dialogs.TimeLineDialog import TimeLineDialog
-
+from datetime import datetime
 class Ui_MainWindow(object):
     dataLineDictionary = {}
     dataLineDialog = None
@@ -293,7 +293,7 @@ class Ui_MainWindow(object):
         self.Auditd = Auditd(folder_path, "")
         self.TimedScreenshots = TimedScreenshots(folder_path, "")
         self.Keypresses = Keypresses(folder_path, "")
-        # self.Suricata = Suricata(folder_path,"")
+        self.Suricata = Suricata(folder_path,"")
 
     def setWebEngine(self,address):
         # plotly app frame
@@ -354,10 +354,10 @@ class Ui_MainWindow(object):
                 table_flag = True
                 tablewidget = self.Keypresses.getTable()
                 color = Qt.darkGreen
-            # if type_name == "Suricata" and self.Suricata.getTable() is not None:
-            #     table_flag = True
-            #     tablewidget = self.Suricata.getTable()
-            #     color = Qt.cyan
+            if type_name == "Suricata" and self.Suricata.getTable() is not None:
+                table_flag = True
+                tablewidget = self.Suricata.getTable()
+                color = Qt.cyan
             if table_flag is True:
                 tablewidget.setObjectName("widget" + str(itemIndex))
                 itemDictionaryValue = self.build_frame(itemIndex,type_name,tablewidget,color)
@@ -449,7 +449,25 @@ class Ui_MainWindow(object):
             if type_name == "Suricata":
                 self.Suricata.modifyTable(self.lineEdit.text())
                 self.replaceWidgetAndSave(i, self.Suricata.getTable(),type_name)
-    
+    oldDateTime=-1
+    def refreshDataLinesViewsTimer(self):
+        if os.path.exists("internalTime.tmp"):
+            datetimeTarget=-1
+            with open("internalTime.tmp","r") as infile:
+                selectedTime=infile.read()
+            try:
+                datetimeTarget=datetime.strptime(selectedTime, '%Y-%m-%dT%H:%M:%S') #2020-09-11 22:36:54
+            except ValueError:
+                try:
+                    datetimeTarget=datetime.strptime(selectedTime, '%Y-%m-%dT%H:%M')
+                except:
+                    #print("invalid time format, please select the time cell")
+                    pass #do not duplicate error messages
+            if self.oldDateTime != datetimeTarget:
+                self.lineEdit.setText(selectedTime)
+                self.refreshDataLinesViews()
+                self.oldDateTime = datetimeTarget
+                
     def replaceWidgetAndSave(self, index, newWidget, type_name):
         gridLayout = self.findChild(QGridLayout, str(type_name + "_gridLayout"))
         oldWidget = self.dataLineDictionary[index]["tableWidget"]
@@ -524,6 +542,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         dark_palette.setColor(QPalette.Link, QColor(42, 130, 218))
         dark_palette.setColor(QPalette.Highlight, QColor(42, 130, 218))
         dark_palette.setColor(QPalette.HighlightedText, Qt.black)
+        self.timer=QtCore.QTimer()
+        self.timer.timeout.connect(self.refreshDataLinesViewsTimer)
+        self.timer.start(500)
         self.setPalette(dark_palette)
 
     def close_window(self):

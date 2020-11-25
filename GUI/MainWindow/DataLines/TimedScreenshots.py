@@ -2,18 +2,16 @@
 import json
 import subprocess
 import sys
-import platform
 from PIL import Image
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QWidget, QTableWidget,QTableWidgetItem, QLabel,QMenu, QApplication
+from PyQt5.QtWidgets import QWidget, QTableWidget,QTableWidgetItem, QLabel,QMenu
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtGui import QPixmap
 import os, webbrowser
 from GUI.Dialogs.EditDialog import EditDialog
 from PyQt5.QtCore import Qt
-from GUI.OpenImage import OpenImage
 
 # Look for your absolute directory path
 absolute_path = os.path.dirname(os.path.abspath(__file__))
@@ -44,12 +42,8 @@ class TimedScreenshots(QWidget,):
        # Create table
         self.setTableBasicStructure()
         self.openJsonFile()
-        if not self.tableWidget == None:
-            try:
-                self.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)
-                self.tableWidget.customContextMenuRequested.connect(self.editMenu)
-            except Exception as e:
-                print(e)
+        self.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.tableWidget.customContextMenuRequested.connect(self.editMenu)
 
     def setTableBasicStructure(self):
         self.tableWidget = QTableWidget(self)
@@ -85,9 +79,8 @@ class TimedScreenshots(QWidget,):
                 with open(self.folder_path+'/ParsedLogs/OGData/TimedScreenshots.json', "w") as f:
                     json.dump(data, f, indent=4)
                 
-        except Exception as e:
+        except:
             print("Something went wrong while reading TimedScreenshots.JSON")
-            print(e)
             self.tableWidget = None
 
 
@@ -113,21 +106,13 @@ class TimedScreenshots(QWidget,):
 
                 self.content.append(p['content'])
                 picture = p['content']
-                newpath = self.folder_path+'/Timed'+ picture[picture.rindex('/'):]
+                newpath = self.folder_path+'Timed'+ picture[picture.rindex('/'):]
                 self.fileList.append(newpath)
-                counter = 0
-                thumb = Image.open(newpath)
-                thumb.thumbnail((150,150))
-                thumbPath = newpath.replace('screenshot', 'thumbnail')
-                thumbPath.replace('png', 'jpg')
-                thumb.save(thumbPath)
-                # cell = QPixmap(newpath).scaledToWidth(160).scaledToHeight(160)
-                # image = QPixmap(newpath)
-                image = QPixmap(thumbPath)
+                cell = QPixmap(newpath).scaledToWidth(160).scaledToHeight(160)
                 try:
                     label = QLabel(self)
-                    self.resize(image.width(), image.height())
-                    label.setPixmap(image)
+                    self.resize(cell.width(), cell.height())
+                    label.setPixmap(cell)
                     self.tableWidget.setCellWidget(row, 3, label)
                 except:
                     cell = QTableWidgetItem(p['content'])
@@ -156,23 +141,18 @@ class TimedScreenshots(QWidget,):
                 print("This is the picture file", self.fileList[row])
 
     def openViewImage(self, path):
+        # img = mpimg.imread(path)
+        # plt.imshow(img)
         try:
-            # image = OpenImage(path)
-            # img = mpimg.imread(path)
-            # plt.imshow(img)
-            # plt.show()
-            if platform.system() == 'Darwin':  # macOS
-                subprocess.call(('open', path))
-            elif platform.system() == 'Windows':  # Windows
-                os.startfile(path)
-            else:
-                subprocess.call(['/usr/bin/ristretto', path])
-        except:
-            print('COULD NOT OPEN IMAGE')
+            img = Image.open(r''+path).show()
+        except IOError:
+            pass
 
     @pyqtSlot()
     def on_click(self):
         for currentQTableWidgetItem in self.tableWidget.selectedItems():
+            with open("internalTime.tmp","w") as outfile:
+                outfile.write(currentQTableWidgetItem.text())
             print(type(currentQTableWidgetItem))
             print(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text())
 
