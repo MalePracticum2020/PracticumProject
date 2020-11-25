@@ -46,8 +46,12 @@ class MouseClicks(QWidget):
        # Create table
         self.setTableBasicStructure()
         self.openJsonFile()
-        self.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)
-        self.tableWidget.customContextMenuRequested.connect(self.editMenu)
+        if not self.tableWidget == None:
+            try:
+                self.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)
+                self.tableWidget.customContextMenuRequested.connect(self.editMenu)
+            except Exception as e:
+                print(e)
 
     def setTableBasicStructure(self):
         self.tableWidget = QTableWidget(self)
@@ -75,20 +79,20 @@ class MouseClicks(QWidget):
 
     # @cached(cache ={}) 
     def openJsonFile(self):
-        # try:
-        self.file = self.folder_path+'/ParsedLogs/MouseClicks.JSON'
-        print(self.file)
-        with open(self.file) as json_file:
-            data = json.load(json_file)
-            self.dataJsonContent = data
-            self.buildTableFromSearchInformation()
-            with open(self.folder_path+'/ParsedLogs/OGData/MouseClicks.json', "w") as f:
-                json.dump(data, f, indent=4)
+        try:
+            self.file = self.folder_path+'/ParsedLogs/MouseClicks.JSON'
+            print(self.file)
+            with open(self.file) as json_file:
+                data = json.load(json_file)
+                self.dataJsonContent = data
+                self.buildTableFromSearchInformation()
+                with open(self.folder_path+'/ParsedLogs/OGData/MouseClicks.json', "w") as f:
+                    json.dump(data, f, indent=4)
 
-        # except:
-        #     print(self.file)
-        #     print("Something went wrong while reading MouseClicks.JSON")
-        #     self.tableWidget = None
+        except Exception as e:
+            print("Something went wrong while reading MouseClicks.JSON")
+            print(e)
+            self.tableWidget = None
 
 
     def buildTableFromSearchInformation(self):
@@ -148,8 +152,6 @@ class MouseClicks(QWidget):
     @pyqtSlot()
     def on_click(self):
         for currentQTableWidgetItem in self.tableWidget.selectedItems():
-            with open("internalTime.tmp","w") as outfile:
-                outfile.write(currentQTableWidgetItem.text())
             print(type(currentQTableWidgetItem))
             print(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text())
 

@@ -34,8 +34,12 @@ class Suricata(QWidget):
         # Create table
         self.setTableBasicStructure()
         self.openJsonFile()
-        self.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)
-        self.tableWidget.customContextMenuRequested.connect(self.editMenu)
+        if not self.tableWidget == None:
+            try:
+                self.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)
+                self.tableWidget.customContextMenuRequested.connect(self.editMenu)
+            except Exception as e:
+                print(e)
 
     def setTableBasicStructure(self):
         self.tableWidget = QTableWidget(self)
@@ -60,38 +64,6 @@ class Suricata(QWidget):
             self.buildTableFromSearchInformation()
             self.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)
             self.tableWidget.customContextMenuRequested.connect(self.editMenu)
-    
-
-    # def openJsonFile(self):
-    #     try:
-    #         self.file = '/home/kali/PycharmProjects/PracticumProject/GUI/MainWindow/DataLines/ParsedLogs/Suricata.JSON'
-    #         with open(self.file) as json_file:
-    #             data = json.load(json_file)
-    #             self.tableWidget.setRowCount(len(data))
-    #             row = 0
-    #             for p in data:
-    #                 self.suricata_id.append(p['suricata_id'])
-    #                 cell = QTableWidgetItem(str(p['suricata_id']))
-    #                 self.tableWidget.setItem(row, 0, cell)
-
-    #                 self.start.append(p['start'])
-    #                 cell = QTableWidgetItem(str(p['start']))
-    #                 self.tableWidget.setItem(row, 1, cell)
-
-    #                 self.classname.append(p['className'])
-    #                 cell = QTableWidgetItem(p['className'])
-    #                 self.tableWidget.setItem(row, 2, cell)
-
-    #                 self.content.append(p['content'])
-    #                 cell = QTableWidgetItem(p['content'])
-    #                 self.tableWidget.setItem(row, 3, cell)
-
-
-    #                 row = row +1
-    #         self.tableWidget.doubleClicked.connect(self.on_click)
-    #     except:
-    #         print("Something went wrong while reading Suricata.JSON")
-    #         self.tableWidget = None
 
     # @cached(cache ={}) 
     def openJsonFile(self):
@@ -101,8 +73,9 @@ class Suricata(QWidget):
                 data = json.load(json_file)
                 self.dataJsonContent = data
                 self.buildTableFromSearchInformation()
-        except:
+        except Exception as e:
             print("Something went wrong while reading MouseClicks.JSON")
+            print(e)
             self.tableWidget = None
             
     def buildTableFromSearchInformation(self):
@@ -146,8 +119,6 @@ class Suricata(QWidget):
     @pyqtSlot()
     def on_click(self):
         for currentQTableWidgetItem in self.tableWidget.selectedItems():
-            with open("internalTime.tmp","w") as outfile:
-                outfile.write(currentQTableWidgetItem.text())
             print(type(currentQTableWidgetItem))
             print(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text())
 
