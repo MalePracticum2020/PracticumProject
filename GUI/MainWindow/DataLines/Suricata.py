@@ -6,6 +6,8 @@ from PyQt5.QtGui import QPixmap, QImage
 import os
 from GUI.Dialogs.EditDialog import EditDialog
 from PyQt5.QtCore import Qt
+from dateutil.parser import parse
+from datetime import datetime, date, timedelta
 
 # Look for your absolute directory path
 absolute_path = os.path.dirname(os.path.abspath(__file__))
@@ -22,6 +24,7 @@ class Suricata(QWidget):
         super(Suricata, self).__init__()
         self.folder_path = folder_path
         self.stringSearched = stringSearched
+        self.timeSearched = None
         self.createTable()
 
     suricata_id = []
@@ -50,9 +53,19 @@ class Suricata(QWidget):
         self.tableWidget.horizontalHeader().setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)#(QHeaderView.Stretch)
 
     
-    def modifyTable(self,stringSearched):
-        if not stringSearched == self.stringSearched:
+    def modifyTable(self,stringSearched,timeSearched):
+        try:
+            if not timeSearched == "":
+                incomingTimeSearched = parse(timeSearched)
+            else:
+                incomingTimeSearched = None
+        except Exception as e:
+            print(e)
+            incomingTimeSearched = None
+
+        if not stringSearched == self.stringSearched or not self.timeSearched == incomingTimeSearched:
             self.stringSearched = stringSearched
+            self.timeSearched = incomingTimeSearched
             self.suricata_id  = []
             self.content = []
             self.types = []
@@ -74,7 +87,7 @@ class Suricata(QWidget):
                 self.dataJsonContent = data
                 self.buildTableFromSearchInformation()
         except Exception as e:
-            print("Something went wrong while reading MouseClicks.JSON")
+            print("Something went wrong while reading Suricata.JSON")
             print(e)
             self.tableWidget = None
             
@@ -86,21 +99,36 @@ class Suricata(QWidget):
                 self.tableWidget.removeRow(row)
                 continue
             else:
-                self.suricata_id.append(p['suricata_id'])
-                cell = QTableWidgetItem(str(p['suricata_id']))
-                self.tableWidget.setItem(row, 0, cell)
+                showRow = False
+                if self.timeSearched == None:
+                    showRow = True
+                else:
+                    rowTime = parse(str(p['start']))
+                    # datetime(year, month, day, hour, minute, second, microsecond)
+                    if self.timeSearched.year == rowTime.year and self.timeSearched.month == rowTime.month and self.timeSearched.day == rowTime.day:
+                        if self.timeSearched.time().hour == rowTime.time().hour and self.timeSearched.time().minute == rowTime.time().minute:
+                            threeSecondsApart = abs(rowTime.time().second - self.timeSearched.time().second)
+                            if threeSecondsApart <= 20:
+                                showRow = True
+                if showRow :
+                    self.suricata_id.append(p['suricata_id'])
+                    cell = QTableWidgetItem(str(p['suricata_id']))
+                    self.tableWidget.setItem(row, 0, cell)
 
-                self.start.append(p['start'])
-                cell = QTableWidgetItem(str(p['start']))
-                self.tableWidget.setItem(row, 1, cell)
+                    self.start.append(p['start'])
+                    cell = QTableWidgetItem(str(p['start']))
+                    self.tableWidget.setItem(row, 1, cell)
 
-                self.classname.append(p['className'])
-                cell = QTableWidgetItem(p['className'])
-                self.tableWidget.setItem(row, 2, cell)
+                    self.classname.append(p['className'])
+                    cell = QTableWidgetItem(p['className'])
+                    self.tableWidget.setItem(row, 2, cell)
 
-                self.content.append(p['content'])
-                cell = QTableWidgetItem(p['content'])
-                self.tableWidget.setItem(row, 3, cell)
+                    self.content.append(p['content'])
+                    cell = QTableWidgetItem(p['content'])
+                    self.tableWidget.setItem(row, 3, cell)
+                else:
+                    self.tableWidget.removeRow(row)
+                    continue
             row = row +1
         self.tableWidget.doubleClicked.connect(self.on_click)
 
@@ -119,7 +147,10 @@ class Suricata(QWidget):
     @pyqtSlot()
     def on_click(self):
         for currentQTableWidgetItem in self.tableWidget.selectedItems():
+            with open("internalTime.tmp","w") as outfile:
+                outfile.write(self.tableWidget.item(currentQTableWidgetItem.row(),1).text())#currentQTableWidgetItem.text())
             print(type(currentQTableWidgetItem))
+            print("time: " + self.tableWidget.item(currentQTableWidgetItem.row(),1).text())
             print(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text())
 
     def openEditDialog(self,cell):
