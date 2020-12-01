@@ -57,6 +57,7 @@ class InitialWindow(QMainWindow):
     # Instead of openPopup, this will be replaced with the main window.
     def openMainWindowUi(self):
         self.MainWindowUi.show()
+        self.hide()
 
     # File manager to open pcap file in wireshark and timeline view
     def openFileEvent(self):

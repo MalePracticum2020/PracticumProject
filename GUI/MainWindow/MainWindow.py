@@ -446,7 +446,7 @@ class Ui_MainWindow(object):
         scrollareawidget.setGeometry(QtCore.QRect(0, 0, 752, 225))
         scrollareawidget.setObjectName(type_name +"_scrollareawidget")
         return scrollareawidget
-    
+
     def refreshDataLinesViews(self):
         for i in range(len(self.dataLineDictionary)):
             type_name = self.dataLineDictionary[i]["name"]
@@ -498,8 +498,7 @@ class Ui_MainWindow(object):
         self.dataLineDictionary[index]["scrollArea"].setWidget(self.dataLineDictionary[index]["scrollAreaWidget"])
         self.dataLineDictionary[index]["verticalLayout"].addWidget(self.dataLineDictionary[index]["scrollArea"])
         self.dataLineDictionary[index]["tableWidget"] = newWidget
-        
-        
+
     def openTimeLineDialog(self, s):
         if self.dataLineDialog == None:
             self.dataLineDialog = TimeLineDialog(self.dataLineDictionary)
@@ -566,6 +565,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def closeEvent(self, event):
         print("User has clicked the red x on the main window")
         event.accept()
+        sys.exit()
         
     def close_window(self):
         self.close()
