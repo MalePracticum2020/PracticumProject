@@ -17,10 +17,11 @@ import PyQt5.QtCore as QtCore
 import os
 from GUI.Dialogs.EditDialog import EditDialog
 from PyQt5.QtCore import Qt
+from dateutil.parser import parse
+from datetime import datetime, date, timedelta
 
 # Look for your absolute directory path
 absolute_path = os.path.dirname(os.path.abspath(__file__))
-
 
 class MouseClicks(QWidget):
     folder_path=""
@@ -34,6 +35,7 @@ class MouseClicks(QWidget):
         super(MouseClicks, self).__init__()
         self.folder_path = folder_path
         self.stringSearched = stringSearched
+        self.timeSearched = None
         self.createTable()
 
     clicks_id = []
@@ -61,9 +63,19 @@ class MouseClicks(QWidget):
         self.tableWidget.horizontalHeader().setStretchLastSection(True) 
         self.tableWidget.horizontalHeader().setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)#(QHeaderView.Stretch)
 
-    def modifyTable(self,stringSearched):
-        if not stringSearched == self.stringSearched:
+    def modifyTable(self,stringSearched,timeSearched):
+        try:
+            if not timeSearched == "":
+                incomingTimeSearched = parse(timeSearched)
+            else:
+                incomingTimeSearched = None
+        except Exception as e:
+            print(e)
+            incomingTimeSearched = None
+
+        if not stringSearched == self.stringSearched or not self.timeSearched == incomingTimeSearched:
             self.stringSearched = stringSearched
+            self.timeSearched = incomingTimeSearched
             self.clicks_id = []
             self.content = []
             self.types = []
@@ -76,12 +88,10 @@ class MouseClicks(QWidget):
             self.tableWidget.setContextMenuPolicy(Qt.CustomContextMenu)
             self.tableWidget.customContextMenuRequested.connect(self.editMenu)
 
-
     # @cached(cache ={}) 
     def openJsonFile(self):
         try:
             self.file = self.folder_path+'/ParsedLogs/MouseClicks.JSON'
-            print(self.file)
             with open(self.file) as json_file:
                 data = json.load(json_file)
                 self.dataJsonContent = data
@@ -94,7 +104,6 @@ class MouseClicks(QWidget):
             print(e)
             self.tableWidget = None
 
-
     def buildTableFromSearchInformation(self):
         self.tableWidget.setRowCount(len(self.dataJsonContent))
         row = 0
@@ -103,37 +112,52 @@ class MouseClicks(QWidget):
                 self.tableWidget.removeRow(row)
                 continue
             else:
-                self.clicks_id.append(p['clicks_id'])
-                cell = QTableWidgetItem(str(p['clicks_id']))
-                self.tableWidget.setItem(row, 0, cell)
-
-                self.start.append(p['start'])
-                cell = QTableWidgetItem(str(p['start']))
-                self.tableWidget.setItem(row, 1, cell)
-
-                self.classname.append(p['classname'])
-                cell = QTableWidgetItem(p['classname'])
-                self.tableWidget.setItem(row, 2, cell)
-
-                self.content.append(p['content'])
-                pixmap = QPixmap("image:"+str(p['content']))
-                if not pixmap.isNull:
-                    pixmap.scaledToWidth(80)
-                    cell = QLabel(self)
-                    cell.setPixmap(pixmap)
-                    self.tableWidget.setCellWidget(row, 3, cell)
-
-                    # cell = QPixmap(item[6:]).scaledToWidth(80)
-                    # label = QLabel(self)
-                    # label.setPixmap(cell)
-                    # self.tableWidget.setCellWidget(row, col, label)
+                showRow = False
+                if self.timeSearched == None:
+                    showRow = True
                 else:
-                    cell = QTableWidgetItem(str(p['content']))
-                    self.tableWidget.setItem(row, 3, cell)
+                    rowTime = parse(str(p['start']))
+                    # datetime(year, month, day, hour, minute, second, microsecond)
+                    if self.timeSearched.year == rowTime.year and self.timeSearched.month == rowTime.month and self.timeSearched.day == rowTime.day:
+                        if self.timeSearched.time().hour == rowTime.time().hour and self.timeSearched.time().minute == rowTime.time().minute:
+                            threeSecondsApart = abs(rowTime.time().second - self.timeSearched.time().second)
+                            if threeSecondsApart <= 20:
+                                showRow = True
+                if showRow :
+                    self.clicks_id.append(p['clicks_id'])
+                    cell = QTableWidgetItem(str(p['clicks_id']))
+                    self.tableWidget.setItem(row, 0, cell)
 
-                self.types.append(p['type'])
-                cell = QTableWidgetItem(p['type'])
-                self.tableWidget.setItem(row, 4, cell)
+                    self.start.append(p['start'])
+                    cell = QTableWidgetItem(str(p['start']))
+                    self.tableWidget.setItem(row, 1, cell)
+
+                    self.classname.append(p['classname'])
+                    cell = QTableWidgetItem(p['classname'])
+                    self.tableWidget.setItem(row, 2, cell)
+
+                    self.content.append(p['content'])
+                    pixmap = QPixmap("image:"+str(p['content']))
+                    if not pixmap.isNull:
+                        pixmap.scaledToWidth(80)
+                        cell = QLabel(self)
+                        cell.setPixmap(pixmap)
+                        self.tableWidget.setCellWidget(row, 3, cell)
+
+                        # cell = QPixmap(item[6:]).scaledToWidth(80)
+                        # label = QLabel(self)
+                        # label.setPixmap(cell)
+                        # self.tableWidget.setCellWidget(row, col, label)
+                    else:
+                        cell = QTableWidgetItem(str(p['content']))
+                        self.tableWidget.setItem(row, 3, cell)
+
+                    self.types.append(p['type'])
+                    cell = QTableWidgetItem(p['type'])
+                    self.tableWidget.setItem(row, 4, cell)
+                else:
+                    self.tableWidget.removeRow(row)
+                    continue
             row = row +1
         self.tableWidget.doubleClicked.connect(self.on_click)
 
@@ -152,7 +176,10 @@ class MouseClicks(QWidget):
     @pyqtSlot()
     def on_click(self):
         for currentQTableWidgetItem in self.tableWidget.selectedItems():
+            with open("internalTime.tmp","w") as outfile:
+                outfile.write(self.tableWidget.item(currentQTableWidgetItem.row(),1).text())#currentQTableWidgetItem.text())
             print(type(currentQTableWidgetItem))
+            print("time: " + self.tableWidget.item(currentQTableWidgetItem.row(),1).text())
             print(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text())
 
     def openEditDialog(self,cell):

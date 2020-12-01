@@ -220,7 +220,7 @@ class Ui_MainWindow(object):
         self.sync_button.setObjectName("sync_button")
         self.top_right_horizontal_layout.addWidget(self.sync_button)
         spacerItem = QtWidgets.QSpacerItem(
-            40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+            15, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.top_right_horizontal_layout.addItem(spacerItem)
         self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEdit.setObjectName("lineEdit")
@@ -229,8 +229,22 @@ class Ui_MainWindow(object):
         self.search_button.setObjectName("search_button")
         self.search_button.clicked.connect(self.searchText)
         self.top_right_horizontal_layout.addWidget(self.search_button)
+
+        spacerItem3 = QtWidgets.QSpacerItem(
+            15, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.top_right_horizontal_layout.addItem(spacerItem3)
+        self.searchTimelineEdit = QtWidgets.QLineEdit(self.centralwidget)
+        self.searchTimelineEdit.setObjectName("searchTimelineEdit")
+        self.searchTimelineEdit.setStyleSheet("QLineEdit{background: lightgreen; color:black;}")
+        self.top_right_horizontal_layout.addWidget(self.searchTimelineEdit)
+        self.searchTimelineEditCloseButton = QtWidgets.QPushButton(self.centralwidget)
+        self.searchTimelineEditCloseButton.setObjectName("searchTimelineEdit_CloseButton")
+        self.searchTimelineEditCloseButton.clicked.connect(self.searchText)
+        self.top_right_horizontal_layout.addWidget(self.searchTimelineEditCloseButton)
+
+
         spacerItem1 = QtWidgets.QSpacerItem(
-            40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+            15, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.top_right_horizontal_layout.addItem(spacerItem1)
         # QtWidgets.QPushButton(self.centralwidget)
         self.add_data_line = QtWidgets.QPushButton(self.centralwidget)
@@ -279,14 +293,15 @@ class Ui_MainWindow(object):
     def searchText(self):
         # self.lineEdit.text()
         self.refreshDataLinesViews()
-        print(self.lineEdit.text())
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Timeline View"))
         self.sync_button.setText(_translate("MainWindow", "Sync"))
-        self.search_button.setText(_translate("MainWindow", "Search"))
+        self.search_button.setText(_translate("MainWindow", "Filter"))
         self.add_data_line.setText(_translate("MainWindow", "+ Data Line"))
         self.save_button.setText(_translate("MainWindow", "Save"))
+        self.searchTimelineEditCloseButton.setText(_translate("MainWindow", "Search Time"))
 
     def dataLinesSetUp(self, folder_path):
         self.MouseClicks = MouseClicks(folder_path,"")
@@ -431,24 +446,24 @@ class Ui_MainWindow(object):
         scrollareawidget.setGeometry(QtCore.QRect(0, 0, 752, 225))
         scrollareawidget.setObjectName(type_name +"_scrollareawidget")
         return scrollareawidget
-    
+
     def refreshDataLinesViews(self):
         for i in range(len(self.dataLineDictionary)):
             type_name = self.dataLineDictionary[i]["name"]
             if type_name == "Auditd":
-                self.Auditd.modifyTable(self.lineEdit.text())
+                self.Auditd.modifyTable(self.lineEdit.text(), self.searchTimelineEdit.text())
                 self.replaceWidgetAndSave(i, self.Auditd.getTable(),type_name)
             if type_name == "MouseClicks":
-                self.MouseClicks.modifyTable(self.lineEdit.text())
+                self.MouseClicks.modifyTable(self.lineEdit.text(), self.searchTimelineEdit.text())
                 self.replaceWidgetAndSave(i, self.MouseClicks.getTable(),type_name)
             if type_name == "TimedScreenshots":
-                self.TimedScreenshots.modifyTable(self.lineEdit.text())
+                self.TimedScreenshots.modifyTable(self.lineEdit.text(), self.searchTimelineEdit.text())
                 self.replaceWidgetAndSave(i, self.TimedScreenshots.getTable(),type_name)
             if type_name == "Keypresses":
-                self.Keypresses.modifyTable(self.lineEdit.text())
+                self.Keypresses.modifyTable(self.lineEdit.text(), self.searchTimelineEdit.text())
                 self.replaceWidgetAndSave(i, self.Keypresses.getTable(),type_name)
             if type_name == "Suricata":
-                self.Suricata.modifyTable(self.lineEdit.text())
+                self.Suricata.modifyTable(self.lineEdit.text(), self.searchTimelineEdit.text())
                 self.replaceWidgetAndSave(i, self.Suricata.getTable(),type_name)
     oldDateTime=-1
     def refreshDataLinesViewsTimer(self):
@@ -465,7 +480,7 @@ class Ui_MainWindow(object):
                     #print("invalid time format, please select the time cell")
                     pass #do not duplicate error messages
             if self.oldDateTime != datetimeTarget:
-                self.lineEdit.setText(selectedTime)
+                self.searchTimelineEdit.setText(selectedTime)
                 self.refreshDataLinesViews()
                 self.oldDateTime = datetimeTarget
                 
@@ -483,8 +498,7 @@ class Ui_MainWindow(object):
         self.dataLineDictionary[index]["scrollArea"].setWidget(self.dataLineDictionary[index]["scrollAreaWidget"])
         self.dataLineDictionary[index]["verticalLayout"].addWidget(self.dataLineDictionary[index]["scrollArea"])
         self.dataLineDictionary[index]["tableWidget"] = newWidget
-        
-        
+
     def openTimeLineDialog(self, s):
         if self.dataLineDialog == None:
             self.dataLineDialog = TimeLineDialog(self.dataLineDictionary)
@@ -548,5 +562,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.timer.start(500)
         self.setPalette(dark_palette)
 
+    def closeEvent(self, event):
+        print("User has clicked the red x on the main window")
+        event.accept()
+        sys.exit()
+        
     def close_window(self):
         self.close()
