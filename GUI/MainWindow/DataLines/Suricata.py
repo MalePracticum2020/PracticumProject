@@ -88,6 +88,7 @@ class Suricata(QWidget):
             relevDir= glob.glob(networkDataxyDir+'/ecel-export_*')
             self.file = relevDir[0] + '/raw/suricata/eve.json'
             print(self.file)
+
             with open(self.file) as json_file:
                 yolo = []
                 for line in json_file:
