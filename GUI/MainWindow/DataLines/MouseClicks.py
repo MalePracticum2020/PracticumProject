@@ -1,6 +1,7 @@
 import plotly
 from plotly.graph_objs import Scatter, Layout
 import json
+import subprocess
 import datetime
 from datetime import datetime
 import plotly.express as px
@@ -18,6 +19,8 @@ import os
 from GUI.Dialogs.EditDialog import EditDialog
 from PyQt5.QtCore import Qt
 from dateutil.parser import parse
+from PIL import Image, ImageFile
+import platform
 from datetime import datetime, date, timedelta
 
 # Look for your absolute directory path
@@ -36,6 +39,8 @@ class MouseClicks(QWidget):
         self.folder_path = folder_path
         self.stringSearched = stringSearched
         self.timeSearched = None
+        self.fileList = []
+        ImageFile.LOAD_TRUNCATED_IMAGES = True
         self.createTable()
 
     clicks_id = []
@@ -137,18 +142,25 @@ class MouseClicks(QWidget):
                     self.tableWidget.setItem(row, 2, cell)
 
                     self.content.append(p['content'])
-                    pixmap = QPixmap("image:"+str(p['content']))
-                    if not pixmap.isNull:
-                        pixmap.scaledToWidth(80)
-                        cell = QLabel(self)
-                        cell.setPixmap(pixmap)
-                        self.tableWidget.setCellWidget(row, 3, cell)
+                    picture = p['content']
+                    newpath = self.folder_path+'/Clicks'+ picture[picture.rindex('/'):]
+                    print(newpath)
+                    self.fileList.append(newpath)
 
-                        # cell = QPixmap(item[6:]).scaledToWidth(80)
-                        # label = QLabel(self)
-                        # label.setPixmap(cell)
-                        # self.tableWidget.setCellWidget(row, col, label)
-                    else:
+                    counter = 0
+                    thumb = Image.open(newpath)
+                    thumb.thumbnail((150,150))
+                    thumbPath = newpath.replace('screenshot', 'thumbnail')
+                    thumbPath.replace('png', 'jpg')
+                    thumb.save(thumbPath)
+                    image = QPixmap(thumbPath)
+
+                    try:
+                        label = QLabel(self)
+                        self.resize(image.width(), image.height())
+                        label.setPixmap(image)
+                        self.tableWidget.setCellWidget(row, 3, label)
+                    except:
                         cell = QTableWidgetItem(str(p['content']))
                         self.tableWidget.setItem(row, 3, cell)
 
@@ -169,9 +181,24 @@ class MouseClicks(QWidget):
         if row > -1 and column > -1 and column == 3:
             menu = QMenu()
             item1 = menu.addAction(u'Edit Tag')
+            item2 = menu.addAction(u'View Image')
             action = menu.exec_(self.tableWidget.mapToGlobal(pos))
             if action == item1:
                 self.openEditDialog(self.tableWidget.item(row, column))
+            elif action == item2:
+                self.openViewImage(self.fileList[row])
+                print("This is the picture file", self.fileList[row])
+
+    def openViewImage(self, path):
+        try:
+            if platform.system() == 'Darwin':  # macOS
+                subprocess.call(('open', path))
+            elif platform.system() == 'Windows':  # Windows
+                os.startfile(path)
+            else:
+                subprocess.call(['/usr/bin/ristretto', path])
+        except:
+            print('COULD NOT OPEN IMAGE')
 
     @pyqtSlot()
     def on_click(self):
