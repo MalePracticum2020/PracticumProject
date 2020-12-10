@@ -7,6 +7,7 @@ import os
 from GUI.Dialogs.EditDialog import EditDialog
 from PyQt5.QtCore import Qt
 from dateutil.parser import parse
+import glob
 from datetime import datetime, date, timedelta
 
 # Look for your absolute directory path
@@ -81,16 +82,24 @@ class Suricata(QWidget):
     # @cached(cache ={}) 
     def openJsonFile(self):
         try:
-            self.file = self.folder_path+'/ParsedLogs/Suricata.JSON' # '/home/kali/PycharmProjects/PracticumProject/GUI/MainWindow/DataLines/ParsedLogs/Suricata.JSON'
+            projDir = self.folder_path.split("ProjectData/")
+            projName = projDir[1].split("/")[0]
+            networkDataxyDir=projDir[0]+"ProjectData/"+projName
+            relevDir= glob.glob(networkDataxyDir+'/ecel-export_*')
+            self.file = relevDir[0] + '/raw/suricata/eve.json'
+            print(self.file)
+
             with open(self.file) as json_file:
-                data = json.load(json_file)
-                self.dataJsonContent = data
+                yolo = []
+                for line in json_file:
+                    yolo.append(json.loads(line))
+                self.dataJsonContent = yolo
                 self.buildTableFromSearchInformation()
         except Exception as e:
             print("Something went wrong while reading Suricata.JSON")
             print(e)
             self.tableWidget = None
-            
+    ranOnce=False
     def buildTableFromSearchInformation(self):
         self.tableWidget.setRowCount(len(self.dataJsonContent))
         row = 0
@@ -100,8 +109,20 @@ class Suricata(QWidget):
             self.ranOnce=True
         else:
             self.tableWidget.setSelectionMode(QtWidgets.QAbstractItemView.MultiSelection)
-        for p in self.dataJsonContent:
-            if self.stringSearched and self.stringSearched not in json.dumps(p): 
+        for line in self.dataJsonContent:
+            line['timestamp'] = line['timestamp'].split('.')[0]
+            index = line['timestamp'].index(':')
+            hour = int(line['timestamp'][index-2 : index])
+            hour = (hour + 5) % 24
+            if hour % 10 == 0:
+                hour = '0' + str(hour)
+            else:
+                hour = str(hour)
+            time = line['timestamp'][0:index-2] + hour +line['timestamp'][index:]
+            if not 'traffic' in line:
+                self.tableWidget.removeRow(row)
+                continue
+            if self.stringSearched and self.stringSearched not in json.dumps(line):
                 self.tableWidget.removeRow(row)
                 continue
             else:
@@ -109,7 +130,7 @@ class Suricata(QWidget):
                 if self.timeSearched == None:
                     showRow = True
                 else:
-                    rowTime = parse(str(p['start']))
+                    rowTime = parse(str(time))
                     # datetime(year, month, day, hour, minute, second, microsecond)
                     if self.timeSearched.year == rowTime.year and self.timeSearched.month == rowTime.month and self.timeSearched.day == rowTime.day:
                         if self.timeSearched.time().hour == rowTime.time().hour and self.timeSearched.time().minute == rowTime.time().minute:
@@ -117,21 +138,22 @@ class Suricata(QWidget):
                             if threeSecondsApart <= 20:
                                 showRow = True
                 # if showRow :
-                self.suricata_id.append(p['suricata_id'])
-                cell = QTableWidgetItem(str(p['suricata_id']))
+                self.suricata_id.append(row)
+                cell = QTableWidgetItem(str(row))
                 self.tableWidget.setItem(row, 0, cell)
 
-                self.start.append(p['start'])
-                cell = QTableWidgetItem(str(p['start']))
+                self.suricata_id.append(time)
+                cell = QTableWidgetItem(time)
                 self.tableWidget.setItem(row, 1, cell)
 
-                self.classname.append(p['className'])
-                cell = QTableWidgetItem(p['className'])
+                self.start.append(line['traffic']['id'][0])
+                cell = QTableWidgetItem(line['traffic']['id'][0])
                 self.tableWidget.setItem(row, 2, cell)
 
-                self.content.append(p['content'])
-                cell = QTableWidgetItem(p['content'])
+                self.classname.append(line['traffic']['label'][0])
+                cell = QTableWidgetItem(line['traffic']['label'][0])
                 self.tableWidget.setItem(row, 3, cell)
+
                 if self.stringSearched or self.timeSearched:
                     if showRow:
                         self.tableWidget.selectRow(row)

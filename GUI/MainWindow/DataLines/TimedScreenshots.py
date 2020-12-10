@@ -13,6 +13,7 @@ import os, webbrowser
 from GUI.Dialogs.EditDialog import EditDialog
 from PyQt5.QtCore import Qt
 from dateutil.parser import parse
+import platform
 from datetime import datetime, date, timedelta
 
 
@@ -127,6 +128,7 @@ class TimedScreenshots(QWidget,):
                             threeSecondsApart = abs(rowTime.time().second - self.timeSearched.time().second)
                             if threeSecondsApart <= 20:
                                 showRow = True
+
                 # if showRow :
                 self.time_id.append(p['timed_id'])
                 cell = QTableWidgetItem(str(p['timed_id']))
@@ -142,13 +144,21 @@ class TimedScreenshots(QWidget,):
 
                 self.content.append(p['content'])
                 picture = p['content']
-                newpath = self.folder_path+'Timed'+ picture[picture.rindex('/'):]
+                newpath = self.folder_path+'/Timed'+ picture[picture.rindex('/'):]
                 self.fileList.append(newpath)
-                cell = QPixmap(newpath).scaledToWidth(160).scaledToHeight(160)
+
+                counter = 0
+                thumb = Image.open(newpath)
+                thumb.thumbnail((150,150))
+                thumbPath = newpath.replace('screenshot', 'thumbnail')
+                thumbPath.replace('png', 'jpg')
+                thumb.save(thumbPath)
+                image = QPixmap(thumbPath)
+
                 try:
                     label = QLabel(self)
-                    self.resize(cell.width(), cell.height())
-                    label.setPixmap(cell)
+                    self.resize(image.width(), image.height())
+                    label.setPixmap(image)
                     self.tableWidget.setCellWidget(row, 3, label)
                 except:
                     cell = QTableWidgetItem(p['content'])
@@ -185,17 +195,7 @@ class TimedScreenshots(QWidget,):
                 print("This is the picture file", self.fileList[row])
 
     def openViewImage(self, path):
-        # img = mpimg.imread(path)
-        # plt.imshow(img)
-        # try:
-        #     img = Image.open(r''+path).show()
-        # except IOError:
-        #     pass
         try:
-            # image = OpenImage(path)
-            # img = mpimg.imread(path)
-            # plt.imshow(img)
-            # plt.show()
             if platform.system() == 'Darwin':  # macOS
                 subprocess.call(('open', path))
             elif platform.system() == 'Windows':  # Windows
