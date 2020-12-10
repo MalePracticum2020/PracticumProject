@@ -15,6 +15,7 @@ from PyQt5.QtCore import Qt
 from dateutil.parser import parse
 from datetime import datetime, date, timedelta
 
+
 # Look for your absolute directory path
 absolute_path = os.path.dirname(os.path.abspath(__file__))
 
@@ -100,12 +101,18 @@ class TimedScreenshots(QWidget,):
             print(e)
             self.tableWidget = None
 
-
+    ranOnce=False
     def buildTableFromSearchInformation(self):
         self.tableWidget.setRowCount(len(self.dataJsonContent))
         row = 0
+        if self.stringSearched:
+            self.timeSearched=None
+        if self.ranOnce==False:
+            self.ranOnce=True
+        else:
+            self.tableWidget.setSelectionMode(QtWidgets.QAbstractItemView.MultiSelection)
         for p in self.dataJsonContent:
-            if self.stringSearched not in json.dumps(p): 
+            if self.stringSearched and self.stringSearched not in json.dumps(p): 
                 self.tableWidget.removeRow(row)
                 continue
             else:
@@ -120,40 +127,45 @@ class TimedScreenshots(QWidget,):
                             threeSecondsApart = abs(rowTime.time().second - self.timeSearched.time().second)
                             if threeSecondsApart <= 20:
                                 showRow = True
-                if showRow :
-                    self.time_id.append(p['timed_id'])
-                    cell = QTableWidgetItem(str(p['timed_id']))
-                    self.tableWidget.setItem(row, 0, cell)
+                # if showRow :
+                self.time_id.append(p['timed_id'])
+                cell = QTableWidgetItem(str(p['timed_id']))
+                self.tableWidget.setItem(row, 0, cell)
 
-                    self.start.append(p['start'])
-                    cell = QTableWidgetItem(str(p['start']))
-                    self.tableWidget.setItem(row, 1, cell)
+                self.start.append(p['start'])
+                cell = QTableWidgetItem(str(p['start']))
+                self.tableWidget.setItem(row, 1, cell)
 
-                    self.classname.append(p['classname'])
-                    cell = QTableWidgetItem(p['classname'])
-                    self.tableWidget.setItem(row, 2, cell)
+                self.classname.append(p['classname'])
+                cell = QTableWidgetItem(p['classname'])
+                self.tableWidget.setItem(row, 2, cell)
 
-                    self.content.append(p['content'])
-                    picture = p['content']
-                    newpath = self.folder_path+'Timed'+ picture[picture.rindex('/'):]
-                    self.fileList.append(newpath)
-                    cell = QPixmap(newpath).scaledToWidth(160).scaledToHeight(160)
-                    try:
-                        label = QLabel(self)
-                        self.resize(cell.width(), cell.height())
-                        label.setPixmap(cell)
-                        self.tableWidget.setCellWidget(row, 3, label)
-                    except:
-                        cell = QTableWidgetItem(p['content'])
-                        self.tableWidget.setItem(row, 3, cell)
+                self.content.append(p['content'])
+                picture = p['content']
+                newpath = self.folder_path+'Timed'+ picture[picture.rindex('/'):]
+                self.fileList.append(newpath)
+                cell = QPixmap(newpath).scaledToWidth(160).scaledToHeight(160)
+                try:
+                    label = QLabel(self)
+                    self.resize(cell.width(), cell.height())
+                    label.setPixmap(cell)
+                    self.tableWidget.setCellWidget(row, 3, label)
+                except:
+                    cell = QTableWidgetItem(p['content'])
+                    self.tableWidget.setItem(row, 3, cell)
+                    print("Problem in timedscreenshots creating cell")
 
-                    self.types.append(p['type'])
-                    cell = QTableWidgetItem(p['type'])
-                    self.tableWidget.setItem(row, 4, cell)
-                else:
-                    self.tableWidget.removeRow(row)
-                    continue
+                self.types.append(p['type'])
+                cell = QTableWidgetItem(p['type'])
+                self.tableWidget.setItem(row, 4, cell)
+                if self.stringSearched or self.timeSearched:
+                    if showRow:
+                        self.tableWidget.selectRow(row)
+                # else:
+                #     self.tableWidget.removeRow(row)
+                #     continue
             row = row +1
+        self.tableWidget.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
         self.tableWidget.doubleClicked.connect(self.on_click)
 
     def editMenu(self, pos):

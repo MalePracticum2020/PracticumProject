@@ -94,8 +94,14 @@ class Suricata(QWidget):
     def buildTableFromSearchInformation(self):
         self.tableWidget.setRowCount(len(self.dataJsonContent))
         row = 0
+        if self.stringSearched:
+            self.timeSearched=None
+        if self.ranOnce==False:
+            self.ranOnce=True
+        else:
+            self.tableWidget.setSelectionMode(QtWidgets.QAbstractItemView.MultiSelection)
         for p in self.dataJsonContent:
-            if self.stringSearched not in json.dumps(p): 
+            if self.stringSearched and self.stringSearched not in json.dumps(p): 
                 self.tableWidget.removeRow(row)
                 continue
             else:
@@ -110,26 +116,30 @@ class Suricata(QWidget):
                             threeSecondsApart = abs(rowTime.time().second - self.timeSearched.time().second)
                             if threeSecondsApart <= 20:
                                 showRow = True
-                if showRow :
-                    self.suricata_id.append(p['suricata_id'])
-                    cell = QTableWidgetItem(str(p['suricata_id']))
-                    self.tableWidget.setItem(row, 0, cell)
+                # if showRow :
+                self.suricata_id.append(p['suricata_id'])
+                cell = QTableWidgetItem(str(p['suricata_id']))
+                self.tableWidget.setItem(row, 0, cell)
 
-                    self.start.append(p['start'])
-                    cell = QTableWidgetItem(str(p['start']))
-                    self.tableWidget.setItem(row, 1, cell)
+                self.start.append(p['start'])
+                cell = QTableWidgetItem(str(p['start']))
+                self.tableWidget.setItem(row, 1, cell)
 
-                    self.classname.append(p['className'])
-                    cell = QTableWidgetItem(p['className'])
-                    self.tableWidget.setItem(row, 2, cell)
+                self.classname.append(p['className'])
+                cell = QTableWidgetItem(p['className'])
+                self.tableWidget.setItem(row, 2, cell)
 
-                    self.content.append(p['content'])
-                    cell = QTableWidgetItem(p['content'])
-                    self.tableWidget.setItem(row, 3, cell)
-                else:
-                    self.tableWidget.removeRow(row)
-                    continue
+                self.content.append(p['content'])
+                cell = QTableWidgetItem(p['content'])
+                self.tableWidget.setItem(row, 3, cell)
+                if self.stringSearched or self.timeSearched:
+                    if showRow:
+                        self.tableWidget.selectRow(row)
+                # else:
+                #     self.tableWidget.removeRow(row)
+                #     continue
             row = row +1
+        self.tableWidget.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
         self.tableWidget.doubleClicked.connect(self.on_click)
 
     def editMenu(self, pos):
